@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\PermissionController;
 Route::post('login', [AuthController::class,'login']);
 
 Route::group(['middleware' => 'auth:api'], function(){
-	
+
 	Route::get('logout', [AuthController::class,'logout']);
 
 	Route::get('profile', [AuthController::class,'profile']);
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('update-profile', [AuthController::class,'updateProfile']);
 
 	//only those have manage_user permission will get access
-	Route::group(['middleware' => 'can:manage_user'], function(){
+	Route::group(['middleware' => 'checkpermissions'], function(){
 		Route::get('/users', [UserController::class,'list']);
 		Route::post('/user/create', [UserController::class,'store']);
 		Route::get('/user/{id}', [UserController::class,'profile']);
@@ -55,5 +55,5 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::get('/permission/{id}', [PermissionController::class,'show']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
 	});
-	
+
 });

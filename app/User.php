@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Passport\HasApiTokens;
+use App\Role;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable,HasRoles;
+    use HasApiTokens,Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    protected $guarded = [''];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,12 +42,7 @@ class User extends Authenticatable
     ];
 
 
-    public function get_roles(){
-        $roles = [];
-        foreach ($this->getRoleNames() as $key => $role) {
-            $roles[$key] = $role;
-        }
-
-        return $roles;
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 }
