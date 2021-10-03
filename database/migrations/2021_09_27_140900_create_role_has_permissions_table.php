@@ -14,6 +14,7 @@ class CreateRoleHasPermissionsTable extends Migration
     public function up()
     {
         Schema::create('role_has_permissions', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('id_role');
             $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('id_permission');

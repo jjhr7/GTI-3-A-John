@@ -14,6 +14,7 @@ class CreateUserHasDevice extends Migration
     public function up()
     {
         Schema::create('user_has_device', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('id_device');
