@@ -3,31 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRole;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+//use Spatie\Permission\Models\Role;
+use App\Role;
 use Auth;
 
 class RolesController extends Controller
 {
-    public function list(Request $request)
+    public function list()
     {
-        return response(['roles' => Role::get(), 'success' => 1 ]);
+        return response([
+            'roles' => Role::all(),
+            'success' => 1
+        ]);
     }
 
 
-    public function store(Request $request)
+    public function store(StoreRole $request)
     {
-        $request->validate([
-            'name'     => 'required| unique:roles'
-        ]);
-        
-        // store user information
-        $role = Role::create(['guard_name' => 'web','name' => $request->name]);
 
-        // assign permission to role
-        if(isset($request->permissions)){
-	        $role->syncPermissions($request->permissions);
-        }
+        // store user information
+        $role = Role::create(['name' => $request->name, 'guard_name' => 'api_'.$request->name]);
+
 
         if($role){
             return response([
@@ -43,10 +41,10 @@ class RolesController extends Controller
             ]);
     }
 
-    
-    public function show($id,Request $request)
+
+    public function show($id)
     {
-        $role = Role::with('permissions')->find($id);
+        $role = Role::find($id);
         if($role)
             return response(['role' => $role,'success' => 1]);
         else
@@ -54,7 +52,7 @@ class RolesController extends Controller
     }
 
 
-    public function delete($id, Request $request)
+    public function delete($id)
     {
         $role = Role::find($id);
 
@@ -66,17 +64,17 @@ class RolesController extends Controller
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
 
-    public function changePermissions($id,Request $request)
+    /*public function changePermissions($id,Request $request)
     {
         $request->validate([
             'permissions'     => 'required'
         ]);
-        
+
         // update role permissions
         $role = Role::find($id);
         if($role){
             // assign permission to role
-            $role->syncPermissions($request->permissions);    
+            $role->syncPermissions($request->permissions);
             return response([
                 'message' => 'Permission changed successfully!',
                 'success' => 1
@@ -87,6 +85,25 @@ class RolesController extends Controller
                 'message' => 'Sorry! Role not found',
                 'success' => 0
             ]);
-    }
+    }*/
 
+    public function update(Request $request, $id){
+
+        $role = Role::find($id);
+
+        if($role){
+            $role->update($request->all());
+
+            return response([
+                'message' => 'Role has been updated!',
+                'role' => $role,
+                'success' =>1
+            ]);
+        }
+
+        return response([
+               'message' => 'Sorry, role not found!',
+                'success' => 0
+            ]);
+    }
 }

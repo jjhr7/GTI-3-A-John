@@ -31,21 +31,25 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
+
+        //Rutas para gestionar usuarios
 		Route::get('/users', [UserController::class,'list']);
 		Route::post('/user/create', [UserController::class,'store']);
 		Route::get('/user/{id}', [UserController::class,'profile']);
-		Route::get('/user/delete/{id}', [UserController::class,'delete']);
-		Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
+		Route::delete('/user/delete/{id}', [UserController::class,'delete']);
+        Route::post('/user/update/{id}', [UserController::class, 'update']);
+		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
+
+        //Rutas para gestionar Roles
+        Route::get('/roles', [RolesController::class,'list']);
+        Route::post('/role/create', [RolesController::class,'store']);
+        Route::get('/role/{id}', [RolesController::class,'show']);
+        Route::delete('/role/delete/{id}', [RolesController::class,'delete']);
+        Route::post('/role/update/{id}', [RolesController::class, 'update']);
+        //Route::post('/role/change-permission/{id}', [RolesController::class,'changePermissions']);
+
 	});
 
-	//only those have manage_role permission will get access
-	Route::group(['middleware' => 'can:manage_role|manage_user'], function(){
-		Route::get('/roles', [RolesController::class,'list']);
-		Route::post('/role/create', [RolesController::class,'store']);
-		Route::get('/role/{id}', [RolesController::class,'show']);
-		Route::get('/role/delete/{id}', [RolesController::class,'delete']);
-		Route::post('/role/change-permission/{id}', [RolesController::class,'changePermissions']);
-	});
 
 
 	//only those have manage_permission permission will get access

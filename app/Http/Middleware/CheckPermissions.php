@@ -18,6 +18,7 @@ class CheckPermissions
     {
 
         if(auth()->user()->role->name == 'Super admin' || auth()->user()->role->name == 'Admin' || auth()->user()->role->name == 'Project Manager'){
+
             return $next($request);
         }else{
             abort(403, 'Unauthorized action');
