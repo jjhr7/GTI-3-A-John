@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -20,24 +21,15 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $request->validate([
-            'name'     => 'required | string ',
-            'email'    => 'required | email | unique:users',
-            'password' => 'required | confirmed',
-            'role'     => 'required'
-        ]);
-        
         // store user information
         $user = User::create([
                     'name'     => $request->name,
                     'email'    => $request->email,
-                    'password' => Hash::make($request->password)
+                    'password' => Hash::make($request->password),
+                    'role_id' => $request->role_id
                 ]);
-
-        // assign new role to the user
-        $role = $user->assignRole($request->role);
 
         if($user){
             return response([
@@ -63,7 +55,7 @@ class UserController extends Controller
     }
 
 
-    public function delete($id, Request $request)
+    public function delete($id)
     {
         $user = User::find($id);
 
@@ -76,17 +68,17 @@ class UserController extends Controller
     }
 
 
-    public function changeRole($id,Request $request)
+    /*public function changeRole($id,Request $request)
     {
         $request->validate([
             'roles'     => 'required'
         ]);
-        
+
         // update user roles
         $user = User::find($id);
         if($user){
             // assign role to user
-            $user->syncRoles($request->roles);    
+            $user->syncRoles($request->roles);
             return response([
                 'message' => 'Roles changed successfully!',
                 'success' => 1
@@ -97,5 +89,30 @@ class UserController extends Controller
                 'message' => 'Sorry! User not found',
                 'success' => 0
             ]);
+    }*/
+
+    public function update(Request $request, $id){
+
+
+        $user = User::find($id);
+        //dd($request,$id);
+        if($user){
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role_id = $request->role_id;
+            $user->save();
+            return response([
+                'message' => 'User has been updated successfully!',
+                'user'=> $user,
+                'success' => 1
+            ]);
+
+        }
+        return response([
+            'message' => 'Sorry! User Not found!',
+            'success' => 0
+        ]);
     }
 }
