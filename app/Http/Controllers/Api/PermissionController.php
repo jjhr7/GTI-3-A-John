@@ -9,9 +9,12 @@ use Auth;
 
 class PermissionController extends Controller
 {
-    public function list(Request $request)
+    public function list()
     {
-        return response(['permissions' => Permission::get(), 'success' => 1 ]);
+        return response([
+            'permissions' => Permission::all(),
+            'success' => 1
+        ]);
     }
 
 
@@ -20,7 +23,7 @@ class PermissionController extends Controller
         $request->validate([
             'name'     => 'required| unique:permissions'
         ]);
-        
+
         // store user information
         $permission = Permission::create(['guard_name' => 'web','name' => $request->name]);
 
@@ -39,7 +42,7 @@ class PermissionController extends Controller
             ]);
     }
 
-    
+
     public function show($id,Request $request)
     {
         $permission = Permission::with('roles')->find($id);
