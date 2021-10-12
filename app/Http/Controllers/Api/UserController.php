@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Auth;
+use App\Http\LogicasDelNegocio\LNUser;
 
 class UserController extends Controller
 {
+
+
     public function list()
     {
+        $LNuser = new LNUser();
+
         return response([
-                'users' => User::all(),
+                'users' => $LNuser->obtenerTodosLosUsuarios(),
                 'success' => 1
             ]);
     }
@@ -23,18 +28,16 @@ class UserController extends Controller
 
     public function store(StoreUser $request)
     {
-        // store user information
-        $user = User::create([
-                    'name'     => $request->name,
-                    'email'    => $request->email,
-                    'password' => Hash::make($request->password),
-                    'role_id' => $request->role_id
-                ]);
+        $LNuser = new LNUser();
 
-        if($user){
+        $userCreated = $LNuser->guardarUsuario($request->name,$request->email,$request->password,$request->role_id);
+
+
+        if($userCreated[0]){
+
             return response([
                 'message' => 'User created succesfully!',
-                'user'    => $user,
+                'user'    => User::find($userCreated[1]),
                 'success' => 1
             ]);
         }
@@ -45,11 +48,12 @@ class UserController extends Controller
             ]);
     }
 
-    public function profile($id, Request $request)
+    public function profile($id)
     {
-        $user = User::find($id);
-        if($user)
-            return response(['user' => $user,'success' => 1]);
+        $LNUser = new LNUser();
+        $userData = $LNUser->obtenerDatosUsuario($id);
+        if($userData[0])
+            return response(['user' => $userData[1],'success' => 1]);
         else
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
@@ -57,10 +61,10 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $user = User::find($id);
+        $LNUser = new LNUser();
+        $userRemoved = $LNUser->eliminarUsuario($id);
 
-        if($user){
-            $user->delete();
+        if($userRemoved){
             return response(['message' => 'User has been deleted','success' => 1]);
         }
         else
@@ -93,26 +97,29 @@ class UserController extends Controller
 
     public function update(Request $request, $id){
 
-
-        $user = User::find($id);
+        $LNUser = new LNUser();
+       $userUpdated =  $LNUser->actualizarDatosUsuario($id, $request);
         //dd($request,$id);
-        if($user){
-
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->role_id = $request->role_id;
-            $user->save();
+        if($userUpdated[0]){
             return response([
                 'message' => 'User has been updated successfully!',
-                'user'=> $user,
+                'user'=> $userUpdated[1],
                 'success' => 1
             ]);
-
         }
+
         return response([
             'message' => 'Sorry! User Not found!',
             'success' => 0
+        ]);
+    }
+
+    public function getUltimosUsuarios($nUsuarios){
+        $LNUser = new LNUser();
+        return response([
+            'message'=>'These are the users that we have registred',
+            'users'=>$LNUser->obtenerUltimosUsuarios($nUsuarios),
+            'success'=>1
         ]);
     }
 }
