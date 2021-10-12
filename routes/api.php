@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::delete('/user/delete/{id}', [UserController::class,'delete']);
         Route::post('/user/update/{id}', [UserController::class, 'update']);
 		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
+        Route::get('/user/latest/{nUsuarios}',[UserController::class,'getUltimosUsuarios']);
 
         //Rutas para gestionar Roles
         Route::get('/roles', [RolesController::class,'list']);
