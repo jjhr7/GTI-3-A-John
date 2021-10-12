@@ -15,10 +15,10 @@ class CreateUserHasDevice extends Migration
     {
         Schema::create('user_has_device', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('id_device');
-            $table->foreign('id_device')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('device_id');
+            $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

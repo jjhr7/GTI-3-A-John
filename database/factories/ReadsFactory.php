@@ -24,7 +24,7 @@ class ReadsFactory extends Factory
         return [
             'data' => $this->faker->randomNumber(3),
             'read_date' => $this->faker->date(),
-            'id_device' => $this->faker->numberBetween(1,10)
+            'device_id' => $this->faker->numberBetween(1,10)
         ];
     }
 }
