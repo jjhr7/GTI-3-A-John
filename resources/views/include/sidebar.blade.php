@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="nav-lavel">{{ __('Acciones')}} </div>
+                <div class="nav-lavel">{{ __('Datos')}} </div>
 
                 <div class="nav-item {{ ($segment1 == 'charts-chartist' || $segment1 == 'charts-flot'||$segment1 == 'charts-knob'||$segment1 == 'charts-amcharts') ? 'active open' : '' }} has-sub">
                     <a href="#"><i class="ik ik-pie-chart"></i><span>{{ __('Gráficas')}}</span> </a>

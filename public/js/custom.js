@@ -4,10 +4,10 @@
     $(document).ready(function()
     {
         var searchable = [];
-        var selectable = []; 
-        
+        var selectable = [];
 
-        var dTable = $('#roles_table').DataTable({
+
+        /*var dTable = $('#roles_table').DataTable({
 
             order: [],
             lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
@@ -127,7 +127,7 @@
                     });
                 });
             }
-        });
+        });*/
     });
 
     //users data table
@@ -135,8 +135,8 @@
     {
 
         var searchable = [];
-        var selectable = []; 
-        
+        var selectable = [];
+
 
         var dTable = $('#user_table').DataTable({
 
@@ -145,7 +145,6 @@
             processing: true,
             responsive: false,
             serverSide: true,
-            processing: true,
             language: {
               processing: '<i class="ace-icon fa fa-spinner fa-spin orange bigger-500" style="font-size:60px;margin-top:50px;"></i>'
             },
@@ -160,10 +159,10 @@
             },
             columns: [
                 /*{data:'serial_no', name: 'serial_no'},*/
-                {data:'name', name: 'name', orderable: false, searchable: false},
-                {data:'email', name: 'email'},
-                {data:'roles', name: 'roles'},
-                {data:'permissions', name: 'permissions'},
+                {data:'name', name: 'name', orderable: false, searchable: false, title: 'Name'},
+                {data:'email', name: 'email', title: 'Email'},
+                {data:'rol', name: 'rol', title: 'Rol'},
+                //{data:'permissions', name: 'permissions'},
                 //only those have manage_user permission will get access
                 {data:'action', name: 'action'}
 
