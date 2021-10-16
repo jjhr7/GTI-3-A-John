@@ -10,4 +10,8 @@ class Reads extends Model
     use HasFactory;
 
     protected $fillable = ['data', 'read_date', 'id_device'];
+
+    public function device(){
+        return $this->belongsTo(Device::class);
+    }
 }
