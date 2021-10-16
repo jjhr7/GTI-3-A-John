@@ -162,8 +162,6 @@
                 {data:'name', name: 'name', orderable: false, searchable: false, title: 'Name'},
                 {data:'email', name: 'email', title: 'Email'},
                 {data:'rol', name: 'rol', title: 'Rol'},
-                //{data:'permissions', name: 'permissions'},
-                //only those have manage_user permission will get access
                 {data:'action', name: 'action'}
 
             ],

@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ReadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,17 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/permission/update', [PermissionController::class,'update']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
 	});
+
+    //RutasMediciones
+    //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);
+
+    Route::get('/mediciones', [ReadController::class, 'index']);
+    Route::get('/mediciones/get-list', [ReadController::class, 'obtenerMediciones'])->name('get-mediciones');
+    Route::get('/mediciones/create', [ReadController::class,'create']);
+    Route::post('/medicion/create', [ReadController::class, 'store']);
+    Route::get('/medicion/{id}', [ReadController::class, 'show']);
+    Route::post('/medicion/update', [ReadController::class,'update']);
+    Route::get('/medicion/delete/{id}', [ReadController::class,'delete']);
 
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
