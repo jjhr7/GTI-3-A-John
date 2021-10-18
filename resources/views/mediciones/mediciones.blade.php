@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Users')
+@section('title', 'Mediciones')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -8,14 +8,14 @@
 
 
     <div class="container-fluid">
-    	<div class="page-header">
+        <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-users bg-blue"></i>
+                        <i class="ik ik-rss bg-orange"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Users')}}</h5>
-                            <span>{{ __('List of users')}}</span>
+                            <h5>{{ __('Mediciones')}}</h5>
+                            <span>{{ __('Lista de mediciones')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Users')}}</a>
+                                <a href="#">{{ __('Mediciones')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -35,13 +35,13 @@
         </div>
         <div class="row">
             <!-- start message area-->
-            @include('include.message')
-            <!-- end message area-->
+        @include('include.message')
+        <!-- end message area-->
             <div class="col-md-12">
                 <div class="card p-3">
-                    <div class="card-header"><h3>{{ __('Users')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Mediciones')}}</h3></div>
                     <div class="card-body">
-                        <table id="user_table" class="table">
+                        <table id="reads_table" class="table">
 
                         </table>
                     </div>
@@ -51,9 +51,9 @@
     </div>
     <!-- push external js -->
     @push('script')
-    <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-    <!--server side users table script-->
-    <script src="{{ asset('js/custom.js') }}"></script>
+        <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
+        <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+        <!--server side users table script-->
+        <script src="{{ asset('js/mediciones-tabla.js') }}"></script>
     @endpush
 @endsection

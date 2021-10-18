@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 use App\User;
-use Spatie\Permission\Models\Role;
+//use Spatie\Permission\Models\Role;
+use App\Role;
 use Spatie\Permission\Models\Permission;
 use DataTables,Auth;
 
@@ -35,33 +36,23 @@ class UserController extends Controller
 
     public function getUserList(Request $request)
     {
-        
+
         $data  = User::get();
 
+
         return Datatables::of($data)
-                ->addColumn('roles', function($data){
-                    $roles = $data->getRoleNames()->toArray();
-                    $badge = '';
-                    if($roles){
-                        $badge = implode(' , ', $roles);
+                ->addColumn('rol', function(User $user){
+                    if($user->role->name != null){
+                        return $user->role->name;
+                    }else{
+                        return '';
                     }
-
-                    return $badge;
-                })
-                ->addColumn('permissions', function($data){
-                    $roles = $data->getAllPermissions();
-                    $badges = '';
-                    foreach ($roles as $key => $role) {
-                        $badges .= '<span class="badge badge-dark m-1">'.$role->name.'</span>';
-                    }
-
-                    return $badges;
                 })
                 ->addColumn('action', function($data){
                     if($data->name == 'Super Admin'){
                         return '';
                     }
-                    if (Auth::user()->can('manage_user')){
+                    if (auth()->user()->role->name == 'Super admin' || auth()->user()->role->name == 'Admin'){
                         return '<div class="table-actions">
                                 <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
                                 <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
@@ -70,8 +61,7 @@ class UserController extends Controller
                         return '';
                     }
                 })
-                ->rawColumns(['roles','permissions','action'])
-                ->make(true);
+                ->rawColumns(['action'])->toJson();
     }
 
     public function create()
@@ -90,14 +80,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // create user 
+        // create user
         $validator = Validator::make($request->all(), [
             'name'     => 'required | string ',
             'email'    => 'required | email | unique:users',
             'password' => 'required | confirmed',
             'role'     => 'required'
         ]);
-        
+
         if($validator->fails()) {
             return redirect()->back()->withInput()->with('error', $validator->messages()->first());
         }
@@ -113,7 +103,7 @@ class UserController extends Controller
             // assign new role to the user
             $user->syncRoles($request->role);
 
-            if($user){ 
+            if($user){
                 return redirect('users')->with('success', 'New user created!');
             }else{
                 return redirect('users')->with('error', 'Failed to create new user! Try again.');
@@ -128,11 +118,11 @@ class UserController extends Controller
     {
         try
         {
-            $user  = User::with('roles','permissions')->find($id);
+            $user  = User::find($id);
 
             if($user){
-                $user_role = $user->roles->first();
-                $roles     = Role::pluck('name','id');
+                $user_role = $user->role->name;
+                $roles   = Role::pluck('name','id');
 
                 return view('user-edit', compact('user','user_role','roles'));
             }else{
@@ -162,13 +152,13 @@ class UserController extends Controller
                 'password' => 'required | confirmed'
             ]);
         }
-        
+
         if ($validator->fails()) {
             return redirect()->back()->withInput()->with('error', $validator->messages()->first());
         }
 
         try{
-            
+
             $user = User::find($request->id);
 
             $update = $user->update([

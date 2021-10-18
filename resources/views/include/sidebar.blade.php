@@ -2,7 +2,8 @@
     <div class="sidebar-header">
         <a class="header-brand" href="{{route('dashboard')}}">
             <div class="logo-img">
-               <img height="30" src="{{ asset('img/logo_white.png')}}" class="header-brand-img" title="RADMIN">
+               <!--<img height="30" src="{{ asset('img/logo_white.png')}}" class="header-brand-img" title="RADMIN">-->
+                <h2 class="header-brand-img">Project John</h2>
             </div>
         </a>
         <div class="sidebar-action"><i class="ik ik-arrow-left-circle"></i></div>
@@ -38,7 +39,14 @@
                         </div>
                     </div>
                 @endif
-                <div class="nav-lavel">{{ __('Acciones')}} </div>
+                <div class="nav-lavel">{{ __('Datos')}} </div>
+
+                <div class="nav-item {{ ($segment1 == 'reads') ? 'active open' : '' }} has-sub">
+                    <a href="#"><i class="ik ik-rss"></i><span>{{ __('Medicioes')}}</span> </a>
+                    <div class="submenu-content">
+                        <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}">{{ __('Mediciones')}}</a>
+                    </div>
+                </div>
 
                 <div class="nav-item {{ ($segment1 == 'charts-chartist' || $segment1 == 'charts-flot'||$segment1 == 'charts-knob'||$segment1 == 'charts-amcharts') ? 'active open' : '' }} has-sub">
                     <a href="#"><i class="ik ik-pie-chart"></i><span>{{ __('Gráficas')}}</span> </a>

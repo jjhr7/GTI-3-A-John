@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\RolesController;
 use App\Http\Controllers\Api\PermissionController;
-
+use App\Http\Controllers\Api\ReadController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,6 +39,15 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::delete('/user/delete/{id}', [UserController::class,'delete']);
         Route::post('/user/update/{id}', [UserController::class, 'update']);
 		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
+        Route::get('/user/latest/{nUsuarios}',[UserController::class,'getUltimosUsuarios']);
+
+        //Rutas para gestionar Mediciones - Reads
+        Route::get('/mediciones', [ReadController::class,'index']);
+        Route::post('/medicion/create', [ReadController::class,'store']);
+        Route::get('/medicion/{id}', [ReadController::class,'show']);
+        Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
+        Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
+        Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
 
         //Rutas para gestionar Roles
         Route::get('/roles', [RolesController::class,'list']);
@@ -47,6 +56,8 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::delete('/role/delete/{id}', [RolesController::class,'delete']);
         Route::post('/role/update/{id}', [RolesController::class, 'update']);
         //Route::post('/role/change-permission/{id}', [RolesController::class,'changePermissions']);
+
+
 
 	});
 
@@ -60,4 +71,14 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
 	});
 
+
+
 });
+
+//Rutas para gestionar Mediciones - Reads
+Route::get('/mediciones', [ReadController::class,'index']);
+Route::post('/medicion/create', [ReadController::class,'store']);
+Route::get('/medicion/{id}', [ReadController::class,'show']);
+Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
+Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
+Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);

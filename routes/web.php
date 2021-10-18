@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ReadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +20,16 @@ use App\Http\Controllers\PermissionController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ 
-Route::get('/', function () { return view('home'); });
+*/
+Route::get('/', [LoginController::class,'showLoginForm']);
 
 
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
 Route::post('register', [RegisterController::class,'register']);
 
-Route::get('password/forget',  function () { 
-	return view('pages.forgot-password'); 
+Route::get('password/forget',  function () {
+	return view('pages.forgot-password');
 })->name('password.forget');
 Route::post('password/email', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
@@ -40,13 +41,13 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/logout', [LoginController::class,'logout']);
 	Route::get('/clear-cache', [HomeController::class,'clearCache']);
 
-	// dashboard route  
-	Route::get('/dashboard', function () { 
-		return view('pages.dashboard'); 
+	// dashboard route
+	Route::get('/dashboard', function () {
+		return view('pages.dashboard');
 	})->name('dashboard');
 
 	//only those have manage_user permission will get access
-	Route::group(['middleware' => 'can:manage_user'], function(){
+	Route::group(['middleware' => 'checkpermissions'], function(){
 	Route::get('/users', [UserController::class,'index']);
 	Route::get('/user/get-list', [UserController::class,'getUserList']);
 		Route::get('/user/create', [UserController::class,'create']);
@@ -76,19 +77,30 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
 	});
 
+    //RutasMediciones
+    //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);
+
+    Route::get('/mediciones', [ReadController::class, 'index']);
+    Route::get('/mediciones/get-list', [ReadController::class, 'obtenerMediciones'])->name('get-mediciones');
+    Route::get('/mediciones/create', [ReadController::class,'create']);
+    Route::post('/medicion/create', [ReadController::class, 'store']);
+    Route::get('/medicion/{id}', [ReadController::class, 'show']);
+    Route::post('/medicion/update', [ReadController::class,'update']);
+    Route::get('/medicion/delete/{id}', [ReadController::class,'delete']);
+
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 
 
 	// permission examples
     Route::get('/permission-example', function () {
-    	return view('permission-example'); 
+    	return view('permission-example');
     });
     // API Documentation
     Route::get('/rest-api', function () { return view('api'); });
     // Editable Datatable
-	Route::get('/table-datatable-edit', function () { 
-		return view('pages.datatable-editable'); 
+	Route::get('/table-datatable-edit', function () {
+		return view('pages.datatable-editable');
 	});
 
     // Themekit demo pages

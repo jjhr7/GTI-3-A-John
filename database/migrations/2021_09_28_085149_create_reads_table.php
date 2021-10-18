@@ -17,8 +17,8 @@ class CreateReadsTable extends Migration
             $table->id();
             $table->float('data');
             $table->date('read_date');
-            $table->foreignId('id_device');
-            $table->foreign('id_device')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('device_id');
+            $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
