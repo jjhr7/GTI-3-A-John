@@ -19,11 +19,6 @@ class LNMedicionesTest extends TestCase
 
     public function testGuardarMedicion(){
 
-        /*$user = User::factory()->create();
-
-
-        $this->actingAs($user)->post('/api/v1/medicione/create', $test_read)->assertSessionHas('status', 'Post has been created sucessfully');*/
-
         $test_read = [
             'data' => 120,
             'read_date' => '2021-10-17',
