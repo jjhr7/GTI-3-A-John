@@ -71,4 +71,14 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
 	});
 
+
+
 });
+
+//Rutas para gestionar Mediciones - Reads
+Route::get('/mediciones', [ReadController::class,'index']);
+Route::post('/medicion/create', [ReadController::class,'store']);
+Route::get('/medicion/{id}', [ReadController::class,'show']);
+Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
+Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
+Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
