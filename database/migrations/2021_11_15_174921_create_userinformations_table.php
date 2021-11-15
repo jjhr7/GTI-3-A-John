@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReadsTable extends Migration
+class CreateUserinformationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateReadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reads', function (Blueprint $table) {
+        Schema::create('userinformations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('device_id');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
-            $table->float('latitud');
-            $table->float('longitud');
-            $table->string('type_read');
-            $table->double('value');
-            $table->double('date');
+            $table->foreignId('town_id');
+            $table->foreign('town_id')->references('id')->on('towns')->onUpdate('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +34,6 @@ class CreateReadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reads');
+        Schema::dropIfExists('userinformations');
     }
 }

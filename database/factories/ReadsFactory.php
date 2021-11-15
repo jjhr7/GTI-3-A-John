@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Reads;
+use App\Models\Read;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReadsFactory extends Factory
@@ -12,7 +12,7 @@ class ReadsFactory extends Factory
      *
      * @var string
      */
-    protected $model = Reads::class;
+    protected $model = Read::class;
 
     /**
      * Define the model's default state.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserHasDevice extends Migration
+class CreateUseraccountinformationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUserHasDevice extends Migration
      */
     public function up()
     {
-        Schema::create('user_has_device', function (Blueprint $table) {
+        Schema::create('useraccountinformations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('device_id');
-            $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('email_verified');
+            $table->string('access_token');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ class CreateUserHasDevice extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_has_device');
+        Schema::dropIfExists('useraccountinformations');
     }
 }

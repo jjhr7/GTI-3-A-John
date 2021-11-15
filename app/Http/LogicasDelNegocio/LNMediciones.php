@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\LogicasDelNegocio;
-use App\Models\Reads;
+use App\Models\Read;
 use DataTables;
 use Illuminate\Http\Request;
 
@@ -10,7 +10,7 @@ class LNMediciones
 
     public function guardarMedicion($data, $read_date, $device_id){
 
-        $read = new Reads();
+        $read = new Read();
         $read->data = $data;
         $read->read_date = $read_date;
         $read->device_id = $device_id;
@@ -25,11 +25,11 @@ class LNMediciones
     }
 
     public function obtenerTodasLasMediciones(){
-        return Reads::all();
+        return Read::all();
     }
 
     public function eliminarMedicion($id){
-        $read = Reads::find($id);
+        $read = Read::find($id);
 
         if($read){
             $read->delete();
@@ -40,11 +40,11 @@ class LNMediciones
     }
 
     public function obtenerUltimasMediciones($nMediciones){
-        return Reads::latest()->take($nMediciones)->get();
+        return Read::latest()->take($nMediciones)->get();
     }
 
     public function obtenerMedicion($id){
-        $read = Reads::find($id);
+        $read = Read::find($id);
 
         if($read){
             return [1,$read];
@@ -54,7 +54,7 @@ class LNMediciones
     }
 
     public function actualizarDatosMedicion($id, Request $request){
-        $read =  Reads::find($id);
+        $read =  Read::find($id);
 
         if($read){
             $read->data = $request->data;
@@ -74,7 +74,7 @@ class LNMediciones
         $data = $this->obtenerTodasLasMediciones();
 
         return Datatables::of($data)
-            ->addColumn('device', function(Reads $read){
+            ->addColumn('device', function(Read $read){
                 if($read->device->serial != null){
                     return $read->device->serial;
                 }else{

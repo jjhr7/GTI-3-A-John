@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
         Route::get('/user/latest/{nUsuarios}',[UserController::class,'getUltimosUsuarios']);
 
-        //Rutas para gestionar Mediciones - Reads
+        //Rutas para gestionar Mediciones - Read
         Route::get('/mediciones', [ReadController::class,'index']);
         Route::post('/medicion/create', [ReadController::class,'store']);
         Route::get('/medicion/{id}', [ReadController::class,'show']);
@@ -75,7 +75,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 });
 
-//Rutas para gestionar Mediciones - Reads
+//Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
 Route::post('/medicion/create', [ReadController::class,'store']);
 Route::get('/medicion/{id}', [ReadController::class,'show']);

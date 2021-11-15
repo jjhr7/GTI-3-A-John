@@ -7,7 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Passport\HasApiTokens;
-use App\Role;
+use App\Models\Useraccountinformation;
+use App\Models\Userinformation;
+use App\Models\Read;
+use App\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -42,7 +45,20 @@ class User extends Authenticatable
     ];
 
 
-    public function role(){
-        return $this->belongsTo(Role::class);
+    public function accountInformation(){
+        return $this->hasOne(Useraccountinformation::class);
+    }
+
+    public function information(){
+        return $this->hasOne(Userinformation::class);
+    }
+
+    public function reads(){
+        return $this->hasMany(Read::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }
