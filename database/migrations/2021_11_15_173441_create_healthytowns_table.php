@@ -18,7 +18,6 @@ class CreateHealthytownsTable extends Migration
             $table->foreignId('town_id');
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date');
-            $table->timestamps();
         });
     }
 
