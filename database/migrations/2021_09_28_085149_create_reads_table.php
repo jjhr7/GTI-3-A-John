@@ -19,10 +19,10 @@ class CreateReadsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('device_id');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
-            $table->float('latitud');
-            $table->float('longitud');
-            $table->string('type_read');
-            $table->double('value');
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->string('type_read')->nullable();
+            $table->double('value')->nullable();
             $table->double('date');
         });
     }

@@ -17,7 +17,7 @@ class CreateZonesTable extends Migration
             $table->id();
             $table->double('o2avg');
             $table->double('area');
-            $table->string('geojson');
+            $table->string('geojson')->nullable();
             $table->foreignId('town_id');
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

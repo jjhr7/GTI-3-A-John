@@ -19,9 +19,9 @@ class CreateTownsTable extends Migration
             $table->string('name');
             $table->double('area');
             $table->double('altitude');
-            $table->double('o2avg');
-            $table->string('geojson');
-            $table->string('flag_img');
+            $table->double('o2avg')->nullable();
+            $table->string('geojson')->nullable();
+            $table->string('flag_img')->nullable();
             $table->timestamps();
         });
     }
