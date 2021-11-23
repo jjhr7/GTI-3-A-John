@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //RutasMediciones
     //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);
-
+    //dengue
     Route::get('/mediciones', [ReadController::class, 'index']);
     Route::get('/mediciones/get-list', [ReadController::class, 'obtenerMediciones'])->name('get-mediciones');
     Route::get('/mediciones/create', [ReadController::class,'create']);
