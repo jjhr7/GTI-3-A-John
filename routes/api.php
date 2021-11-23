@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 });
 
+Route::post('/registroapp', [UserController::class,'store'])->name('register.app');
+
 //Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
 Route::post('/medicion/create', [ReadController::class,'store']);
