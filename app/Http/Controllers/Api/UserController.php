@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\LogicasDelNegocio\LNUseraccountinformation;
+use App\Http\LogicasDelNegocio\LNUserinformation;
 use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,24 +30,66 @@ class UserController extends Controller
 
     public function store(StoreUser $request)
     {
-        $LNuser = new LNUser();
 
-        $userCreated = $LNuser->guardarUsuario($request->name,$request->email,$request->password,$request->role_id);
+        $userCreated = $this->createNewUser($request->name, $request->email, $request->password);
 
+        if($userCreated[0] == 1){
 
-        if($userCreated[0]){
+            $Useraccountinformationcreated = $this->createNewUserAccountInformation($userCreated[1]->id);
 
-            return response([
-                'message' => 'User created succesfully!',
-                'user'    => User::find($userCreated[1]),
-                'success' => 1
-            ]);
+            if($Useraccountinformationcreated[0] == 1){
+
+                $Userinformationcreated = $this->createUserInformation($userCreated[1]->id,$request->role_id,$request->town_id);
+
+                if($Userinformationcreated[0] == 1){
+
+                    return response([
+                        'message' => 'User created succesfully!',
+                        'user'    => User::find($userCreated[1]),
+                        'success' => 1
+                    ]);
+
+                }else{
+
+                    return response([
+                        'message' => 'Error! Failed to create userInformation!',
+                        'success' => 01
+                    ]);
+
+                }
+
+            }else{
+                return response([
+                    'message' => 'Error! Failed to create userAccountInformation!',
+                    'success' => 02
+                ]);
+            }
+
         }
 
         return response([
                 'message' => 'Sorry! Failed to create user!',
-                'success' => 0
+                'success' => 03
             ]);
+    }
+
+    public function createNewUser($name,$email,$password){
+
+        $LNuser = new LNUser();
+        return $LNuser->guardarUsuario($name,$email,$password);
+
+    }
+
+    public function createNewUserAccountInformation($id){
+        $LNUseraccountinformation = new LNUseraccountinformation();
+        return $LNUseraccountinformation->guardarUsuarioaccountinformationApp($id);
+    }
+
+    public function createUserInformation($id,$role_id,$town_id){
+        $LNUserinformation =  new LNUserinformation();
+        return $LNUserinformation->guardarUserinformationApp($id,$role_id,$town_id);
+
+
     }
 
     public function profile($id)

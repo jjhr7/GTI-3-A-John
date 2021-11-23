@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Hash;
 class LNUser
 {
 
-    public function guardarUsuario($name,$email,$password,$rol_id){
+    public function guardarUsuario($name,$email,$password){
         $user = new User();
         $user->name = $name;
         $user->email = $email;
         $user->password = Hash::make($password);
-        $user->role_id = $rol_id;
-
         $user->save();
 
         if($user){

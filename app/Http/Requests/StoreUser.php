@@ -27,7 +27,8 @@ class StoreUser extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users,email, '.((auth()->user())? auth()->user()->id : ''),
             'password' => 'required|min:6|confirmed',
-            'role_id' => 'required'
+            'role_id' => 'required',
+            'town_id' => 'required'
 
         ];
     }
