@@ -29,15 +29,20 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('change-password', [AuthController::class,'changePassword']);
 	Route::post('update-profile', [AuthController::class,'updateProfile']);
 
+
+    Route::get('/user/{id}', [UserController::class,'profile']);
+    Route::delete('/user/delete/{id}', [UserController::class,'delete']);
+    Route::post('/user/update/{id}', [UserController::class, 'update']);
+
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
 
         //Rutas para gestionar usuarios
 		Route::get('/users', [UserController::class,'list']);
 		Route::post('/user/create', [UserController::class,'store']);
-		Route::get('/user/{id}', [UserController::class,'profile']);
-		Route::delete('/user/delete/{id}', [UserController::class,'delete']);
-        Route::post('/user/update/{id}', [UserController::class, 'update']);
+		//Route::get('/user/{id}', [UserController::class,'profile']);
+		//Route::delete('/user/delete/{id}', [UserController::class,'delete']);
+        //Route::post('/user/update/{id}', [UserController::class, 'update']);
 		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
         Route::get('/user/latest/{nUsuarios}',[UserController::class,'getUltimosUsuarios']);
 
