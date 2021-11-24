@@ -41,27 +41,27 @@
                             <form action="{{url('register')}}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label textForm">Name</label>
+                                    <label class="col-lg-2 control-label textForm">Nombre</label>
                                     <div class="col-lg-10">
-                                    <input type="name" class="form-control" placeholder="Name" name="name" value="{{ old('name') }}" required>
+                                    <input type="name" class="form-control" name="name" value="{{ old('name') }}" required>
                                 </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label textForm">Email</label>
                                     <div class="col-lg-10">
-                                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label textForm">Contraseña</label>
                                     <div class="col-lg-10">
-                                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                    <input type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-12 control-label textForm">Confirmar contraseña</label>
                                     <div class="col-lg-10">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
+                                    <input type="password" class="form-control"  name="password_confirmation" required>
                                 </div>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label textForm">Municipio</label>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                 <div class="d-flex">
-                                        <p class="btn text textoRegister2">{{ __('¿Ya estás registrado?')}}
+                                        <p class="btn text textoRegister2 centrarElementos centrar2">{{ __('¿Ya estás registrado?')}}
                                             <u> <a class="p-lg-5 textoRegister2" href="{{url('login')}}">{{ __('Iniciar sesión')}}</a></u></p>
                                     <div class="sign-btn text-center">
                                         <button class="btn-custom align-bottom">Registrarse</button>

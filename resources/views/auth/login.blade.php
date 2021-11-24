@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-7 p-0 centrarElementos">
+                    <div class="col-xl-7 col-lg-6 col-md-7 p-0 centrarElementos">
                         <div class="authentication-form mx-auto">
                                 <h2 class="tituloLogin">{{ __('Bienvenido de nuevo')}}</h2>
                             <h2 class="textoLogin">{{ __('Ingrese a su cuenta')}}</h2>
@@ -66,15 +66,14 @@
                                 </div>
                                 <div>
                                     <div class="d-flex">
-                                        <p class="btn text textoLogin2">{{ __('¿Aún no tienes cuenta?')}}
+                                        <p class="btn text textoLogin3 centrarElementos">{{ __('¿Aún no tienes cuenta?')}}
                                             <a class="p-lg-5 textoHover" href="{{url('register')}}"> <u>{{ __('Regístrate')}}</u> </a>
                                         </p>
                                     </div>
-                                    <div class="d-flex">
-                                        <a class="btn text textoLogin" href="{{url('password/forget')}}">
-                                            {{ __('¿Has olvidado tu contraseña?') }}
+                                    <div class="d-flex justify-content-between margenTextos centrarElementos">
+                                        <a class="btn text textoLogin3 centrarElementos separacionTextos" href="{{url('password/forget')}}">
+                                            {{ __('¿Has olvidado tu contraseña?') }} </a>
                                             <button class="btn-custom align-bottom">Iniciar sesión</button>
-                                        </a>
                                     </div>
                                 </div>
                                 </div>
