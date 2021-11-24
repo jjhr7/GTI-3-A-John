@@ -11,10 +11,11 @@ use App\Models\Useraccountinformation;
 use App\Models\Userinformation;
 use App\Models\Read;
 use App\Models\Notification;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use HasApiTokens,Notifiable;
+    use HasApiTokens,Notifiable, HasFactory;
 
     /**
      * The attributes that are mass assignable.

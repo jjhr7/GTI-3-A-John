@@ -18,7 +18,7 @@ class CreateUseraccountinformationsTable extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('email_verified');
-            $table->string('access_token');
+            $table->string('access_token')->nullable();
             $table->timestamps();
         });
     }

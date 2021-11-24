@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Read;
+use App\Models\Town;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ReadsFactory extends Factory
+class TownFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Read::class;
+    protected $model = Town::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,11 @@ class ReadsFactory extends Factory
     public function definition()
     {
         return [
-            'data' => $this->faker->randomNumber(3),
-            'read_date' => $this->faker->date(),
-            'device_id' => $this->faker->numberBetween(1,10)
+            'postal_code' => $this->faker->postcode,
+            'name' => $this->faker->city,
+            'area' => $this->faker->randomNumber(4),
+            'altitude' => $this->faker->randomNumber(3),
+            'o2avg' => $this->faker->randomNumber(2),
         ];
     }
 }

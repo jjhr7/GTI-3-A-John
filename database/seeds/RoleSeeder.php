@@ -25,12 +25,12 @@ class RoleSeeder extends Seeder
         $role->save();
 
         $role = new Role();
-        $role->name = 'Project Manager';
+        $role->name = 'Town Manager';
         $role->guard_name = 'web';
         $role->save();
 
         $role = new Role();
-        $role->name = 'Sales Manager';
+        $role->name = 'Factory device';
         $role->guard_name = 'web';
         $role->save();
 

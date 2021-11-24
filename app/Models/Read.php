@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Read extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['data', 'read_date', 'id_device'];
+    public $timestamps = false;
+    protected $fillable = ['user_id','device_id','latitude','longitude','value','date'];
 
     public function device(){
         return $this->belongsTo(Device::class);

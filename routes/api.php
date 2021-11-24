@@ -57,8 +57,6 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::post('/role/update/{id}', [RolesController::class, 'update']);
         //Route::post('/role/change-permission/{id}', [RolesController::class,'changePermissions']);
 
-
-
 	});
 
 
@@ -75,10 +73,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 });
 
+Route::post('/registroapp', [UserController::class,'store'])->name('register.app');
+
 //Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
-Route::post('/medicion/create', [ReadController::class,'store']);
-Route::get('/medicion/{id}', [ReadController::class,'show']);
-Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
-Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
 Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);

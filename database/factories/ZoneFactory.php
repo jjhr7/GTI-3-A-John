@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Device;
+use App\Models\Zone;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DeviceFactory extends Factory
+class ZoneFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Device::class;
+    protected $model = Zone::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,9 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'serial' => $this->faker->numerify()
+            'o2avg' => $this->faker->randomNumber(2),
+            'area' => $this->faker->randomNumber(4),
+            'town_id' => $this->faker->numberBetween(1,20)
         ];
     }
 }
