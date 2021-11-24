@@ -1,0 +1,106 @@
+:root{
+    --degradado1: #061122;
+    --degradado2: #1a4d80;
+    --degradado3: #48d5ff;
+    --logoOscuro: #064097;
+    --intermedio: #25a0ff;
+    --noBlanco: #f3f3f3; /* color para resaltar las letras */
+    --botones:  #007FF4;
+}
+
+.login{
+    padding: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    margin: 0.5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+
+.textoLogin{
+    font-weight: lighter!important;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 2.5rem;
+    opacity: 0.8;
+}
+
+.textoLogin2{
+    font-weight: lighter!important;
+    font-size: 20px;
+    color: #000000;
+    opacity: 0.8;
+}
+
+.tituloLogin{
+    font-weight: 900;
+    font-size: 25px;
+    font-style: normal;
+    color: var(--degradado2);
+    font-family: 'Montserrat Bold', 'Montserrat', sans-serif;
+    margin-bottom: 1.1rem;
+}
+.auth-wrapper .lavalite-bg .lavalite-overlay {
+    background-image: url("../img/cityBlue.png");
+    align-content: flex-start;
+    background-size: cover;
+    color: #0fb9d8;
+    /*background-image: url("../img/fondo.jpg");*/
+}
+.auth-wrapper .authentication-form {
+    padding: 10% 0px!important;
+}
+
+.auth-wrapper .authentication-form .form-group .form-control{
+    border-radius: 4px;
+    height: 1%;
+    font-family: Montserrat;
+}
+
+.form-control{
+    width: 200%;
+}
+
+.col-lg-10{
+    padding-bottom: 3rem;
+}
+
+.textForm{
+    font-family: 'Montserrat Bold', 'Montserrat', sans-serif;
+    font-style: normal;
+    font-size: 18px;
+}
+.btn-custom{
+    background-color: var(--botones)!important;
+    border-radius: 13px!important;
+    font-family: 'Montserrat Bold', 'Montserrat', sans-serif;
+    width: 50%!important;
+    height: 270%!important;
+    text-transform: none!important;
+    letter-spacing: 0px!important;
+    border: 0px!important;
+    margin-left: 50%;
+
+}
+
+a:hover{
+    color: var(--logoOscuro)!important;
+}
+
+.logo{
+    height: 10%;
+    margin: 1rem;
+}
+
+.mb-auto, .my-auto {
+    margin-bottom: 0rem !important;
+}
+
+.centrarElementos{
+    display: flex!important;
+    align-items: center!important;
+}
