@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\RolesController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ReadController;
+use App\Http\Controllers\Api\TownController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,7 +35,10 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('/user/delete/{id}', [UserController::class,'delete']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
 
-	//only those have manage_user permission will get access
+    //Ruta obtener municipios
+    Route::get('/municipios', [TownController::class,'index']);
+
+    //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
 
         //Rutas para gestionar usuarios
