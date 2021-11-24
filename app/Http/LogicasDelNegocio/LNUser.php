@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\LogicasDelNegocio;
+use App\Models\Userinformation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,10 @@ class LNUser
     public function obtenerDatosUsuario($id){
         $user = User::find($id);
         if($user){
-            return [1,$user];
+            return [1,$user,
+                'userAccountInformation' => $user->accountInformation,
+                'userInformation' => $user->information,
+                ];
         }else{
             return 0;
         }
@@ -54,13 +58,17 @@ class LNUser
     public function actualizarDatosUsuario($id, Request $request){
         $user = User::find($id);
 
-        if ($user){
+        $userInformation = Userinformation::find(Userinformation::where('user_id',$id)->get()[0]->id);
+
+        if ($user && $userInformation){
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role_id = $request->role_id;
             $user->save();
-            return [1,$user];
+
+            $userInformation->town_id = $request->town_id;
+            $userInformation->save();
+            return [1,$user,$userInformation];
         }else{
             return [0];
         }

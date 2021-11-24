@@ -77,7 +77,6 @@ class UserController extends Controller
 
         $LNuser = new LNUser();
         return $LNuser->guardarUsuario($name,$email,$password);
-
     }
 
     public function createNewUserAccountInformation($id){
@@ -88,8 +87,6 @@ class UserController extends Controller
     public function createUserInformation($id,$role_id,$town_id){
         $LNUserinformation =  new LNUserinformation();
         return $LNUserinformation->guardarUserinformationApp($id,$role_id,$town_id);
-
-
     }
 
     public function profile($id)
@@ -97,7 +94,7 @@ class UserController extends Controller
         $LNUser = new LNUser();
         $userData = $LNUser->obtenerDatosUsuario($id);
         if($userData[0])
-            return response(['user' => $userData[1],'success' => 1]);
+            return response(['user' => $userData[1], 'success' => 1]);
         else
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
@@ -142,12 +139,13 @@ class UserController extends Controller
     public function update(Request $request, $id){
 
         $LNUser = new LNUser();
-       $userUpdated =  $LNUser->actualizarDatosUsuario($id, $request);
+        $userUpdated =  $LNUser->actualizarDatosUsuario($id, $request);
         //dd($request,$id);
-        if($userUpdated[0]){
+        if($userUpdated[0] == 1){
             return response([
                 'message' => 'User has been updated successfully!',
                 'user'=> $userUpdated[1],
+                'userInformation' => $userUpdated[2],
                 'success' => 1
             ]);
         }
@@ -157,6 +155,9 @@ class UserController extends Controller
             'success' => 0
         ]);
     }
+
+
+
 
     public function getUltimosUsuarios($nUsuarios){
         $LNUser = new LNUser();
