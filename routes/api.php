@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ReadController;
 use App\Http\Controllers\Api\TownController;
 use App\Http\Controllers\Api\NotificationsController;
+use App\Http\Controllers\Api\UserInformationController;
 
 
 
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::get('/user/{id}', [UserController::class,'profile']);
     Route::delete('/user/delete/{id}', [UserController::class,'delete']);
+    Route::post('user/device/',[UserInformationController::class,'asignarDispositivo']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
 
     //Ruta obtener notificaciones

@@ -74,7 +74,6 @@ class UserController extends Controller
     }
 
     public function createNewUser($name,$email,$password){
-
         $LNuser = new LNUser();
         return $LNuser->guardarUsuario($name,$email,$password);
     }
@@ -172,5 +171,9 @@ class UserController extends Controller
             'users'=>$LNUser->obtenerUltimosUsuarios($nUsuarios),
             'success'=>1
         ]);
+    }
+
+    public function asignarDispositivo(Request $request){
+
     }
 }
