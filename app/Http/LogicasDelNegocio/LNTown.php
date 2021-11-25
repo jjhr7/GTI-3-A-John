@@ -26,6 +26,7 @@ class LNTown
 
     public function eliminarTown($id){
         $town = Town::find($id);
+        //buscamos el municipio que queremos eliminar por la id
 
         if($town){
             $town->delete();

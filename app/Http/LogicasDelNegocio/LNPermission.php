@@ -5,7 +5,7 @@ namespace App\Http\LogicasDelNegocio;
 
 
 use App\Permission;
-use http\Env\Request;
+use Illuminate\Http\Request;
 
 class LNPermission
 {
