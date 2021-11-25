@@ -46,10 +46,7 @@ class LNUser
     public function obtenerDatosUsuario($id){
         $user = User::find($id);
         if($user){
-            return [1,$user,
-                'userAccountInformation' => $user->accountInformation,
-                'userInformation' => $user->information,
-                ];
+            return [1,$user, $user->accountInformation, $user->information];
         }else{
             return 0;
         }

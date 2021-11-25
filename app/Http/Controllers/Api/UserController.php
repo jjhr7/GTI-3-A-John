@@ -45,7 +45,7 @@ class UserController extends Controller
 
                     return response([
                         'message' => 'User created succesfully!',
-                        'user'    => User::find($userCreated[1]),
+                        'user'    => $userCreated[1],
                         'success' => 1
                     ]);
 

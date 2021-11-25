@@ -22,7 +22,7 @@ class CreateUserinformationsTable extends Migration
             $table->foreignId('device_id')->nullable();
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('town_id');
-            $table->foreign('town_id')->references('id')->on('towns')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

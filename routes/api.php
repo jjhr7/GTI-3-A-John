@@ -30,13 +30,19 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('change-password', [AuthController::class,'changePassword']);
 	Route::post('update-profile', [AuthController::class,'updateProfile']);
 
+    //Ruta obtener municipios
+    Route::get('/municipios', [TownController::class,'index']);
+    Route::post('/municipios/create', [TownController::class,'store']);
+    Route::get('/municipio/{id}', [TownController::class,'show']);
+    Route::post('/municipio/update/{id}', [TownController::class,'update']);
+    Route::delete('/municipio/delete/{id}', [TownController::class,'destroy']);
+
+
 
     Route::get('/user/{id}', [UserController::class,'profile']);
     Route::delete('/user/delete/{id}', [UserController::class,'delete']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
 
-    //Ruta obtener municipios
-    Route::get('/municipios', [TownController::class,'index']);
 
     //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
@@ -83,6 +89,10 @@ Route::group(['middleware' => 'auth:api'], function(){
 });
 
 Route::post('/registroapp', [UserController::class,'store'])->name('register.app');
+
+//Ruta obtener municipios
+Route::get('/municipios', [TownController::class,'index']);
+
 
 //Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
