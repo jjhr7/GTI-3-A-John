@@ -8,6 +8,10 @@ use App\Http\Controllers\Api\RolesController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ReadController;
 use App\Http\Controllers\Api\TownController;
+use App\Http\Controllers\Api\NotificationsController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,11 +42,17 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('/municipio/delete/{id}', [TownController::class,'destroy']);
 
 
-
     Route::get('/user/{id}', [UserController::class,'profile']);
     Route::delete('/user/delete/{id}', [UserController::class,'delete']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
 
+    //Ruta obtener notificaciones
+    Route::get('/notificaciones', [NotificationsController::class,'index']);
+    Route::get('/notificaciones/user', [NotificationsController::class,'getNotificationsByUser']);
+    Route::post('/notificaciones/create', [NotificationsController::class,'store']);
+    Route::get('/notificacion/{id}', [NotificationsController::class,'obtenerNotification']);
+    Route::post('/notificacion/update/{id}', [NotificationsController::class,'update']);
+    Route::delete('/notificacion/delete/{id}', [NotificationsController::class,'destroy']);
 
     //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
@@ -64,6 +74,8 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
         Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
 
+
+
         //Rutas para gestionar Roles
         Route::get('/roles', [RolesController::class,'list']);
         Route::post('/role/create', [RolesController::class,'store']);
@@ -72,17 +84,22 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::post('/role/update/{id}', [RolesController::class, 'update']);
         //Route::post('/role/change-permission/{id}', [RolesController::class,'changePermissions']);
 
-	});
+        //Rutas para gestionar permisos
+        Route::get('/permisos', [PermissionController::class,'list']);
+        Route::post('/permisos/create', [PermissionController::class,'store']);
+        Route::get('/permisos/{id}', [PermissionController::class,'show']);
+        Route::get('/permisos/delete/{id}', [PermissionController::class,'delete']);
+    });
 
 
 
 	//only those have manage_permission permission will get access
-	Route::group(['middleware' => 'can:manage_permission|manage_user'], function(){
+	/*Route::group(['middleware' => 'can:manage_permission|manage_user'], function(){
 		Route::get('/permissions', [PermissionController::class,'list']);
 		Route::post('/permission/create', [PermissionController::class,'store']);
 		Route::get('/permission/{id}', [PermissionController::class,'show']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
-	});
+	}); */
 
 
 
