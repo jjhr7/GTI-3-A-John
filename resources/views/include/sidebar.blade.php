@@ -3,7 +3,7 @@
         <a class="header-brand" href="{{route('dashboard')}}">
             <div class="logo-img">
                <!--<img height="30" src="{{ asset('img/logo_white.png')}}" class="header-brand-img" title="RADMIN">-->
-                <h2 class="header-brand-img">Project John</h2>
+                <h2 class="header-brand-img">MO2</h2>
             </div>
         </a>
         <div class="sidebar-action"><i class="ik ik-arrow-left-circle"></i></div>
@@ -21,7 +21,8 @@
                 <div class="nav-item {{ ($segment1 == 'dashboard') ? 'active' : '' }}">
                     <a href="{{route('dashboard')}}"><i class="ik ik-home"></i><span>{{ __('Panel de control')}}</span></a>
                 </div>
-                @if(auth()->user()->role->name == 'Super admin' || auth()->user()->role->name == 'Admin' )
+
+                @if(auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin' || auth()->user()->information->role->name == 'Project Manager' )
 
                     <div class="nav-item {{ ($segment1 == 'users' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
                         <a href="#"><i class="ik ik-lock"></i><span>{{ __('Administrador')}}</span></a>
@@ -33,6 +34,7 @@
 
                             <!-- only those have manage_role permission will get access -->
                             <a href="{{url('roles')}}" class="menu-item {{ ($segment1 == 'roles') ? 'active' : '' }}">{{ __('Roles')}}</a>
+                            <a href="{{url('role/createForm')}}" class="menu-item {{ ($segment1 == 'roles' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Role')}}</a>
 
                             <!-- only those have manage_permission permission will get access -->
                             <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permission')}}</a>

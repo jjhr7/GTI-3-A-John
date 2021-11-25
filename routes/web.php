@@ -58,25 +58,22 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	//only those have manage_role permission will get access
-	Route::group(['middleware' => 'can:manage_role|manage_user'], function(){
+
 		Route::get('/roles', [RolesController::class,'index']);
 		Route::get('/role/get-list', [RolesController::class,'getRoleList']);
-		Route::post('/role/create', [RolesController::class,'create']);
+        Route::get('/role/createForm', [RolesController::class,'createForm']);
+        Route::post('/role/create', [RolesController::class,'create']);
 		Route::get('/role/edit/{id}', [RolesController::class,'edit']);
 		Route::post('/role/update', [RolesController::class,'update']);
 		Route::get('/role/delete/{id}', [RolesController::class,'delete']);
-	});
 
 
 	//only those have manage_permission permission will get access
-	Route::group(['middleware' => 'can:manage_permission|manage_user'], function(){
 		Route::get('/permission', [PermissionController::class,'index']);
 		Route::get('/permission/get-list', [PermissionController::class,'getPermissionList']);
 		Route::post('/permission/create', [PermissionController::class,'create']);
 		Route::get('/permission/update', [PermissionController::class,'update']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
-	});
-
     //RutasMediciones
     //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);
     //dengue
