@@ -93,8 +93,14 @@ class UserController extends Controller
     {
         $LNUser = new LNUser();
         $userData = $LNUser->obtenerDatosUsuario($id);
-        if($userData[0])
-            return response(['user' => $userData[1], 'success' => 1]);
+
+        if($userData[0] == 1)
+            return response([
+                'message' => 'User found!',
+                'user' => $userData[1],
+                'userAccountInformation' => $userData[2],
+                'userInformation' => $userData[3],
+                'success' => 1]);
         else
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
