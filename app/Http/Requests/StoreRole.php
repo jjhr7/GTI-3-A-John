@@ -24,14 +24,16 @@ class StoreRole extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles'
+            'name' => 'required|unique:roles',
+            'guard_name'=>'required'
         ];
     }
 
     public function attributes()
     {
         return [
-            'name' => 'Nombre'
+            'name' => 'Nombre',
+            'guard_name'=>'Nombre_guard'
         ];
     }
 }
