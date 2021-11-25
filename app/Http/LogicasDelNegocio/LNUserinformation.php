@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\LogicasDelNegocio;
+use App\Models\Device;
 use App\Models\Userinformation;
 
 class LNUserinformation
@@ -20,5 +21,23 @@ class LNUserinformation
         }else{
             return [0];
         }
+    }
+
+    public function assignDevice($serial){
+
+
+        $userInformation = Userinformation::find(Userinformation::where('user_id',auth()->user()->id)->get()[0]->id);
+
+        $device = Device::where('serial',$serial)->get();
+
+        if($device){
+            $userInformation->device_id = $device[0]->id;
+            $userInformation->save();
+
+            return [1,$userInformation];
+        }else{
+            return [0];
+        }
+
     }
 }

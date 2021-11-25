@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDevice extends FormRequest
+class StorePermission extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,16 @@ class StoreDevice extends FormRequest
     public function rules()
     {
         return [
-            'serial' => 'required|min:3'
+            'name'=> 'required',
+            'guard_name'=>'required'
+        ];
+    }
+
+    public function attributes()
+    {
+        return[
+            'name'=> 'Nombre',
+            'guard_name'=>'Nombre_guard'
         ];
     }
 }
