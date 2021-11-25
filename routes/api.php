@@ -88,7 +88,7 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('/permisos', [PermissionController::class,'list']);
         Route::post('/permisos/create', [PermissionController::class,'store']);
         Route::get('/permisos/{id}', [PermissionController::class,'show']);
-        Route::get('/permisos/delete/{id}', [PermissionController::class,'delete']);
+        Route::delete('/permisos/delete/{id}', [PermissionController::class,'delete']);
     });
 
 
