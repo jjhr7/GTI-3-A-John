@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\LogicasDelNegocio;
+
+use App\Models\Device;
 use App\Models\Useraccountinformation;
 use App\Models\Userinformation;
 use App\User;
@@ -73,4 +75,6 @@ class LNUser
             return [0];
         }
     }
+
+
 }
