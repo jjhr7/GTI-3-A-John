@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\LogicasDelNegocio;
+use App\Models\Useraccountinformation;
 use App\Models\Userinformation;
 use App\User;
 use Illuminate\Http\Request;
@@ -45,8 +46,10 @@ class LNUser
 
     public function obtenerDatosUsuario($id){
         $user = User::find($id);
+        $userAccountInformation = Useraccountinformation::find(Useraccountinformation::where('user_id',$id)->get()[0]->id);
+        $userInformation = Userinformation::find(Userinformation::where('user_id',$id)->get()[0]->id);
         if($user){
-            return [1,$user, $user->accountInformation, $user->information];
+            return [1,$user,$userAccountInformation,$userInformation];
         }else{
             return 0;
         }
