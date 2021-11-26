@@ -27,4 +27,11 @@ class StoreDevice extends FormRequest
             'serial' => 'required|min:3'
         ];
     }
+
+    public function attributes()
+    {
+        return[
+            'serial'=>'serial'
+        ];
+    }
 }
