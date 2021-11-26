@@ -151,4 +151,22 @@ class NotificationsController extends Controller
             ]);
         }
     }
+
+    public function eliminarNotificacionesByUser(){
+        $LNNotification=new LNNotifications();
+
+        $notificationesEliminadas=$LNNotification->deleteNotificacionesByUser();
+
+        if($notificationesEliminadas==1){
+            return response([
+                'message' => 'Se han eliminado correctamente las notificaciones',
+                'success' => 1
+            ]);
+        }else{
+            return response([
+                'message' => 'Error! No se han podido eliminar las notificaciones',
+                'success' => 0
+            ]);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DeviceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -55,6 +56,14 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/notificacion/{id}', [NotificationsController::class,'obtenerNotification']);
     Route::post('/notificacion/update/{id}', [NotificationsController::class,'update']);
     Route::delete('/notificacion/delete/{id}', [NotificationsController::class,'destroy']);
+    Route::delete('/notificaciones/user', [NotificationsController::class,'eliminarNotificacionesByUser']);
+
+    //Ruta obtener dispositivos
+    Route::get('/dispositivos', [DeviceController::class,'index']);
+    Route::get('/dispositivos/{id}', [DeviceController::class,'show']);
+    Route::post('/dispositivos/create', [DeviceController::class,'store']);
+    Route::post('/dispositivos/update/{id}', [DeviceController::class,'update']);
+    Route::delete('/dispositivos/delete/{id}', [DeviceController::class,'destroy']);
 
     //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
