@@ -65,6 +65,14 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/dispositivos/update/{id}', [DeviceController::class,'update']);
     Route::delete('/dispositivos/delete/{id}', [DeviceController::class,'destroy']);
 
+    //Rutas para gestionar Mediciones - Read
+    Route::get('/mediciones', [ReadController::class,'index']);
+    Route::post('/medicion/create', [ReadController::class,'store']);
+    Route::get('/medicion/{id}', [ReadController::class,'show']);
+    Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
+    Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
+    //Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
+
     //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
 
@@ -76,15 +84,6 @@ Route::group(['middleware' => 'auth:api'], function(){
         //Route::post('/user/update/{id}', [UserController::class, 'update']);
 		//Route::post('/user/change-role/{id}', [UserController::class,'changeRole']);
         Route::get('/user/latest/{nUsuarios}',[UserController::class,'getUltimosUsuarios']);
-
-        //Rutas para gestionar Mediciones - Read
-        Route::get('/mediciones', [ReadController::class,'index']);
-        Route::post('/medicion/create', [ReadController::class,'store']);
-        Route::get('/medicion/{id}', [ReadController::class,'show']);
-        Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
-        Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
-        Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
-
 
 
         //Rutas para gestionar Roles

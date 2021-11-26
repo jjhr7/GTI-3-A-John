@@ -10,7 +10,7 @@ class Read extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $fillable = ['user_id','device_id','latitude','longitude','value','date'];
+    protected $fillable = ['user_id','device_id','latitude','longitude','type_read','value','date'];
 
     public function device(){
         return $this->belongsTo(Device::class);
