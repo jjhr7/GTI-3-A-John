@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\LogicasDelNegocio\LNUseraccountinformation;
+use App\Http\LogicasDelNegocio\LNUserinformation;
 use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,32 +30,76 @@ class UserController extends Controller
 
     public function store(StoreUser $request)
     {
-        $LNuser = new LNUser();
 
-        $userCreated = $LNuser->guardarUsuario($request->name,$request->email,$request->password,$request->role_id);
+        $userCreated = $this->createNewUser($request->name, $request->email, $request->password);
 
+        if($userCreated[0] == 1){
 
-        if($userCreated[0]){
+            $Useraccountinformationcreated = $this->createNewUserAccountInformation($userCreated[1]->id);
 
-            return response([
-                'message' => 'User created succesfully!',
-                'user'    => User::find($userCreated[1]),
-                'success' => 1
-            ]);
+            if($Useraccountinformationcreated[0] == 1){
+
+                $Userinformationcreated = $this->createUserInformation($userCreated[1]->id,$request->role_id,$request->town_id);
+
+                if($Userinformationcreated[0] == 1){
+
+                    return response([
+                        'message' => 'User created succesfully!',
+                        'user'    => $userCreated[1],
+                        'success' => 1
+                    ]);
+
+                }else{
+
+                    return response([
+                        'message' => 'Error! Failed to create userInformation!',
+                        'success' => 01
+                    ]);
+
+                }
+
+            }else{
+                return response([
+                    'message' => 'Error! Failed to create userAccountInformation!',
+                    'success' => 02
+                ]);
+            }
+
         }
 
         return response([
                 'message' => 'Sorry! Failed to create user!',
-                'success' => 0
+                'success' => 03
             ]);
+    }
+
+    public function createNewUser($name,$email,$password){
+        $LNuser = new LNUser();
+        return $LNuser->guardarUsuario($name,$email,$password);
+    }
+
+    public function createNewUserAccountInformation($id){
+        $LNUseraccountinformation = new LNUseraccountinformation();
+        return $LNUseraccountinformation->guardarUsuarioaccountinformationApp($id);
+    }
+
+    public function createUserInformation($id,$role_id,$town_id){
+        $LNUserinformation =  new LNUserinformation();
+        return $LNUserinformation->guardarUserinformationApp($id,$role_id,$town_id);
     }
 
     public function profile($id)
     {
         $LNUser = new LNUser();
         $userData = $LNUser->obtenerDatosUsuario($id);
-        if($userData[0])
-            return response(['user' => $userData[1],'success' => 1]);
+
+        if($userData[0] == 1)
+            return response([
+                'message' => 'User found!',
+                'user' => $userData[1],
+                'userAccountInformation' => $userData[2],
+                'userInformation' => $userData[3],
+                'success' => 1]);
         else
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
@@ -98,12 +144,13 @@ class UserController extends Controller
     public function update(Request $request, $id){
 
         $LNUser = new LNUser();
-       $userUpdated =  $LNUser->actualizarDatosUsuario($id, $request);
+        $userUpdated =  $LNUser->actualizarDatosUsuario($id, $request);
         //dd($request,$id);
-        if($userUpdated[0]){
+        if($userUpdated[0] == 1){
             return response([
                 'message' => 'User has been updated successfully!',
                 'user'=> $userUpdated[1],
+                'userInformation' => $userUpdated[2],
                 'success' => 1
             ]);
         }
@@ -114,6 +161,9 @@ class UserController extends Controller
         ]);
     }
 
+
+
+
     public function getUltimosUsuarios($nUsuarios){
         $LNUser = new LNUser();
         return response([
@@ -121,5 +171,9 @@ class UserController extends Controller
             'users'=>$LNUser->obtenerUltimosUsuarios($nUsuarios),
             'success'=>1
         ]);
+    }
+
+    public function asignarDispositivo(Request $request){
+
     }
 }

@@ -15,11 +15,15 @@ class CreateReadsTable extends Migration
     {
         Schema::create('reads', function (Blueprint $table) {
             $table->id();
-            $table->float('data');
-            $table->date('read_date');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('device_id');
             $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->string('type_read')->nullable();
+            $table->double('value')->nullable();
+            $table->double('date');
         });
     }
 

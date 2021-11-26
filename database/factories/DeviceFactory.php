@@ -22,9 +22,7 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'serial' => $this->faker->numerify(),
-            'model' => $this->faker->city,
-            'description' => $this->faker->text
+            'serial' => $this->faker->numerify()
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\LogicasDelNegocio\LNReads;
 use App\Http\Requests\StoreRead;
 use Illuminate\Http\Request;
 use App\Http\LogicasDelNegocio\LNMediciones;
@@ -30,11 +31,12 @@ class ReadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRead $request)
+    public function store(Request $request)
     {
-        $LNMediciones = new LNMediciones();
 
-        $medicionCreada = $LNMediciones->guardarMedicion($request->data,$request->read_date,$request->device_id);
+        $LNMediciones = new LNReads();
+
+        $medicionCreada = $LNMediciones->guardarRead($request->user_id,$request->device_id,$request->latitude,$request->longitude,$request->type_read, $request->value,$request->date);
 
         if ($medicionCreada){
             return response([
@@ -59,8 +61,8 @@ class ReadController extends Controller
      */
     public function show($id)
     {
-        $LNMediciones = new LNMediciones();
-        $medicion = $LNMediciones->obtenerMedicion($id);
+        $LNMediciones = new LNReads();
+        $medicion = $LNMediciones->obtenerReads($id);
 
         if($medicion[0]){
             return response([
@@ -84,9 +86,9 @@ class ReadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $LNMediciones = new LNMediciones();
+        $LNMediciones = new LNReads();
 
-        $medicionActualizada = $LNMediciones->actualizarDatosMedicion($id,$request);
+        $medicionActualizada = $LNMediciones->actualizarDatosRead($id,$request);
 
         if($medicionActualizada[0]){
             return response([
@@ -109,9 +111,9 @@ class ReadController extends Controller
      */
     public function destroy($id)
     {
-        $LNMediciones = new LNMediciones();
+        $LNMediciones = new LNReads();
 
-        $medicionEliminada = $LNMediciones->eliminarMedicion($id);
+        $medicionEliminada = $LNMediciones->eliminarRead($id);
 
         if($medicionEliminada){
             return response([
@@ -126,11 +128,11 @@ class ReadController extends Controller
         }
     }
 
-    public function obtenerUltimasMediciones($nMediciones){
-        $LNMediciones = new LNMediciones();
+    /*public function obtenerUltimasMediciones($nMediciones){
+        $LNMediciones = new LNReads();
         return response([
-            'mediciones' => $LNMediciones->obtenerUltimasMediciones($nMediciones),
+            'mediciones' => $LNMediciones->obtenerUltimasReads($nMediciones),
             'success' => 1
         ]);
-    }
+    }*/
 }

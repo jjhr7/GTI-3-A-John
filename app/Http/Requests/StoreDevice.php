@@ -24,7 +24,14 @@ class StoreDevice extends FormRequest
     public function rules()
     {
         return [
+            'serial' => 'required|min:3'
+        ];
+    }
 
+    public function attributes()
+    {
+        return[
+            'serial'=>'serial'
         ];
     }
 }

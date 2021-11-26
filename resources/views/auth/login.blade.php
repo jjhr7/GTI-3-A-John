@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     </head>
 
@@ -29,18 +30,24 @@
 
         <div class="auth-wrapper">
             <div class="container-fluid h-100">
-                <div class="row flex-row h-100">
-                    <div class="col-xl-4 col-lg-4 col-md-4 m-auto">
-                        <div class="authentication-form mx-auto">
-                            <div class="logo-centered">
-                                <a href="#" class="h2">John's API</a>
+                <div class="row flex-row h-100 bg-white">
+                    <div class="col-xl-5 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
+                        <div class="lavalite-bg" class="fondoLogin">
+                            <div class="lavalite-overlay">
+                                <a href="{{url('register')}}" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
                             </div>
-                            <p>Welcome back! </p>
-                            <form method="POST" action="{{ route('login') }}">
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6 col-md-7 p-0 centrarElementos">
+                        <div class="authentication-form mx-auto">
+                                <h2 class="tituloLogin">{{ __('Bienvenido de nuevo')}}</h2>
+                            <h2 class="textoLogin">{{ __('Ingrese a su cuenta')}}</h2>
+                            <form class="row align-items-start" method="POST" action="{{ route('login') }}">
                             @csrf
                                 <div class="form-group">
-                                    <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                    <i class="ik ik-user"></i>
+                                    <label class="col-lg-2 control-label textForm">Email</label>
+                                    <div class="col-lg-10">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,34 +55,29 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                                    <i class="ik ik-lock"></i>
+                                    <label class="col-lg-2 control-label textForm">Contraseña</label>
+                                    <div class="col-lg-10">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                                 </div>
-                                <div class="row">
-                                    <div class="col text-left">
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                            <span class="custom-control-label">&nbsp;Remember Me</span>
-                                        </label>
+                                <div>
+                                    <div class="d-flex">
+                                        <p class="btn text textoLogin3 centrarElementos">{{ __('¿Aún no tienes cuenta?')}}
+                                            <a class="p-lg-5 textoHover" href="{{url('register')}}"> <u>{{ __('Regístrate')}}</u> </a>
+                                        </p>
                                     </div>
-                                    <div class="col text-right">
-                                        <a class="btn text-danger" href="{{url('password/forget')}}">
-                                            {{ __('Forgot Password?') }}
-                                        </a>
+                                    <div class="d-flex justify-content-between margenTextos centrarElementos">
+                                        <a class="btn text textoLogin3 centrarElementos separacionTextos" href="{{url('password/forget')}}">
+                                            {{ __('¿Has olvidado tu contraseña?') }} </a>
+                                            <button class="btn-custom align-bottom">Iniciar sesión</button>
                                     </div>
                                 </div>
-                                <div class="sign-btn text-center">
-                                    <button class="btn btn-custom">Sign In</button>
                                 </div>
-                                <div class="register">
-                                    <p>{{ __('No account?')}} <a href="{{url('register')}}">{{ __('Sign Up')}}</a></p>
                                 </div>
-
                             </form>
                         </div>
                     </div>

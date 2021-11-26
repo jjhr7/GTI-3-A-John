@@ -24,9 +24,26 @@ class StoreRead extends FormRequest
     public function rules()
     {
         return [
-            'data'=>'required',
-            'read_date' => 'required',
-            'device_id'=>'required'
+            'user_id' => ['required','numeric'],
+            'device_id'=>['required','numeric'],
+            'latitude'=>['required','numeric'],
+            'longitude'=>['required','numeric'],
+            'type_read'=> ['required'],
+            'value'=>['required','nuemric'],
+            'date'=>['required','numeric']
+        ];
+    }
+
+    public function attributes()
+    {
+        return[
+            'user_id' => 'Id de usuario',
+            'device_id'=>'Id de dispositivo',
+            'latitude'=>'Latitud',
+            'longitude'=>'Longitud',
+            'type_read'=> 'Tipo de medición',
+            'value'=>'Valor',
+            'date'=>'Fecha'
         ];
     }
 }

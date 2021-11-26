@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUser;
+use App\Models\Useraccountinformation;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\Town;
 class RegisterController extends Controller
 {
     /*
@@ -53,6 +57,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'confirmed'],
+            'town_id' => ['required']
         ]);
     }
 
@@ -69,5 +74,28 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function registrarUsuario(Request $request){
+
+        $userController  = new UserController();
+        $userCreated = $userController->createNewUser($request->name,$request->email,$request->password);
+
+        $userController->createNewUserAccountInformation($userCreated[1]->id);
+
+        $userInformationCreated = $userController->createUserInformation($userCreated[1]->id,5,3);
+
+        if($userInformationCreated[0] == 1){
+            return redirect('/login');
+        }else{
+            return redirect('/register');
+        }
+
+    }
+    public function registerUser(){
+
+        $municipios  = Town::pluck('name','id');
+
+        return view('pages.register',compact('municipios'));
     }
 }
