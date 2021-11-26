@@ -24,7 +24,7 @@ class NotificationFactory extends Factory
         return [
             'user_id' => $this->faker->numberBetween(1,10),
             'date' => $this->faker->date(),
-            'message' => $this->faker->realText(150,2),
+            'message' => $this->faker->realText(50,2),
             'type' => $this->faker->randomElement(['Information','Warnning','Danger'])
         ];
     }
