@@ -40,7 +40,7 @@ class AuthController extends Controller
 
     public function profile(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::  user();
         $roles = $user->getRoleNames();
         $permission = $user->getAllPermissions();
         return response([

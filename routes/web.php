@@ -21,7 +21,9 @@ use App\Http\Controllers\ReadController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [LoginController::class,'showLoginForm']);
+Route::get('/', function (){
+    redirect('index.html');
+});
 
 
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
