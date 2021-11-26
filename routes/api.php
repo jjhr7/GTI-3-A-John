@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/municipios', [TownController::class,'index']);
     Route::post('/municipios/create', [TownController::class,'store']);
     Route::get('/municipio/{id}', [TownController::class,'show']);
-    Route::post('/municipio/update/{id}', [TownController::class,'update']);
+    Route::post('/municipio/update/{id}', [TownControll/municipioser::class,'update']);
     Route::delete('/municipio/delete/{id}', [TownController::class,'destroy']);
 
 
@@ -100,6 +100,7 @@ Route::group(['middleware' => 'auth:api'], function(){
         Route::get('/permisos/{id}', [PermissionController::class,'show']);
         Route::delete('/permisos/delete/{id}', [PermissionController::class,'delete']);
     });
+
 
 
 
