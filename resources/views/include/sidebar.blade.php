@@ -29,22 +29,22 @@
                         <div class="submenu-content">
 
                             <!-- only those have manage_user permission will get access -->
-                            <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Users')}}</a>
-                            <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add User')}}</a>
+                            <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Usuarios')}}</a>
+                            <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Añadir usuarios')}}</a>
 
                             <!-- only those have manage_role permission will get access -->
                             <a href="{{url('roles')}}" class="menu-item {{ ($segment1 == 'roles') ? 'active' : '' }}">{{ __('Roles')}}</a>
-                            <a href="{{url('role/createForm')}}" class="menu-item {{ ($segment1 == 'roles' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Role')}}</a>
+                            <a href="{{url('role/createForm')}}" class="menu-item {{ ($segment1 == 'roles' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Añadir roles')}}</a>
 
                             <!-- only those have manage_permission permission will get access -->
-                            <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permission')}}</a>
+                            <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permisos')}}</a>
                         </div>
                     </div>
                 @endif
                 <div class="nav-lavel">{{ __('Datos')}} </div>
 
                 <div class="nav-item {{ ($segment1 == 'reads') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-rss"></i><span>{{ __('Medicioes')}}</span> </a>
+                    <a href="#"><i class="ik ik-rss"></i><span>{{ __('Mediciones')}}</span> </a>
                     <div class="submenu-content">
                         <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}">{{ __('Mediciones')}}</a>
                     </div>
