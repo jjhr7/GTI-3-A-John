@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReadController;
+use App\Http\Controllers\GasGuideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,3 +150,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/register', [RegisterController::class,'registerUser']);
 Route::get('/login-1', function () { return view('pages.login'); });
+
+//Guía de gases
+Route::get('/guia', [GasGuideController::class, 'getView']);
+
