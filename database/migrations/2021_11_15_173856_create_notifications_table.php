@@ -17,10 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('date');
+            $table->string('date');
             $table->string('message');
             $table->enum('type',['Information', 'Warnning', 'Danger']);
-            $table->timestamps();
         });
     }
 
