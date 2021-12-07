@@ -12,6 +12,7 @@ class Notification extends Model
 
     protected $fillable = ['user_id','date','message','type'];
     protected $guarded = [''];
+    public $timestamps = false;
 
     public function user(){
         return $this->belongsTo(User::class);

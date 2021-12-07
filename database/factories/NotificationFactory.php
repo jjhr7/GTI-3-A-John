@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Notification;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NotificationFactory extends Factory
@@ -23,9 +24,9 @@ class NotificationFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1,10),
-            'date' => $this->faker->date(),
+            'date' => Carbon::now()->toRfc850String(),
             'message' => $this->faker->realText(50,2),
-            'type' => $this->faker->randomElement(['Information','Warnning','Danger'])
+            'type' => $this->faker->randomElement(['Information','Warnning','Danger']),
         ];
     }
 }

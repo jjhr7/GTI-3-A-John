@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         Healthytown::factory(5)->create();
         Read::factory(10)->create();
         Notification::factory(10)->create();
+        $this->call(GasSeeder::class);
 
     }
 }
