@@ -34,9 +34,9 @@
 
 
 /* 1. Theme default css */
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:400,400i,500,500i,700,700i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 14px;
     font-weight: normal;
     color: #687068;
@@ -44,7 +44,7 @@ body {
 }
 
 @font-face {
-    font-family: Monserat;
+    font-family: Montserrat;
     src: local('../fonts/Montserrat-Black.ttf');
 
 }
@@ -311,7 +311,7 @@ label {
 .main-menu ul li a {
     display: block;
     color: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     padding: 34px 0;
     position: relative;
@@ -847,7 +847,7 @@ label {
     color: #061122;
     opacity: .05;
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-style: italic;
     top: -35px;
@@ -1486,7 +1486,7 @@ section:hover .section-title h2::before{width: 100px;}
 .count {
     font-size: 55px;
     color: #007ff4;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     margin-bottom: 13px;
     line-height: 1;
@@ -1500,7 +1500,7 @@ section:hover .section-title h2::before{width: 100px;}
     position: relative;
     top: -35px;
     right: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 .single-counter p {
     font-size: 16px;
@@ -2111,7 +2111,7 @@ section:hover .section-title h2::before{width: 100px;}
 }
 .widget__banner-overly h3 span {
     display: block;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     font-weight: 300;
 }
@@ -2716,7 +2716,7 @@ div.single-cta:last-child {
 .pricing-body p {
     margin-bottom: 15px;
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 .pricing-btn .btn {
     color: #fff;
@@ -2871,7 +2871,7 @@ div.single-cta:last-child {
     font-size: 14px;
     color: #fff;
     font-weight: 500;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
     margin-right: 20px;
 }
