@@ -3,6 +3,7 @@
 
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Notification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LNNotifications
@@ -10,7 +11,7 @@ class LNNotifications
     public function guardarNotificacion($user_id,$date,$message,$type){
         $notification=new Notification();
         $notification->user_id=$user_id;
-        $notification->date=$date;
+        $notification->date=Carbon::now()->toRfc850String();
         $notification->message=$message;
         $notification->type=$type;
 
