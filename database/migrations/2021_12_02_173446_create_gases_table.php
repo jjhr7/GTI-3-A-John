@@ -16,10 +16,10 @@ class CreateGasesTable extends Migration
         Schema::create('gases', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("description");
-            $table->float("fix_values");
-            $table->float("information_values");
-            $table->float("alert_values");
+            $table->text("description");
+            $table->string("fix_values");
+            $table->string("information_values");
+            $table->string("alert_values");
             $table->string("route_image");
             $table->timestamps();
         });
