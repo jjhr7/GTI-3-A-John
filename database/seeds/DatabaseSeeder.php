@@ -13,9 +13,12 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\PermissionSeeder;
+use Database\Seeders\GasSeedeer;
 use App\Models\Device;
 use App\Models\Read;
 use Database\Seeders\UserAccountInformationSeeder;
+use App\Models\Gas;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -41,6 +44,7 @@ class DatabaseSeeder extends Seeder
         Healthytown::factory(5)->create();
         Read::factory(10)->create();
         Notification::factory(10)->create();
+        $this->call(GasSeedeer::class);
 
     }
 }
