@@ -68,8 +68,14 @@
                                         @endforeach
                                     </div>
 
+
+
+                                </div>
+
+
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-rounded">{{ __('Save')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Save')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -78,32 +84,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card p-3">
-                    <div class="card-header"><h3>{{ __('Roles')}}</h3></div>
-                    <div class="card-body">
-                        <table id="roles_table" class="table">
-                            <thead>
-                            <tr>
-                                <th>{{ __('Role')}}</th>
-                                <th>{{ __('Permissions')}}</th>
-                                <th>{{ __('Action')}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- push external js -->
     @push('script')
-        <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
-        <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-        <!--server side roles table script-->
-        <script src="{{ asset('js/listRole.js') }}"></script>
+
     @endpush
 @endsection
