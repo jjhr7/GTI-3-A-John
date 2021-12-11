@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use App\Http\LogicasDelNegocio\LNRoles;
+use App\Http\Requests\StoreRole;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
@@ -94,28 +96,32 @@ class RolesController extends Controller
 
     public function create(Request $request)
     {
-        // laravel default validator
-        $validator = Validator::make($request->all(), [
-            'role' => 'required'
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
-        try{
+            $lnRoles = new LNRoles();
+            $LNRoleHasPermission=new LNRoleHasPermission();
 
-            $role = Role::create(['name' => $request->role]);
-            $role->syncPermissions($request->permissions);
+            $rolCreado=$lnRoles->guardarRol($request->role,$request->role);
 
-            if($role){
+
+            if($rolCreado[0]==1){
+                $permissionsId=$request->permissions;
+                foreach ($permissionsId as $id){
+                    $rolePermissionCreado=$LNRoleHasPermission->guardarRoleHasPermission($rolCreado[1]->id,$id);
+                    if($rolePermissionCreado[0]==1){
+
+                    }else{
+                        return redirect('roles')->with('error', 'Failed to assign permission! Try again.');
+                    }
+                }
+
                 return redirect('roles')->with('success', 'Role created succesfully!');
+
+
             }else{
                 return redirect('roles')->with('error', 'Failed to create role! Try again.');
+
             }
-        }catch (\Exception $e) {
-            $bug = $e->getMessage();
-            return redirect()->back()->with('error', $bug);
-        }
+
     }
 
     public function createForm(){
@@ -188,8 +194,4 @@ class RolesController extends Controller
         }
     }
 
-    public function createNewRole($name, $guard_name){
-        $LNRoles = new LNRoles();
-        return $LNRoles->guardarRol($name,$guard_name);
-    }
 }
