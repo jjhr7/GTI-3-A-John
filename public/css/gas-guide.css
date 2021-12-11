@@ -1,0 +1,118 @@
+:root{
+    --degradado1: #061122;
+    --degradado2: #1a4d80;
+    --degradado3: #48d5ff;
+    --logoOscuro: #064097;
+    --intermedio: #25a0ff;
+    --noBlanco: #f3f3f3; /* color para resaltar las letras */
+    --botones:  #007FF4;
+}
+
+.md-12{
+    padding: 1rem;
+}
+
+.box-guide{
+    margin-top: 5%;
+}
+
+.titulo-guide{
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 28px;
+    color: #333333;
+}
+
+.fas fa-arrow-left{
+    width: 5rem;
+    height: 5rem;
+}
+
+.blue{
+    color: var(--botones);
+}
+
+/* -------------------------------*/
+/* Cajas de gases parte superior */
+/* -------------------------------*/
+
+.box-gas1{
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: #EAFDCD;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #666;
+}
+
+.box-gas2{
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: #CBE1EB;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #666;
+}
+
+.box-gas3{
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: #d9d9f1;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #666;
+}
+
+.box-gas4{
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: #E9DBC8;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #666;
+}
+
+.box-gas5{
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: #E9CED1;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #666;
+}
+
+.boxIcono{
+    display: flex;
+    justify-content: center;
+}
+
+/* -------------------------------*/
+
+.imgGas{
+    width: 18rem;
+    height: 18rem;
+    margin: 2rem;
+}
+
+.boxInfo{
+    width: auto;
+    height: auto;
+    border: 1px solid #333333;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 0.8rem;
+}
+
+.tituloBox{
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #AAAAAA;
+}
+
+.datosBox{
+    font-family: Montserrat;
+    font-size: 20px;
+    color: #555555;
+    margin-top: 1rem;
+}
+

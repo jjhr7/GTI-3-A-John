@@ -8,7 +8,7 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="{{ asset('favicon.png') }}"/>
+        <link rel="shortcut icon" href="{{ asset('img/logo/logo_icono.png') }}"/>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -30,7 +30,7 @@
                 <div class="col-xl-5 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
                     <div class="lavalite-bg" class="fondoLogin">
                         <div class="lavalite-overlay">
-                            <a href="{{url('login')}}" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
+                            <a href="/" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
                         </div>
                     </div>
                 </div>
