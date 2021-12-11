@@ -32,12 +32,16 @@
                             <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Usuarios')}}</a>
                             <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Añadir usuarios')}}</a>
 
+
+
                             <!-- only those have manage_role permission will get access -->
                             <a href="{{url('roles')}}" class="menu-item {{ ($segment1 == 'roles') ? 'active' : '' }}">{{ __('Roles')}}</a>
                             <a href="{{url('role/createForm')}}" class="menu-item {{ ($segment1 == 'roles' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Añadir roles')}}</a>
 
                             <!-- only those have manage_permission permission will get access -->
                             <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permisos')}}</a>
+                            <a href="{{url('towns')}}" class="menu-item {{ ($segment1 == 'towns') ? 'active' : '' }}">{{ __('Ciudades')}}</a>
+
                         </div>
                     </div>
                 @endif

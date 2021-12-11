@@ -11,6 +11,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\GasGuideController;
+use App\Http\Controllers\TownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,6 +146,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/rating', function () { return view('pages.ui.rating'); });
 	Route::get('/session-timeout', function () { return view('pages.ui.session-timeout'); });
 	Route::get('/pricing', function () { return view('pages.pricing'); });
+
+
+    //Rutas para las towns
+    Route::get('/towns',[TownController::class,'index']);
+    Route::get('/town/get-list', [TownController::class,'getTownList']);
+
 });
 
 
