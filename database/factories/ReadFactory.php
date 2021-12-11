@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Read;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReadFactory extends Factory
@@ -28,7 +29,7 @@ class ReadFactory extends Factory
             'longitude' => $this->faker->longitude,
             'type_read' => $this->faker->streetSuffix,
             'value' => $this->faker->randomNumber(2),
-            'date' =>  $this->faker->randomNumber(5)
+            'date' =>  Carbon::now()->toRfc850String(),
         ];
     }
 }

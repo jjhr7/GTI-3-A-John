@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ReadController;
 use App\Http\Controllers\Api\TownController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\UserInformationController;
+use App\Http\Controllers\Api\GasController;
 
 
 
@@ -72,6 +73,10 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
     Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
     //Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
+
+    //Rutas para gestionar guía gases
+    Route::get('/gases', [GasController::class, 'index']);
+    Route::get('/gas/{id}', [GasController::class, 'show']);
 
     //only those have manage_user permission will get access
 	Route::group(['middleware' => 'checkpermissions'], function(){
