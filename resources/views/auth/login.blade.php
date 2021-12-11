@@ -8,7 +8,6 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -20,6 +19,8 @@
         <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+        <link rel="shortcut icon" href="{{asset('img/logo/logo_icono.png')}}">
+
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     </head>
 
@@ -34,7 +35,7 @@
                     <div class="col-xl-5 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
                         <div class="lavalite-bg" class="fondoLogin">
                             <div class="lavalite-overlay">
-                                <a href="{{url('register')}}" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
+                                <a href="/" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
                             </div>
                         </div>
                     </div>

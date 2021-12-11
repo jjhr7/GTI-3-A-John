@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-users bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Roles')}}</h5>
-                            <span>{{ __('List of roles')}}</span>
+                            <h5>{{ __('Ciudades')}}</h5>
+                            <span>{{ __('List of towns')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Roles')}}</a>
+                                <a href="#">{{ __('Towns')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -39,9 +39,9 @@
         <!-- end message area-->
             <div class="col-md-12">
                 <div class="card p-3">
-                    <div class="card-header"><h3>{{ __('Roles')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Towns')}}</h3></div>
                     <div class="card-body">
-                        <table id="roles_table" class="table">
+                        <table id="town_table" class="table">
 
                         </table>
                     </div>
@@ -54,6 +54,6 @@
         <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
         <!--server side users table script-->
-    <script src="{{ asset('js/listRole.js') }}"></script>
-	@endpush
+        <script src="{{ asset('js/listTowns.js') }}"></script>
+    @endpush
 @endsection

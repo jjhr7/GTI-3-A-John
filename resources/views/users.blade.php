@@ -54,6 +54,6 @@
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
     <!--server side users table script-->
-    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/listTowns.js') }}"></script>
     @endpush
 @endsection
