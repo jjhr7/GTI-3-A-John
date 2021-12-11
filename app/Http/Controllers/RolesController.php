@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\LogicasDelNegocio\LNRoles;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
@@ -76,8 +77,8 @@ class RolesController extends Controller
                 ->addColumn('action', function($data){
                     if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
                         return '<div class="table-actions">
-                                <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
-                                <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                <a href="'.url('role/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                <a href="'.url('role/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
                             </div>';
                     }else{
                         return '';
@@ -91,7 +92,7 @@ class RolesController extends Controller
      * Associate permissions will be stored in table
      */
 
-    /*public function create(Request $request)
+    public function create(Request $request)
     {
         // laravel default validator
         $validator = Validator::make($request->all(), [
@@ -115,7 +116,7 @@ class RolesController extends Controller
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);
         }
-    }*/
+    }
 
     public function createForm(){
        // $LNPermission=new LNPermission();
@@ -185,5 +186,10 @@ class RolesController extends Controller
         }else{
             return redirect('404');
         }
+    }
+
+    public function createNewRole($name, $guard_name){
+        $LNRoles = new LNRoles();
+        return $LNRoles->guardarRol($name,$guard_name);
     }
 }
