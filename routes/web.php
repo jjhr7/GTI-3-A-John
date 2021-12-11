@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/permission', [PermissionController::class,'index']);
 		Route::get('/permission/get-list', [PermissionController::class,'getPermissionList']);
 		Route::post('/permission/create', [PermissionController::class,'create']);
+		Route::get('/permission/createForm', [PermissionController::class,'createForm']);
 		Route::get('/permission/update', [PermissionController::class,'update']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
     //RutasMediciones

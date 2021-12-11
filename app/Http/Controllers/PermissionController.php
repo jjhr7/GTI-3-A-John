@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\LogicasDelNegocio\LNPermission;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -29,7 +30,7 @@ class PermissionController extends Controller
         try{
             $roles = Role::pluck('name','id');
 
-            return view('permission', compact('roles'));
+            return view('permisos.permissions', compact('roles'));
         }catch (\Exception $e) {
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);
@@ -44,31 +45,22 @@ class PermissionController extends Controller
 
     public function getPermissionList(Request $request)
     {
-        
+
         $data  = Permission::get();
 
         return Datatables::of($data)
-                ->addColumn('roles', function($data){
-                    $roles = $data->roles()->get();
-                    $badges = '';
-                    foreach ($roles as $key => $role) {
-                        $badges .= '<span class="badge badge-dark m-1">'.$role->name.'</span>';
-                    }
+            ->addColumn('action', function($data){
+                if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
+                    return '<div class="table-actions">
+                                <a href="'.url('permission/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                <a href="'.url('permission/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                            </div>';
+                }else{
+                    return '';
+                }
+            })
+            ->rawColumns(['action'])->toJson();
 
-                    return $badges;
-                })
-                ->addColumn('action', function($data){
-
-                    if (Auth::user()->can('manage_permission')){
-                        return '<div class="table-actions">
-                                    <a href="'.url('permission/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                                </div>';
-                    }else{
-                        return '';
-                    }
-                })
-                ->rawColumns(['roles','action'])
-                ->make(true);
     }
 
     /**
@@ -78,30 +70,23 @@ class PermissionController extends Controller
 
     public function create(Request $request)
     {
-        
-        $validator = Validator::make($request->all(), [
-            'permission' => 'required'
-        ]);
-        
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
-        try{
-            $permission = Permission::create(['name' => $request->permission]);
-            $permission->syncRoles($request->roles);
 
-            if($permission){ 
-                return redirect('permission')->with('success', 'Permission created succesfully!');
-            }else{
-                return redirect('permission')->with('error', 'Failed to create permission! Try again.');
-            }
-        }catch (\Exception $e) {
-            $bug = $e->getMessage();
-            return redirect()->back()->with('error', $bug);
+        $LNPermission = new LNPermission();
+
+        $permisoCreado=$LNPermission->guardarPermiso($request->permission,$request->permission);
+
+
+        if($permisoCreado[0]==1){
+
+            return redirect('roles')->with('success', 'Permission created succesfully!');
+
+        }else{
+            return redirect('roles')->with('error', 'Failed to create permission! Try again.');
+
         }
     }
 
-  
+
 
     public function update(Request $request)
     {
@@ -144,5 +129,12 @@ class PermissionController extends Controller
         }
 
         return $badges;
+    }
+
+    public function createForm(){
+        // $LNPermission=new LNPermission();
+        // $permissions=$LNPermission->obtenerTodosLosPermisos();
+        $permissions = Permission::pluck('name','id');
+        return view('permisos.create-permission');
     }
 }
