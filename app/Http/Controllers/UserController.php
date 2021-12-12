@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\LogicasDelNegocio\LNUser;
+use App\Models\Town;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -68,8 +70,9 @@ class UserController extends Controller
     {
         try
         {
+            $data  = Town::pluck('name','id');;
             $roles = Role::pluck('name','id');
-            return view('create-user', compact('roles'));
+            return view('create-user', compact('roles', 'data'));
 
         }catch (\Exception $e) {
             $bug = $e->getMessage();
@@ -118,13 +121,17 @@ class UserController extends Controller
     {
         try
         {
+
             $user  = User::find($id);
 
             if($user){
-                $user_role = $user->role->name;
+                $user_town = $user->information->town->id;
+
+                $user_role = $user->information->role->id;
+                $towns  = Town::pluck('name','id');;
                 $roles   = Role::pluck('name','id');
 
-                return view('user-edit', compact('user','user_role','roles'));
+                return view('user-edit', compact('user','user_role','user_town','roles', 'towns'));
             }else{
                 return redirect('404');
             }
@@ -137,7 +144,6 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-
         // update user info
         $validator = Validator::make($request->all(), [
             'id'       => 'required',
@@ -161,10 +167,8 @@ class UserController extends Controller
 
             $user = User::find($request->id);
 
-            $update = $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
+            $lnUser = new LNUser();
+            $update = $lnUser->actualizarDatosUsuario($request->id,$request);
 
             // update password if user input a new password
             if(isset($request->password)){
@@ -172,9 +176,6 @@ class UserController extends Controller
                     'password' => Hash::make($request->password)
                 ]);
             }
-
-            // sync user role
-            $user->syncRoles($request->role);
 
             return redirect()->back()->with('success', 'User information updated succesfully!');
         }catch (\Exception $e) {
