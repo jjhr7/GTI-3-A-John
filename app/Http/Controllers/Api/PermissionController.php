@@ -97,4 +97,22 @@ class PermissionController extends Controller
         $LNPermission=new LNPermission();
         $permission=$LNPermission->eliminarPermiso($id);
     }
+
+    public function update(Request $request, $id){
+
+        $LNPermission = new LNPermission();
+        $permissionUpdated =  $LNPermission->actualizarDatosPermiso($id, $request);
+        if($permissionUpdated[0] == 1){
+            return response([
+                'message' => 'User has been updated successfully!',
+                'permission'=> $permissionUpdated[1],
+                'success' => 1
+            ]);
+        }
+
+        return response([
+            'message' => 'Sorry! User Not found!',
+            'success' => 0
+        ]);
+    }
 }

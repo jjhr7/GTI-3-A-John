@@ -58,8 +58,8 @@ class LNPermission
     public function actualizarDatosPermiso($id, Request $request){
         $permission=Permission::find($id);
         if($permission) {
-            $permission->name = $request->name;
-            $permission->guard_name = $request->guard_name;
+            $permission->name = $request->permission;
+            $permission->guard_name = $request->permission;
 
             $permission->save();
             //Modificación guardada
