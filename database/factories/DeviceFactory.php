@@ -22,7 +22,7 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'serial' => $this->faker->numerify()
+            'serial' => $this->faker->uuid
         ];
     }
 }

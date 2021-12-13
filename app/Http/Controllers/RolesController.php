@@ -28,6 +28,9 @@ class RolesController extends Controller
      */
     public function index()
     {
+        $logicaPermissions= new LNPermission();
+        $permissions=$logicaPermissions->obtenerTodosLosPermisos();
+
         try{
 
             return view('roles', compact('permissions'));
@@ -49,33 +52,17 @@ class RolesController extends Controller
         $data  = Role::get();
 
         return Datatables::of($data)
-                ->addColumn('permissions', function($data){
-                    $roles = $data->permissions()->get();
-                    $badges = '';
-                    foreach ($roles as $key => $role) {
-                        $badges .= '<span class="badge badge-dark m-1">'.$role->name.'</span>';
-                    }
-                    if($data->name == 'Super Admin'){
-                        return '<span class="badge badge-success m-1">All permissions</span>';
-                    }
-
-                    return $badges;
-                })
                 ->addColumn('action', function($data){
-                    if($data->name == 'Super Admin'){
-                        return '';
-                    }
-                    if (Auth::user()->can('manage_roles')){
+                    if (auth()->user()->role->name == 'Super admin' || auth()->user()->role->name == 'Admin'){
                         return '<div class="table-actions">
-                                    <a href="'.url('role/edit/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
-                                    <a href="'.url('role/delete/'.$data->id).'"  ><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                                </div>';
+                                <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                            </div>';
                     }else{
                         return '';
                     }
                 })
-                ->rawColumns(['permissions','action'])
-                ->make(true);
+                ->rawColumns(['permissions','action'])->toJson();
     }
 
     /**
