@@ -2,13 +2,30 @@
 
 
 namespace App\Http\LogicasDelNegocio;
+use App\Models\Device;
 use App\Models\Notification;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+
+/**
+ * @author Leire Villarroya Martínez
+ * LNNotificaciones
+ * 2021-11-25
+ * Lógica del negocio de notificaciones
+ */
 
 class LNNotifications
 {
-    public function guardarNotificacion($user_id,$message,$type){
+    /**
+     * Descripción de guardarNotificaciones. Función que guarda una notificación
+     * @param $user_id
+     * @param $date
+     * @param $message
+     * @param $type
+     * @return array
+     */
+    public function guardarNotificacion($user_id,$date,$message,$type){
         $notification=new Notification();
         $notification->user_id=$user_id;
         $notification->date=Carbon::now('CET')->toRfc850String();
@@ -24,6 +41,12 @@ class LNNotifications
         }
     }
 
+    /**
+     * Descripción de obtenerNotificacionesByUser. Función que devuelve todas las notificaciones
+     * de un usuario
+     *
+     * @return int
+     */
     public function obtenerNotificacionesByUser(){
         $notifications=Notification::where('user_id',auth()->user()->id)->get();
         return $notifications;
@@ -45,10 +68,20 @@ class LNNotifications
         }
     }
 
+    /**
+     * Descripción de obtenerTodasLasNotificaciones. Función que devuelve todas las notificaciones
+     *
+     * @return Notification[]|Collection
+     */
     public function obtenerTodasLasNotificaciones(){
         return Notification::all();
     }
 
+    /**
+     * Descripción de eliminarNotificacion. Función que elimina una notificación
+     * @param $id id de la notificación
+     * @return int
+     */
     public function eliminarNotificacion($id){
         $notificacion=Notification::find($id);
 
@@ -60,6 +93,12 @@ class LNNotifications
         }
     }
 
+    /**
+     * Descripción de obtenerNotificacion. Función que devuelve una notificacion.
+     *
+     * @param $id
+     * @return array
+     */
     public function obtenerNotificacion($id){
         $notification=Notification::find($id);
         if($notification) {
@@ -70,6 +109,13 @@ class LNNotifications
     }
 
 
+    /**
+     * Descripción de actualizarDatosNotificacion. Función que actualiza los datos de la notificación
+     * dado su id
+     * @param int $id
+     * @param Request $request
+     * @return array
+     */
     public function actualizarDatosNotificacion($id, Request $request){
         $notificacion=Notification::find($id);
         if($notificacion) {

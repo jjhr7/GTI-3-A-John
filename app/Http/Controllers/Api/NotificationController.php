@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\LogicasDelNegocio\LNNotifications;
 use Illuminate\Http\Request;
 
+/**
+ * @author Leire Villarroya Martínez
+ * NotificationController
+ * 2021-11-26
+ * Lógica del controlador de notificaciones
+ */
 class NotificationController extends Controller
 {
     /**
