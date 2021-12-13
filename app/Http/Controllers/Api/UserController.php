@@ -1,12 +1,22 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * UserController
+ * 2021-11-25
+ * Controlador del usuario
+ */
+
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\LogicasDelNegocio\LNUseraccountinformation;
 use App\Http\LogicasDelNegocio\LNUserinformation;
+use App\Http\Requests\StoreRole;
 use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
@@ -16,7 +26,11 @@ use App\Http\LogicasDelNegocio\LNUser;
 class UserController extends Controller
 {
 
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function list()
     {
         $LNuser = new LNUser();
@@ -27,7 +41,12 @@ class UserController extends Controller
             ]);
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StoreUser $request
+     * @return Response
+     */
     public function store(StoreUser $request)
     {
 
@@ -73,21 +92,49 @@ class UserController extends Controller
             ]);
     }
 
+    /**
+     * Crea un nuevo usuario
+     *
+     * @param $name
+     * @param $email
+     * @param $password
+     * @return array|int[]
+     */
     public function createNewUser($name,$email,$password){
         $LNuser = new LNUser();
         return $LNuser->guardarUsuario($name,$email,$password);
     }
 
+    /**
+     * Crea una nueva informacion de cuenta de usuario
+     *
+     * @param $id
+     * @return array|int[]
+     */
     public function createNewUserAccountInformation($id){
         $LNUseraccountinformation = new LNUseraccountinformation();
         return $LNUseraccountinformation->guardarUsuarioaccountinformationApp($id);
     }
 
+    /**
+     * Crea una nueva información de usuario
+     *
+     * @param $id
+     * @param $role_id
+     * @param $town_id
+     * @return array|int[]
+     */
     public function createUserInformation($id,$role_id,$town_id){
         $LNUserinformation =  new LNUserinformation();
         return $LNUserinformation->guardarUserinformationApp($id,$role_id,$town_id);
     }
 
+    /**
+     * Perfil
+     *
+     * @param $id
+     * @return Response
+     */
     public function profile($id)
     {
         $LNUser = new LNUser();
@@ -104,7 +151,12 @@ class UserController extends Controller
             return response(['message' => 'Sorry! Not found!','success' => 0]);
     }
 
-
+    /**
+     * Elimina un usuario
+     *
+     * @param $id
+     * @return Response
+     */
     public function delete($id)
     {
         $LNUser = new LNUser();
@@ -141,6 +193,13 @@ class UserController extends Controller
             ]);
     }*/
 
+    /**
+     * Actualiza un usuario
+     *
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
     public function update(Request $request, $id){
 
         $LNUser = new LNUser();
@@ -163,7 +222,12 @@ class UserController extends Controller
 
 
 
-
+    /**
+     * Obtiene el ultimo usuario
+     *
+     * @param $nUsuarios
+     * @return Response
+     */
     public function getUltimosUsuarios($nUsuarios){
         $LNUser = new LNUser();
         return response([

@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\LogicasDelNegocio\LNUser;
 use App\Models\Town;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +35,7 @@ class UserController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
@@ -37,6 +43,12 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Obtiene una lista del usuario
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function getUserList(Request $request)
     {
 
@@ -66,6 +78,11 @@ class UserController extends Controller
                 ->rawColumns(['action'])->toJson();
     }
 
+    /**
+     * Crea un usuario
+     *
+     * @return mixed
+     */
     public function create()
     {
         try
@@ -81,6 +98,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Almacena un usuario
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function store(Request $request)
     {
         // create user
@@ -117,6 +140,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Edita un usuario
+     *
+     * @param $id
+     * @return Application|Factory|View|RedirectResponse|Redirector
+     */
     public function edit($id)
     {
         try
@@ -142,6 +171,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Actualiza un usuario
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function update(Request $request)
     {
         // update user info
@@ -177,7 +212,7 @@ class UserController extends Controller
                 ]);
             }
 
-            return redirect()->back()->with('success', 'User information updated succesfully!');
+            return redirect('users')->with('success', 'User information updated succesfully!');
         }catch (\Exception $e) {
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);
@@ -185,7 +220,12 @@ class UserController extends Controller
         }
     }
 
-
+    /**
+     * Elimina un usuario
+     *
+     * @param $id
+     * @return Application|Redirector|RedirectResponse
+     */
     public function delete($id)
     {
         $user   = User::find($id);

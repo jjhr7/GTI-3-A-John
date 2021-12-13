@@ -5,12 +5,25 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\LogicasDelNegocio\LNPermission;
 use App\Http\Requests\StorePermission;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\Permission\Models\Permission;
 use Auth;
 
+/**
+ * @author Leire Villarroya Martínez
+ * PermissionController
+ * 2021-11-26
+ * Lógica del controlador de permisos
+ */
 class PermissionController extends Controller
 {
+    /**
+     * Descripción función list que devuelve todos los permisos
+     *
+     * @return ResponseFactory|Response
+     */
     public function list()
     {
         return response([
@@ -20,6 +33,12 @@ class PermissionController extends Controller
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StorePermission $request
+     * @return Response
+     */
     public function store(StorePermission $request)
     {
         /*$request->validate([
@@ -53,6 +72,13 @@ class PermissionController extends Controller
     }
 
 
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @param Request $request
+     * @return ResponseFactory|Response
+     */
     public function show($id,Request $request)
     {
         /* codigo anterior
@@ -81,6 +107,13 @@ class PermissionController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @param Request $request
+     * @return void
+     */
     public function delete($id, Request $request)
     {
         /* código antiguo
@@ -96,5 +129,23 @@ class PermissionController extends Controller
 
         $LNPermission=new LNPermission();
         $permission=$LNPermission->eliminarPermiso($id);
+    }
+
+    public function update(Request $request, $id){
+
+        $LNPermission = new LNPermission();
+        $permissionUpdated =  $LNPermission->actualizarDatosPermiso($id, $request);
+        if($permissionUpdated[0] == 1){
+            return response([
+                'message' => 'User has been updated successfully!',
+                'permission'=> $permissionUpdated[1],
+                'success' => 1
+            ]);
+        }
+
+        return response([
+            'message' => 'Sorry! User Not found!',
+            'success' => 0
+        ]);
     }
 }

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * LNTown
+ * 2021-11-24
+ * Controller de Town
+ */
+
 namespace App\Http\Controllers\Api;
 
 use App\Models\Town;
@@ -7,6 +14,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\LogicasDelNegocio\LNTown;
 use App\Http\Requests\StoreTown;
+use Illuminate\Http\Response;
+
 //Intancia la clase LNTown para poder utilizar sus métodos
 
 class TownController extends Controller
@@ -14,11 +23,11 @@ class TownController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $LNTown= new LNTown();
+        $LNTown= new LNTown(); // Creamos nueva logica town
 
         return response([
             'towns'=>$LNTown->obtenerTodosLosMunicipios(),
@@ -29,12 +38,12 @@ class TownController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreTown $request
+     * @return Response
      */
     public function store(StoreTown $request)
     {
-        $LNTown = new LNTown();
+        $LNTown = new LNTown(); // Creamos nueva logica town
 
         $townCreada=$LNTown->guardarMunicipio($request->postal_code,$request->name, $request->area, $request->altitude);
 
@@ -55,12 +64,12 @@ class TownController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Town  $town
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Response
      */
     public function show($id)
     {
-        $LNTown=new LNTown();
+        $LNTown=new LNTown(); // Creamos nueva logica town
         $town=$LNTown->obtenerMunicipio($id);
 
         if($town[0]==1){
@@ -81,13 +90,13 @@ class TownController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Town  $town
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
-        $LNTown = new LNTown();
+        $LNTown = new LNTown(); // Creamos nueva logica town
 
         $townActualizada=$LNTown->actualizarDatosTown($id, $request);
         if($townActualizada[0]==1){
@@ -108,12 +117,12 @@ class TownController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Town  $town
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Response
      */
     public function destroy($id)
     {
-        $LNTown=new LNTown();
+        $LNTown=new LNTown(); // Creamos nueva logica town
 
         $townEliminada=$LNTown->eliminarTown($id);
 

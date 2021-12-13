@@ -77,7 +77,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/permission/get-list', [PermissionController::class,'getPermissionList']);
 		Route::post('/permission/create', [PermissionController::class,'create']);
 		Route::get('/permission/createForm', [PermissionController::class,'createForm']);
-		Route::get('/permission/update', [PermissionController::class,'update']);
+		Route::post('/permission/update', [PermissionController::class,'update']);
+		Route::get('/permission/{id}', [PermissionController::class,'edit']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
     //RutasMediciones
     //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);

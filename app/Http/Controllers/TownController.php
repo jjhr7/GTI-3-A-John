@@ -9,10 +9,21 @@ use DataTables;
 
 class TownController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function index(){
         return view('town.town');
     }
 
+    /**
+     * Obtiene una lista de la ciudad
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function getTownList(Request $request)
     {
 

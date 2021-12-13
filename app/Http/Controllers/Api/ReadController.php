@@ -7,13 +7,21 @@ use App\Http\LogicasDelNegocio\LNReads;
 use App\Http\Requests\StoreRead;
 use Illuminate\Http\Request;
 use App\Http\LogicasDelNegocio\LNMediciones;
+use Illuminate\Http\Response;
+
+/**
+ * @author Leire Villarroya Martínez
+ * ReadController
+ * 2021-11-26
+ * Lógica del controlador de reads
+ */
 
 class ReadController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -28,8 +36,8 @@ class ReadController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -58,7 +66,7 @@ class ReadController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -81,9 +89,9 @@ class ReadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -108,7 +116,7 @@ class ReadController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

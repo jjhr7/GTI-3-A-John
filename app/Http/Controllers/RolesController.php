@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use App\Http\LogicasDelNegocio\LNRoles;
 use App\Http\Requests\StoreRole;
+use App\Models\Town;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
@@ -72,7 +73,7 @@ class RolesController extends Controller
                     if($data->name == 'Super Admin'){
                         return '';
                     }
-                    if (Auth::user()->can('manage_roles')){
+                    if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
                         return '<div class="table-actions">
                                     <a href="'.url('role/edit/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
                                     <a href="'.url('role/delete/'.$data->id).'"  ><i class="ik ik-trash-2 f-16 text-red"></i></a>
@@ -126,13 +127,15 @@ class RolesController extends Controller
         return view('roles.role-create', compact('permissions'));
     }
 
+
     public function edit($id)
     {
         $role  = Role::where('id',$id)->first();
+        $roles = \App\Role::where('id',$id)->first();
         // if role exist
         if($role){
-            $role_permission = $role->permissions()
-                                    ->pluck('id')
+            $role_permission = $roles->roleHasPermisions()
+                                    ->pluck('permission_id')
                                     ->toArray();
 
             $permissions = Permission::pluck('name','id');
@@ -143,29 +146,23 @@ class RolesController extends Controller
         }
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function update(Request $request)
     {
-
-
-        // update role
-        $validator = Validator::make($request->all(), [
-            'role' => 'required',
-            'id'   => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
         try{
 
-            $role = Role::find($request->id);
-
-            $update = $role->update([
-                          'name' => $request->role
-                      ]);
-
+            $ln= new LNRoles();
+            $lnH= new LNRoleHasPermission();
+            $update = $ln->actualizarDatosRol($request, $request->id);
             // Sync role permissions
-            $role->syncPermissions($request->permissions);
+            foreach ($request->permissions as $permission){
+                $roleH= $lnH->actualizarRoleHasPermission($request->id,$permission);
+            }
 
             return redirect('roles')->with('success', 'Role info updated succesfully!');
         }catch (\Exception $e) {
@@ -176,6 +173,12 @@ class RolesController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return Response
+     */
     public function delete($id)
     {
         $role   = Role::find($id);

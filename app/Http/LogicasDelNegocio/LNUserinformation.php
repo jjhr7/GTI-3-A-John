@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * LNUserInformation
+ * 2021-11-26
+ * Lógica del negocio de la informacion del usuario
+ */
+
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Device;
 use App\Models\Userinformation;
 
 class LNUserinformation
 {
+
+    /**
+     * guardarUserinformationApp. Funcion que guarda un rol en la base de datos.
+     * @param $id id del usuario de la informacion a guardar
+     * @param $role_id  rol del usuario de la informacion a guardar
+     * @param $town_id ciudad del usuario de la informacion a guardar
+     * @return array|int[]
+     */
     public function guardarUserinformationApp($id,$role_id,$town_id){
 
 
@@ -23,6 +38,11 @@ class LNUserinformation
         }
     }
 
+    /**
+     * assignDevice. Funcion que asigna un dispositov a un usuario de la base de datos.
+     * @param $serial serial del dispositivo a asignar
+     * @return array|int[]
+     */
     public function assignDevice($serial){
 
 

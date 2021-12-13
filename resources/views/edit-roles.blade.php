@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="role">{{ __('Role')}}<span class="text-red">*</span></label>
                                     <input type="text" class="form-control is-valid" id="role" name="role" value="{{ clean($role->name, 'titles')}}" placeholder="Insert Role">
-                                    <input type="hidden" name="id" value="{{$role->id}}" required>
+                                    <input type="hidden" id="id" name="id" value="{{$role->id}}" required>
                                 </div>
                             </div>
                             <div class="col-sm-7">
@@ -56,10 +56,10 @@
                                 <div class="row">
                                 	@foreach($permissions as $key => $permission)
                                 	<div class="col-sm-4">
-                                		
+
                                         <label class="custom-control custom-checkbox">
                                             <!-- check permission exist -->
-                                            <input type="checkbox" class="custom-control-input" id="item_checkbox" name="permissions[]" value="{{$key}}" 
+                                            <input type="checkbox" class="custom-control-input" id="item_checkbox" name="permissions[]" value="{{$key}}"
                                             @if(in_array($key, $role_permission))
                                                 checked
                                             @endif>
@@ -69,9 +69,9 @@
                                             </span>
                                         </label>
                                 	</div>
-                                	@endforeach 
+                                	@endforeach
                                 </div>
-                                
+
                                 <div class="form-group">
                                 	<button type="submit" class="btn btn-primary btn-rounded">{{ __('Update')}}</button>
                                 </div>
