@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\LogicasDelNegocio\LNDevices;
 use App\Http\Requests\StoreDevice;
 
+/**
+ * @author Leire Villarroya Martínez
+ * DeviceController
+ * 2021-11-26
+ * Lógica del controlador de dispositivos
+ */
+
 class DeviceController extends Controller
 {
     /**

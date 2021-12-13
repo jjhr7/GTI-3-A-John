@@ -3,12 +3,24 @@
 
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Device;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
-
+/**
+ * @author Leire Villarroya Martínez
+ * LNDevices
+ * 2021-11-26
+ * Lógica del negocio de devices
+ */
 
 class LNDevices
 {
+    /**
+     * Descripción de guardarDispositivos. Función que guarda un dispositivo dado el número de serie
+     * @param $serial número serial del dispositivo
+     *
+     * @return array
+     */
     public function guardarDispositivo($serial){
         //Crear una instancia del modelo vacío
         $device=new Device();
@@ -25,10 +37,21 @@ class LNDevices
         }
     }
 
+    /**
+     * Descripción de obtenerTodosLosDispositivos. Función que devuelve todos los dispositivos
+     *
+     * @return Device[]|Collection
+     */
     public function obtenerTodosLosDispositivos(){
         return Device::all();
     }
 
+    /**
+     * Descripción de obtenerDispositivo. Función que devuelve un dispositivo.
+     *
+     * @param $id
+     * @return array
+     */
     public function obtenerDispositivo($id){
         $device=Device::find($id);
 
@@ -39,6 +62,13 @@ class LNDevices
         }
     }
 
+    /**
+     * Descripción de actualizarDatosDevice. Función que actualiza los datos del dispositivo seleccionado
+     * dado su id
+     * @param int $id
+     * @param Request $request
+     * @return array
+     */
     public function actualizarDatosDevice($id, Request $request){
         $device=Device::find($id);
         //busca el dispositivo que vamos a actualizar por el id
@@ -55,6 +85,11 @@ class LNDevices
         }
     }
 
+    /**
+     * Descripción de eliminarDevice. Función que elimina el dispositivo dado su id
+     * @param $id id del dispositivo
+     * @return int
+     */
     public function eliminarDevice($id){
         $device=Device::find($id);
 
