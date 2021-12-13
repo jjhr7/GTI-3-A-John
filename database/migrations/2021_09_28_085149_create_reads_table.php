@@ -23,7 +23,7 @@ class CreateReadsTable extends Migration
             $table->float('longitude');
             $table->string('type_read')->nullable();
             $table->double('value')->nullable();
-            $table->double('date');
+            $table->string('date');
         });
     }
 
