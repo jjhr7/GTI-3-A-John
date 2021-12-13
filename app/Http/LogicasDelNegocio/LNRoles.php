@@ -11,6 +11,7 @@ namespace App\Http\LogicasDelNegocio;
 
 
 use App\Role;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class LNRoles
@@ -18,8 +19,9 @@ class LNRoles
 
     /**
      * guardarRol. Funcion que guarda un rol en la base de datos.
-     * @param name Nombre del rol a guardar
-     * @param guard_name
+     * @param $name Nombre del rol a guardar
+     * @param $guard_name
+     * @return array|int[]
      */
     public function guardarRol($name, $guard_name){
         //Crear una isntancia del modelo vacío
@@ -44,7 +46,7 @@ class LNRoles
 
     /**
      * eliminarRol. Funcion que elimina un rol por id en la base de datos.
-     * @param id Id del rol a buscar
+     * @param $id Id del rol a buscar
      */
     public function eliminarRol($id){
         $role=Role::find($id);
@@ -62,7 +64,7 @@ class LNRoles
 
     /**
      * obtenerRol. Funcion que obtiene un rol por id en la base de datos.
-     * @param id Id del rol a buscar
+     * @param $id Id del rol a buscar
      */
     public function obtenerRol($id){
         $role=Role::find($id);
@@ -79,8 +81,7 @@ class LNRoles
 
     /**
      * obtenerTodosLosRoles. Funcion que obtiene todos los roles almacenados en la base de datos.
-     * @param id
-     * @return [Role] Lista de roles almacenados en la base de datos
+     * @return Role[]|Collection Lista de roles almacenados en la base de datos
      */
     public function obtenerTodosLosRoles(){
         return Role::all();
@@ -89,8 +90,9 @@ class LNRoles
 
     /**
      * actualizarDatosRol. Funcion que actualizar todos los datos del rol almacenados en la base de datos.
-     * @param request Request para acceder a la petición
-     * @param id Id del rol a actualizar
+     * @param Request $request Request para acceder a la petición
+     * @param $id Id del rol a buscar
+     * @return array|int[]
      */
     public function actualizarDatosRol(Request $request, $id){
         //dd($request);

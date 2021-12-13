@@ -17,7 +17,7 @@ class LNGas
     /**
      * ObtenerTodosLosGases. Funcion que obtiene todos los gases almacenados en la base de datos.
      *
-     * @return [Gas] Devuelve la lista de gases almacenados en la base de datos
+     * @return Gas[]|\Illuminate\Database\Eloquent\Collection Devuelve la lista de gases almacenados en la base de datos
      */
     public function obtenerTodosLosGases(){
         return Gas::all();
@@ -26,7 +26,7 @@ class LNGas
 
     /**
      * ObtenerGas. Funcion que obtiene un gas por id almacenado en la base de datos.
-     * @param id Id del gas a buscar
+     * @param $id Id del gas a buscar
      */
     public function obtenerGas($id){
         $gas = Gas::find($id);

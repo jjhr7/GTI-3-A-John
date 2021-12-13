@@ -4,7 +4,7 @@
  * @author Jonathan Hernández
  * LNTown
  * 2021-11-24
- * Lógica del negocio de gas
+ * Lógica del negocio de town
  */
 
 namespace App\Http\LogicasDelNegocio;
@@ -58,7 +58,7 @@ class LNTown
 
     /**
      * obtenerTodosLosMunicipios. Funcion que obtiene todos los municipios almacenados en la base de datos.
-     * @return [Town] Lista de municipios almacenados en la base de datos
+     * @return Town[]|\Illuminate\Database\Eloquent\Collection Lista de municipios almacenados en la base de datos
      */
     public function obtenerTodosLosMunicipios(){
         return Town::all();
@@ -84,7 +84,8 @@ class LNTown
     /**
      * actualizarDatosTown. Funcion que actualiza todos los datos de una town por id almacenados en la base de datos.
      * @param $id del municipio a buscar
-     * @param \Illuminate\Http\Request  $request
+     * @param Request $request
+     * @return array|int[]
      */
     public function actualizarDatosTown($id, Request $request){
         $town = Town::find($id);
