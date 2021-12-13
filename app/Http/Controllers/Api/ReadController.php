@@ -38,6 +38,7 @@ class ReadController extends Controller
 
         $medicionCreada = $LNMediciones->guardarRead($request->user_id,$request->device_id,$request->latitude,$request->longitude,$request->type_read, $request->value);
 
+
         if ($medicionCreada){
             return response([
                 'message' => 'Medicion creada correctamente!',

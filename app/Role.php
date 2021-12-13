@@ -17,7 +17,7 @@ class Role extends Model
     protected $guarded = [''];
 
     public function permissions(){
-        return $this->hasMany(Permission::class);
+        return $this->belongsToMany(Permission::class,RoleHasPermission::class);
     }
 
 
@@ -25,8 +25,5 @@ class Role extends Model
         return $this->hasMany(User::class);
     }
 
-    public function roleHasPermisions(){
-        return $this->hasMany(RoleHasPermission::class);
-    }
 
 }
