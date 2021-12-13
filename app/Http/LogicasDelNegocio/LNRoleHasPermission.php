@@ -23,4 +23,24 @@ class LNRoleHasPermission
             //Si ha ido mal, devuelve 0
         }
     }
+
+    public function actualizarRoleHasPermission($role_id, $permission_id){
+        $role=RoleHasPermission::find($id);
+
+        //buscamos el rol por id
+        if($role) {
+            //los campos que queremos modificar
+            $role->role_id = $role_id;
+            $role->permission_id = $permission_id;
+
+            $role->save();
+            //guardamos
+
+            //si ha ido bien
+            return [1, $role];
+        }else{
+            //si no
+            return [0];
+        }
+    }
 }

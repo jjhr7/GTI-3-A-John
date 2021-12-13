@@ -72,7 +72,7 @@ class RolesController extends Controller
                     if($data->name == 'Super Admin'){
                         return '';
                     }
-                    if (Auth::user()->can('manage_roles')){
+                    if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
                         return '<div class="table-actions">
                                     <a href="'.url('role/edit/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
                                     <a href="'.url('role/delete/'.$data->id).'"  ><i class="ik ik-trash-2 f-16 text-red"></i></a>
@@ -129,10 +129,11 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role  = Role::where('id',$id)->first();
+        $roles = \App\Role::where('id',$id)->first();
         // if role exist
         if($role){
-            $role_permission = $role->permissions()
-                                    ->pluck('id')
+            $role_permission = $roles->roleHasPermisions()
+                                    ->pluck('permission_id')
                                     ->toArray();
 
             $permissions = Permission::pluck('name','id');
@@ -145,27 +146,15 @@ class RolesController extends Controller
 
     public function update(Request $request)
     {
-
-
-        // update role
-        $validator = Validator::make($request->all(), [
-            'role' => 'required',
-            'id'   => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
         try{
 
-            $role = Role::find($request->id);
-
-            $update = $role->update([
-                          'name' => $request->role
-                      ]);
-
+            $ln= new LNRoles();
+            $lnH= new LNRoleHasPermission();
+            $update = $ln->actualizarDatosRol($request, $request->id);
             // Sync role permissions
-            $role->syncPermissions($request->permissions);
+            foreach ($request->permissions as $permission){
+                $roleH= $lnH->actualizarRoleHasPermission($request->id,$permission);
+            }
 
             return redirect('roles')->with('success', 'Role info updated succesfully!');
         }catch (\Exception $e) {
