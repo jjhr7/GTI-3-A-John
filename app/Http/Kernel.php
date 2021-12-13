@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckManageDevices;
+use App\Http\Middleware\CheckManagePermission;
+use App\Http\Middleware\CheckManageRol;
+use App\Http\Middleware\CheckManageTown;
 use App\Http\Middleware\checkManageUserPermission;
 use App\Http\Middleware\CheckPermissions;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -66,5 +70,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkpermissions' => \App\Http\Middleware\CheckPermissions::class,
         'checkmanageuserpermission' => checkManageUserPermission::class,
+        'checkmanagedevices' => CheckManageDevices::class,
+        'checkmanagepermission'=> CheckManagePermission::class,
+        'checkmanagerol' => CheckManageRol::class,
+        'checkmanagetown' => CheckManageTown::class
     ];
 }

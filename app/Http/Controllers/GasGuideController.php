@@ -9,7 +9,6 @@ class GasGuideController extends Controller
 {
     //método que devuelve la vista de gas guide
     public function getView(){
-        dd("Hola");
         return view('gas-guide.gas-guide');
     }
 }

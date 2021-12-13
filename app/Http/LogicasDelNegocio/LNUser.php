@@ -68,7 +68,9 @@ class LNUser
             $user->password = Hash::make($request->password);
             $user->save();
 
-            $userInformation->town_id = $request->town_id;
+            $userInformation->town_id = $request->town;
+            $userInformation->role_id = $request->role;
+
             $userInformation->save();
             return [1,$user,$userInformation];
         }else{

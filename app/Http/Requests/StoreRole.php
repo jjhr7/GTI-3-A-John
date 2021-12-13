@@ -25,7 +25,6 @@ class StoreRole extends FormRequest
     {
         return [
             'name' => 'required|unique:roles',
-            'guard_name'=>'required'
         ];
     }
 
@@ -33,7 +32,6 @@ class StoreRole extends FormRequest
     {
         return [
             'name' => 'Nombre',
-            'guard_name'=>'Nombre_guard'
         ];
     }
 }

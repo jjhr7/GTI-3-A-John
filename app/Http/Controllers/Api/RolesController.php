@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use App\Http\LogicasDelNegocio\LNRoles;
 use App\Http\Requests\StoreRole;
 use Illuminate\Http\Request;
@@ -42,15 +43,36 @@ class RolesController extends Controller
             ]);*/
 
         $LNRoles=new LNRoles();
+        $LNRoleHasPermission=new LNRoleHasPermission();
+
 
         $rolCreado=$LNRoles->guardarRol($request->name,$request->guard_name);
 
+
         if($rolCreado[0]==1){
+            $permissionsId=$request->permissions;
+            foreach ($permissionsId as $id){
+                $rolePermissionCreado=$LNRoleHasPermission->guardarRoleHasPermission($rolCreado[1]->id,$id);
+                if($rolePermissionCreado[0]==1){
+                    return response([
+                        'message' => 'Permiso asignado correctamente!',
+                        'role' => $rolePermissionCreado[1],
+                        'success' => 1
+                    ]);
+                }else{
+                    return response([
+                        'message'=>'Error! No se ha podido crear el role',
+                        'success'=>0
+                    ]);
+                }
+            }
+
             return response([
                 'message' => 'Rol creada correctamente!',
                 'role' => $rolCreado[1],
                 'success' => 1
             ]);
+
         }else{
             return response([
                 'message'=>'Error! No se ha podido crear el role',

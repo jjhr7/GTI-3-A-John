@@ -93,11 +93,11 @@
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
                                         <label for="role">{{ __('Rol')}}<span class="text-red">*</span></label>
-                                        {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un rol','id'=> 'role', 'required'=> 'required']) !!}
+                                        {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un rol','id'=> 'rol', 'required'=> 'required']) !!}
                                     </div>
                                     <div class="form-group">
                                         <label for="role">{{ __('Municipio')}}<span class="text-red">*</span></label>
-                                        {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un municipio','id'=> 'role', 'required'=> 'required']) !!}
+                                        {!! Form::select('town', $data, null,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un municipio','id'=> 'town', 'required'=> 'required']) !!}
                                     </div>
                                     <div class="form-group">
                                         <label for="password-confirm">{{ __('Confirmar contraseña')}}<span class="text-red">*</span></label>

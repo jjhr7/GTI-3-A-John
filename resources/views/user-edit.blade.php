@@ -15,7 +15,7 @@
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Edit User')}}</h5>
-                            <span>{{ __('Create new user, assign roles & permissions')}}</span>
+                            <span>{{ __('Edit user, assign roles & permissions')}}</span>
                         </div>
                     </div>
                 </div>
@@ -75,25 +75,6 @@
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label for="password">{{ __('Password')}}</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  >
-                                        <div class="help-block with-errors"></div>
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password-confirm">{{ __('Confirm Password')}}</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-
-
-
 
 
                                 </div>
@@ -101,19 +82,11 @@
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
                                         <label for="role">{{ __('Assign Role')}}<span class="text-red">*</span></label>
-                                        {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=>'required']) !!}
+                                        {!! Form::select('role', $roles, $user_role,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un rol','id'=> 'rol', 'required'=> 'required']) !!}
                                     </div>
                                     <div class="form-group">
-                                        <label for="role">{{ __('Permissions')}}</label>
-                                        <!--<div id="permission" class="form-group">
-                                            foreach($user->getAllPermissions() as $key => $permission)
-                                            <span class="badge badge-dark m-1">
-                                                 clean unescaped data is to avoid potential XSS risk
-                                                 //clean($permission->name, 'titles')}}
-                                            </span>
-                                            endforeach
-                                        </div>-->
-                                        <input type="hidden" id="token" name="token" value="{{ csrf_token() }}">
+                                        <label for="role">{{ __('Municipio')}}<span class="text-red">*</span></label>
+                                        {!! Form::select('town', $towns, $user_town,[ 'class'=>'form-control select2', 'placeholder' => 'Selecciona un municipio','id'=> 'town', 'required'=> 'required']) !!}
                                     </div>
                                 </div>
                                 <div class="col-md-12">

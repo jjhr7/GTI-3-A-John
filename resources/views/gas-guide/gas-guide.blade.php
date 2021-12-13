@@ -13,13 +13,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/gas-guide.css') }}">
     <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
@@ -27,58 +28,65 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-
-<div class="auth-wrapper">
-    <div class="container-fluid h-100">
-        <div class="row flex-row h-100 bg-white">
-            <div class="col-xl-5 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                <div class="lavalite-bg" class="fondoLogin">
-                    <div class="lavalite-overlay">
-                        <a href="{{url('register')}}" ><img class="logo" src="{{asset('img/logoPequeno.png')}}"> </a>
-                    </div>
-                </div>
+<div class="container-fluid">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
             </div>
-            <div class="col-xl-7 col-lg-6 col-md-7 p-0 centrarElementos">
-                <div class="authentication-form mx-auto">
-                    <h2 class="tituloLogin">{{ __('Bienvenido de nuevo')}}</h2>
-                    <h2 class="textoLogin">{{ __('Ingrese a su cuenta')}}</h2>
-                    <form class="row align-items-start" method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label textForm">Email</label>
-                            <div class="col-lg-10">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                @enderror
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+    <div class="row clearfix box-guide">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-arrow-left btn-lg blue"></i></a>
+                    <h3 class="titulo-guide">{{ __('Información sobre gases medidos')}}</h3></div>
+                <div class="card-body">
+                    <div class="row md-12">
+                        <div class="col boxIcono"><a href="#"><img class="box-gas1" id="co2" src="{{asset('img/gas-guide-img/co2.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas2" id="bencenopireno" src="{{asset('img/gas-guide-img/h2s.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas3" id="no2" src="{{asset('img/gas-guide-img/no2.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas4" id="so2" src="{{asset('img/gas-guide-img/so2.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas5" id="o3" src="{{asset('img/gas-guide-img/o3.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas1" id="pm25" src="{{asset('img/gas-guide-img/pm25.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas2" id="pm10" src="{{asset('img/gas-guide-img/pm10.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas3" id="plomo" src="{{asset('img/gas-guide-img/pb.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas4" id="benceno" src="{{asset('img/gas-guide-img/benceno.png')}}"></a></div>
+                        <div class="col boxIcono"><a href="#"><img class="box-gas5" id="arsenico" src="{{asset('img/gas-guide-img/arsenico.png')}}"></a></div>
+                    </div>
+                    <div class="row mb-12">
+                        <div class="col-5 boxIcono"><a href="#"><img class="imgGas" src="{{asset('img/gas-guide-img/humo.png')}}"></a></div>
+                        <div class="col-7">
+                            <div class="row md-12">
+                                    <div class="col-md boxInfo">
+                                        <h5 class="tituloBox">Nombre</h5>
+                                        <h6 class="datosBox">Dióxido de carbono</h6>
+                                    </div>
+                                    <div class="col-md boxInfo">
+                                        <h5 class="tituloBox">Valor límite</h5>
+                                        <h6 class="datosBox">10 mg/m3 por 1h</h6>
+                                    </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label textForm">Contraseña</label>
-                                <div class="col-lg-10">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            <div class="row md-12">
+                                <div class="col-md boxInfo">
+                                    <h5 class="tituloBox">Valor de información</h5>
+                                    <h6 class="datosBox">Entre 500 y 800 ppm: calidad de aire interior mode...</h6>
                                 </div>
-                                <div>
-                                    <div class="d-flex">
-                                        <p class="btn text textoLogin3 centrarElementos">{{ __('¿Aún no tienes cuenta?')}}
-                                            <a class="p-lg-5 textoHover" href="{{url('register')}}"> <u>{{ __('Regístrate')}}</u> </a>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between margenTextos centrarElementos">
-                                        <a class="btn text textoLogin3 centrarElementos separacionTextos" href="{{url('password/forget')}}">
-                                            {{ __('¿Has olvidado tu contraseña?') }} </a>
-                                        <button class="btn-custom align-bottom">Iniciar sesión</button>
-                                    </div>
+                                <div class="col-md boxInfo">
+                                    <h5 class="tituloBox">Valor de alerta</h5>
+                                    <h6 class="datosBox">Nivel superior a 1200 ppm: calidad de aire interior...</h6>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="row md-12">
+                        <div class="col-md boxInfo">
+                            <h5 class="tituloBox">Descripción</h5>
+                            <h6 class="datosBox">Es un gas incoloro e inodoro cuyo origen puede est...</h6>
+                        </div>
+
                 </div>
             </div>
         </div>

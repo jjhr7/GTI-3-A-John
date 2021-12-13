@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\LogicasDelNegocio\LNRoleHasPermission;
+use App\Http\LogicasDelNegocio\LNRoles;
+use App\Http\Requests\StoreRole;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
@@ -28,6 +31,7 @@ class RolesController extends Controller
      */
     public function index()
     {
+
         $logicaPermissions= new LNPermission();
         $permissions=$logicaPermissions->obtenerTodosLosPermisos();
 
@@ -52,12 +56,27 @@ class RolesController extends Controller
         $data  = Role::get();
 
         return Datatables::of($data)
+                ->addColumn('permissions', function($data){
+                    $roles = $data->permissions()->get();
+                    $badges = '';
+                    foreach ($roles as $key => $role) {
+                        $badges .= '<span class="badge badge-dark m-1">'.$role->name.'</span>';
+                    }
+                    if($data->name == 'Super Admin'){
+                        return '<span class="badge badge-success m-1">All permissions</span>';
+                    }
+
+                    return $badges;
+                })
                 ->addColumn('action', function($data){
-                    if (auth()->user()->role->name == 'Super admin' || auth()->user()->role->name == 'Admin'){
+                    if($data->name == 'Super Admin'){
+                        return '';
+                    }
+                    if (Auth::user()->can('manage_roles')){
                         return '<div class="table-actions">
-                                <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
-                                <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                            </div>';
+                                    <a href="'.url('role/edit/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                    <a href="'.url('role/delete/'.$data->id).'"  ><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                </div>';
                     }else{
                         return '';
                     }
@@ -70,31 +89,35 @@ class RolesController extends Controller
      * Associate permissions will be stored in table
      */
 
-    /*public function create(Request $request)
+    public function create(Request $request)
     {
-        // laravel default validator
-        $validator = Validator::make($request->all(), [
-            'role' => 'required'
-        ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
-        try{
+            $lnRoles = new LNRoles();
+            $LNRoleHasPermission=new LNRoleHasPermission();
 
-            $role = Role::create(['name' => $request->role]);
-            $role->syncPermissions($request->permissions);
+            $rolCreado=$lnRoles->guardarRol($request->role,$request->role);
 
-            if($role){
+
+            if($rolCreado[0]==1){
+                $permissionsId=$request->permissions;
+                foreach ($permissionsId as $id){
+                    $rolePermissionCreado=$LNRoleHasPermission->guardarRoleHasPermission($rolCreado[1]->id,$id);
+                    if($rolePermissionCreado[0]==1){
+
+                    }else{
+                        return redirect('roles')->with('error', 'Failed to assign permission! Try again.');
+                    }
+                }
+
                 return redirect('roles')->with('success', 'Role created succesfully!');
+
+
             }else{
                 return redirect('roles')->with('error', 'Failed to create role! Try again.');
+
             }
-        }catch (\Exception $e) {
-            $bug = $e->getMessage();
-            return redirect()->back()->with('error', $bug);
-        }
-    }*/
+
+    }
 
     public function createForm(){
        // $LNPermission=new LNPermission();
@@ -165,4 +188,5 @@ class RolesController extends Controller
             return redirect('404');
         }
     }
+
 }
