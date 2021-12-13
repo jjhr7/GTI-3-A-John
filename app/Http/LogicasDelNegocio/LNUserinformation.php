@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * LNGas
+ * 2021-11-26
+ * Lógica del negocio de la información del usuario
+ */
+
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Device;
 use App\Models\Userinformation;

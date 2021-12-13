@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * LNUser
+ * 2021-11-25
+ * Lógica del negocio de user
+ */
+
 namespace App\Http\LogicasDelNegocio;
 
 use App\Models\Device;
@@ -12,6 +19,12 @@ use Illuminate\Support\Facades\Hash;
 class LNUser
 {
 
+    /**
+     * guardarUsuario. Funcion que guarda un usuario en la base de datos.
+     * @param name Nombre del usuario a guardar
+     * @param email Correo del usuario a guardar
+     * @param password Contraseña del usuario a guardar
+     */
     public function guardarUsuario($name,$email,$password){
         $user = new User();
         $user->name = $name;
@@ -26,10 +39,18 @@ class LNUser
         }
     }
 
+    /**
+     * obtenerTodosLosUsuarios. Funcion que obtiene todos los usuarios almacenados en la base de datos.
+     * @return [User]
+     */
     public function obtenerTodosLosUsuarios(){
         return User::all();
     }
 
+    /**
+     * eliminarUsuario. Funcion que elimina un usuario por id almacenado en la base de datos.
+     * @param id Id del usuario a buscar
+     */
     public function eliminarUsuario($id){
         $user = User::find($id);
 
@@ -41,11 +62,19 @@ class LNUser
         }
     }
 
+    /**
+     * obtenerUltimosUsuarios. Funcion que obtiene los últimos usuarios almacenados en la base de datos.
+     * @param nUsuarios Numero de usuarios a mostrar
+     */
     public function obtenerUltimosUsuarios($nUsuarios){
 
         return User::latest()->take($nUsuarios)->get();
     }
 
+    /**
+     * obtenerDatosUsuario. Funcion que obtiene todos los datos de un usuario almacenados en la base de datos.
+     * @param id Id del usuario a buscar
+     */
     public function obtenerDatosUsuario($id){
         $user = User::find($id);
         $userAccountInformation = Useraccountinformation::find(Useraccountinformation::where('user_id',$id)->get()[0]->id);
@@ -57,6 +86,11 @@ class LNUser
         }
     }
 
+    /**
+     * actualizarDatosUsuario. Funcion que actualiza todos los datos del usuario por id almacenados en la base de datos.
+     * @param request Request para acceder a la petición
+     * @param id Id del usuario a actualizar
+     */
     public function actualizarDatosUsuario($id, Request $request){
         $user = User::find($id);
 

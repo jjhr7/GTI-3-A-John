@@ -1,18 +1,32 @@
 <?php
 
+/**
+ * @author Leire Villarroya
+ * RolesController
+ * 2021-11-25
+ * Controlador de roles
+ */
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use App\Http\LogicasDelNegocio\LNRoles;
 use App\Http\Requests\StoreRole;
+use App\Models\Town;
 use Illuminate\Http\Request;
 //use Spatie\Permission\Models\Role;
 use App\Role;
 use Auth;
+use Illuminate\Http\Response;
 
 class RolesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function list()
     {
         return response([
@@ -21,7 +35,12 @@ class RolesController extends Controller
         ]);
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StoreRole $request
+     * @return Response
+     */
     public function store(StoreRole $request)
     {
 
@@ -81,7 +100,12 @@ class RolesController extends Controller
         }
     }
 
-
+    /**
+     * Display the specified resource.
+     *
+     * @param $id
+     * @return Response
+     */
     public function show($id)
     {
         //Código antiguo
@@ -114,7 +138,12 @@ class RolesController extends Controller
 
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return Response
+     */
     public function delete($id)
     {
         /*
@@ -169,6 +198,13 @@ class RolesController extends Controller
             ]);
     }*/
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
     public function update(Request $request, $id){
         /* Código viejo
         $role = Role::find($id);
