@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\RoleHasPermission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Permission;
@@ -19,8 +20,13 @@ class Role extends Model
         return $this->hasMany(Permission::class);
     }
 
+
     public function users(){
         return $this->hasMany(User::class);
+    }
+
+    public function roleHasPermisions(){
+        return $this->hasMany(RoleHasPermission::class);
     }
 
 }

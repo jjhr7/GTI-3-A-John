@@ -3,12 +3,13 @@
 
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Read;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
 class LNReads
 {
-    public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value, $date){
+    public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value){
         //Crear una instancia del modelo vacío
         $read=new Read();
         $read->user_id=$user_id;
@@ -17,7 +18,7 @@ class LNReads
         $read->longitude=$longitude;
         $read->type_read=$type_read;
         $read->value=$value;
-        $read->date=$date;
+        $read->date=Carbon::now('CET')->toRfc850String();
 
         $read->save();
 

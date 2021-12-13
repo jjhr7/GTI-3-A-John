@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class LNNotifications
 {
-    public function guardarNotificacion($user_id,$date,$message,$type){
+    public function guardarNotificacion($user_id,$message,$type){
         $notification=new Notification();
         $notification->user_id=$user_id;
-        $notification->date=Carbon::now()->toRfc850String();
+        $notification->date=Carbon::now('CET')->toRfc850String();
         $notification->message=$message;
         $notification->type=$type;
 

@@ -16,8 +16,9 @@ class CheckPermissions
      */
     public function handle(Request $request, Closure $next)
     {
+        $roleUser = auth()->user()->information->role->name;
 
-        if(auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin' || auth()->user()->information->role->name == 'Project Manager'){
+        if($roleUser == 'Super admin' || $roleUser == 'Admin' || $roleUser == 'Project Manager'){
 
             return $next($request);
         }else{

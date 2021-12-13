@@ -24,7 +24,7 @@ class NotificationFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1,10),
-            'date' => Carbon::now()->toRfc850String(),
+            'date' => Carbon::now('CET')->toRfc850String(),
             'message' => $this->faker->realText(50,2),
             'type' => $this->faker->randomElement(['Information','Warnning','Danger']),
         ];

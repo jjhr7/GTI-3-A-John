@@ -42,7 +42,7 @@ class NotificationsController extends Controller
     {
         $LNNotification=new LNNotifications();
 
-        $notificationCreada=$LNNotification->guardarNotificacion($request->user_id,$request->date,$request->message,$request->type);
+        $notificationCreada=$LNNotification->guardarNotificacion($request->user_id,$request->message,$request->type);
 
         if($notificationCreada[0]==1) {
             return response([

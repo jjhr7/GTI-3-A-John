@@ -36,7 +36,7 @@ class ReadController extends Controller
 
         $LNMediciones = new LNReads();
 
-        $medicionCreada = $LNMediciones->guardarRead($request->user_id,$request->device_id,$request->latitude,$request->longitude,$request->type_read, $request->value,$request->date);
+        $medicionCreada = $LNMediciones->guardarRead($request->user_id,$request->device_id,$request->latitude,$request->longitude,$request->type_read, $request->value);
 
         if ($medicionCreada){
             return response([
