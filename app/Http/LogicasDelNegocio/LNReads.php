@@ -5,9 +5,27 @@ namespace App\Http\LogicasDelNegocio;
 use App\Models\Read;
 use Illuminate\Http\Request;
 
+/**
+ * @author Leire Villarroya Martínez
+ * LNReads
+ * 2021-11-26
+ * Lógica del negocio de mediciones
+ */
 
 class LNReads
 {
+
+    /**
+     * Descripción de guardarRead. Función que guarda un dispositivo dado el número de serie
+     * @param $user_id
+     * @param $device_id
+     * @param $latitude
+     * @param $longitude
+     * @param $type_read
+     * @param $value
+     * @param $date
+     * @return array
+     */
     public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value, $date){
         //Crear una instancia del modelo vacío
         $read=new Read();
@@ -28,6 +46,11 @@ class LNReads
         }
     }
 
+    /**
+     * Descripción de eliminarRead. Función que elimina la medición dado su id
+     * @param $id número del id de la medición
+     * @return int
+     */
     public function eliminarRead($id){
         $read=Read::find($id);
 
@@ -39,10 +62,19 @@ class LNReads
         }
     }
 
+    /**
+     * Descripción de obtenerTodosLosReads. Función que devuelve todos los reads
+     * @return void
+     */
     public function obtenerTodosLosReads(){
         $read=Read::all();
     }
 
+    /**
+     * Descripción de obtenerReads. Función que devuelve todos los reads
+     * @param $id
+     * @return array
+     */
     public function obtenerReads($id){
         $read=Read::find($id);
 
@@ -53,6 +85,13 @@ class LNReads
         }
     }
 
+    /**
+     * Descripción de actualizarDatosRead. Función que actualiza los datos de una medicion
+     * dado su id
+     * @param int $id
+     * @param Request $request
+     * @return array
+     */
     public function actualizarDatosRead($id, Request $request){
         $read=Read::find($id);
         if($read){

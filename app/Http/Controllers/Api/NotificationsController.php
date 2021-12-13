@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\LogicasDelNegocio\LNNotifications;
 use App\Models\Notification;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class NotificationsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -36,7 +38,7 @@ class NotificationsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -62,7 +64,7 @@ class NotificationsController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -83,6 +85,11 @@ class NotificationsController extends Controller
         }
     }
 
+    /**
+     * Descripción eliminarNotificacion
+     * @param $id
+     * @return ResponseFactory|Response
+     */
     public function obtenerNotification($id){
         $LNNotifications=new LNNotifications();
         $notification=$LNNotifications->obtenerNotificacion($id);
@@ -106,7 +113,7 @@ class NotificationsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -131,7 +138,7 @@ class NotificationsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Notification  $notification
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -152,6 +159,11 @@ class NotificationsController extends Controller
         }
     }
 
+    /**
+     * Descripción eliminarNotificacionesByUser
+     *
+     * @return ResponseFactory|Response
+     */
     public function eliminarNotificacionesByUser(){
         $LNNotification=new LNNotifications();
 
