@@ -177,7 +177,7 @@ class UserController extends Controller
                 ]);
             }
 
-            return redirect()->back()->with('success', 'User information updated succesfully!');
+            return redirect('users')->with('success', 'User information updated succesfully!');
         }catch (\Exception $e) {
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);

@@ -86,17 +86,41 @@ class PermissionController extends Controller
         }
     }
 
-
-
     public function update(Request $request)
     {
 
-        // update permission table
-        $permission = Permission::find($request->id);
-        $permission->name = $request->name;
-        $permission->save();
 
-        return $permission;
+        try{
+
+            $lnPermission = new LNPermission();
+            $update = $lnPermission->actualizarDatosPermiso($request->id,$request);
+
+            return redirect('permission')->with('success', 'Permission updated succesfully!');
+        }catch (\Exception $e) {
+            $bug = $e->getMessage();
+            return redirect()->back()->with('error', $bug);
+
+        }
+    }
+
+    public function edit($id)
+    {
+
+        try {
+
+            $permission = Permission::find($id);
+            $namePermission = $permission->name;
+
+            if ($permission) {
+                return view('permisos.edit-permission', compact('permission'));
+            } else {
+                return redirect('404');
+            }
+
+        } catch (\Exception $e) {
+            $bug = $e->getMessage();
+            return redirect()->back()->with('error', $bug);
+        }
     }
 
 

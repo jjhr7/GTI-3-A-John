@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Roles')
+@section('title', $permission->name)
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Roles')}}</h5>
-                            <span>{{ __('Edit roles')}}</span>
+                            <h5>{{ __('Permission')}}</h5>
+                            <span>{{ __('Edit permission')}}</span>
                         </div>
                     </div>
                 </div>
@@ -44,11 +44,12 @@
                     <div class="card-body">
                         <form class="forms-sample" method="POST" action="{{url('permission/update')}}">
                             @csrf
+                            <input type="hidden" name="id" value="{{$permission->id}}">
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="form-group">
                                         <label for="permission">{{ __('Name')}}<span class="text-red">*</span></label>
-                                        <input type="text" class="form-control is-valid" id="permission" name="permission" placeholder="Permission Name" required>
+                                        <input type="text" class="form-control is-valid" id="permission" name="permission" value="{{$permission->name}}" placeholder="Permission Name" required>
                                     </div>
                                 </div>
                             </div>

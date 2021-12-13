@@ -68,8 +68,8 @@ class LNRoles
         //buscamos el rol por id
         if($role) {
             //los campos que queremos modificar
-            $role->name = $request->name;
-            $role->guard_name = $request->guard_name;
+            $role->name = $request->role;
+            $role->guard_name = $request->role;
 
             $role->save();
             //guardamos
