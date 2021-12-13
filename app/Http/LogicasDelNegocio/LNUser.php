@@ -13,6 +13,7 @@ use App\Models\Device;
 use App\Models\Useraccountinformation;
 use App\Models\Userinformation;
 use App\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,9 +22,9 @@ class LNUser
 
     /**
      * guardarUsuario. Funcion que guarda un usuario en la base de datos.
-     * @param name Nombre del usuario a guardar
-     * @param email Correo del usuario a guardar
-     * @param password Contraseña del usuario a guardar
+     * @param $name .Nombre del usuario a guardar
+     * @param $email .Correo del usuario a guardar
+     * @param $password .Contraseña del usuario a guardar
      */
     public function guardarUsuario($name,$email,$password){
         $user = new User();
@@ -41,7 +42,7 @@ class LNUser
 
     /**
      * obtenerTodosLosUsuarios. Funcion que obtiene todos los usuarios almacenados en la base de datos.
-     * @return [User]
+     * @return User[]|Collection
      */
     public function obtenerTodosLosUsuarios(){
         return User::all();
@@ -49,7 +50,7 @@ class LNUser
 
     /**
      * eliminarUsuario. Funcion que elimina un usuario por id almacenado en la base de datos.
-     * @param id Id del usuario a buscar
+     * @param $id Id del usuario a buscar
      */
     public function eliminarUsuario($id){
         $user = User::find($id);
@@ -64,7 +65,7 @@ class LNUser
 
     /**
      * obtenerUltimosUsuarios. Funcion que obtiene los últimos usuarios almacenados en la base de datos.
-     * @param nUsuarios Numero de usuarios a mostrar
+     * @param $nUsuarios Numero de usuarios a mostrar
      */
     public function obtenerUltimosUsuarios($nUsuarios){
 
@@ -73,7 +74,7 @@ class LNUser
 
     /**
      * obtenerDatosUsuario. Funcion que obtiene todos los datos de un usuario almacenados en la base de datos.
-     * @param id Id del usuario a buscar
+     * @param $id Id del usuario a buscar
      */
     public function obtenerDatosUsuario($id){
         $user = User::find($id);
@@ -88,8 +89,9 @@ class LNUser
 
     /**
      * actualizarDatosUsuario. Funcion que actualiza todos los datos del usuario por id almacenados en la base de datos.
-     * @param request Request para acceder a la petición
-     * @param id Id del usuario a actualizar
+     * @param $id Id del usuario a actualizar
+     * @param Request $request
+     * @return array|int[]
      */
     public function actualizarDatosUsuario($id, Request $request){
         $user = User::find($id);
