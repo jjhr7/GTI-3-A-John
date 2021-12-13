@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="PublishConfigData" serverName="GTI-3-A-Web">
-=======
-  <component name="PublishConfigData" serverName="marselo o2">
->>>>>>> develop
     <serverData>
-      <paths name="marselo o2">
+      <paths name="GTI-3-A-Web">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
