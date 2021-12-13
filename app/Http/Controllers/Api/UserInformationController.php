@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @author Jonathan Hernández
+ * UserInformationController
+ * 2021-11-26
+ * Controlador de la información del usuario
+ */
+
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -7,13 +15,14 @@ use App\Http\LogicasDelNegocio\LNUserinformation;
 use App\Models\Device;
 use App\Models\Userinformation;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserInformationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -23,8 +32,8 @@ class UserInformationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -34,8 +43,8 @@ class UserInformationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Userinformation  $userinformation
-     * @return \Illuminate\Http\Response
+     * @param Userinformation $userinformation
+     * @return void
      */
     public function show(Userinformation $userinformation)
     {
@@ -45,9 +54,9 @@ class UserInformationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Userinformation  $userinformation
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Userinformation $userinformation
+     * @return void
      */
     public function update(Request $request, Userinformation $userinformation)
     {
@@ -57,14 +66,20 @@ class UserInformationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Userinformation  $userinformation
-     * @return \Illuminate\Http\Response
+     * @param Userinformation $userinformation
+     * @return void
      */
     public function destroy(Userinformation $userinformation)
     {
         //
     }
 
+    /**
+     * Asigna un dispositivo a un usuario
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function asignarDispositivo(Request $request){
         $LNUserinformation = new LNUserinformation();
         $deviceAssigned = $LNUserinformation->assignDevice($request->serial);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use App\Http\LogicasDelNegocio\LNRoles;
 use App\Http\Requests\StoreRole;
+use App\Models\Town;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 //use Spatie\Permission\Models\Permission;
@@ -131,6 +132,7 @@ class RolesController extends Controller
         return view('roles.role-create', compact('permissions'));
     }
 
+
     public function edit($id)
     {
         $role  = Role::where('id',$id)->first();
@@ -148,6 +150,12 @@ class RolesController extends Controller
         }
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
     public function update(Request $request)
     {
 
@@ -181,6 +189,12 @@ class RolesController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return Response
+     */
     public function delete($id)
     {
         $role   = Role::find($id);
