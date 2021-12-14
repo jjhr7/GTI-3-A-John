@@ -19,7 +19,6 @@ class CheckManageDevices
 
         $PermisionsUser = auth()->user()->information->role->permissions;
 
-        dd($PermisionsUser);
 
         $permisoDenegado = true;
 
