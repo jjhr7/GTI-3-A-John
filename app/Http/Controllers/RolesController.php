@@ -160,9 +160,14 @@ class RolesController extends Controller
             $lnH= new LNRoleHasPermission();
             $update = $ln->actualizarDatosRol($request, $request->id);
             // Sync role permissions
-            foreach ($request->permissions as $permission){
-                $roleH= $lnH->actualizarRoleHasPermission($request->id,$permission);
+            $roleHAct= $lnH->actualizarRoleHasPermission($request->id);
+            if ($request->permissions!=null){
+                foreach ($request->permissions as $permission){
+
+                    $roleH= $lnH->create($request->id,$permission);
+                }
             }
+
 
             return redirect('roles')->with('success', 'Role info updated succesfully!');
         }catch (\Exception $e) {
