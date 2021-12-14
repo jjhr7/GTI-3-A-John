@@ -19,8 +19,6 @@ class CheckManagePermission
 
         $PermisionsUser = auth()->user()->information->role->permissions;
 
-        dd($PermisionsUser);
-
         $permisoDenegado = true;
 
         foreach ($PermisionsUser as $permission){
