@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function(){
 	})->name('dashboard');
 
 	//only those have manage_user permission will get access
-	Route::group(['middleware' => 'checkpermissions'], function(){
+	Route::group(['middleware' => 'checkmanageuserpermission'], function(){
 	Route::get('/users', [UserController::class,'index']);
 	Route::get('/user/get-list', [UserController::class,'getUserList']);
 		Route::get('/user/create', [UserController::class,'create']);

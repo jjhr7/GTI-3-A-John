@@ -69,10 +69,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkpermissions' => \App\Http\Middleware\CheckPermissions::class,
-        'checkmanageuserpermission' => checkManageUserPermission::class,
         'checkmanagedevices' => CheckManageDevices::class,
         'checkmanagepermission'=> CheckManagePermission::class,
         'checkmanagerol' => CheckManageRol::class,
-        'checkmanagetown' => CheckManageTown::class
+        'checkmanagetown' => CheckManageTown::class,
+        'checkmanageuserpermission' => checkManageUserPermission::class
     ];
 }

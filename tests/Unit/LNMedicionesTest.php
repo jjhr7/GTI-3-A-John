@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\User;
+use App\Http\LogicasDelNegocio\LNReads;
 use Tests\TestCase;
 
 class LNMedicionesTest extends TestCase
@@ -19,14 +19,11 @@ class LNMedicionesTest extends TestCase
 
     public function testGuardarMedicion(){
 
-        $test_read = [
-            'data' => 120,
-            'read_date' => '2021-10-17',
-            'device_id' => 1,
-            'is_draft' => false
-        ];
-        $response=$this->post('/api/v1/medicion/create',$test_read);
-        $response->assertStatus(302);
+        $LNRead = new LNReads();
+
+        $operationStatus = $LNRead->guardarRead(1,1,1111,1111,'Test read',0);
+
+        $this->assertTrue($operationStatus[0] == 1);
 
 
     }
