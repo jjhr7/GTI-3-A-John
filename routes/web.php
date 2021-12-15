@@ -13,6 +13,7 @@ use App\Http\Controllers\ReadController;
 use App\Http\Controllers\GasGuideController;
 use App\Http\Controllers\TownController;
 use \App\Http\Controllers\DeviceController;
+use App\Http\Controllers\HealthyTownController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -109,7 +110,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/devices/get-list', [DeviceController::class, 'getDeviceList']);
     Route::get('/devices/{id}', [DeviceController::class, 'show']);
 
-
+    // Rutas para gestionar healthyTowns
+    Route::get('/healthytowns', [HealthyTownController::class,'index']);
+    Route::get('/healthytowns/get-list', [HealthyTownController::class,'getHealthyTownList']);
+    Route::post('/healthytown/create', [HealthyTownController::class,'create']);
+    Route::get('/healthytown/createForm', [HealthyTownController::class,'createForm']);
+    Route::get('/healthytown/delete/{id}', [HealthyTownController::class,'delete']);
 
 	// permission examples
     Route::get('/permission-example', function () {

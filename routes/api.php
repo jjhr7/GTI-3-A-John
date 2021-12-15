@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\TownController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\UserInformationController;
 use App\Http\Controllers\Api\GasController;
+use App\Http\Controllers\Api\HealthyTownController;
 
 
 
@@ -78,6 +79,11 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
 
 
+    // Rutas para gestionar healthyTowns
+    Route::get('/healthytowns', [HealthyTownController::class,'index']);
+    Route::post('/healthytown/create', [HealthyTownController::class,'store']);
+    Route::get('/healthytown/{id}', [HealthyTownController::class,'show']);
+    Route::delete('/healthytown/delete/{id}', [HealthyTownController::class,'destroy']);
 
     //Rutas para gestionar guía gases
     Route::get('/gases', [GasController::class, 'index']);

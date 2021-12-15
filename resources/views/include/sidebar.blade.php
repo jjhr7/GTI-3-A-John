@@ -43,6 +43,7 @@
                             <a href="{{url('permission/createForm')}}" class="menu-item {{ ($segment1 == 'role' && $segment2 == 'createForm') ? 'active' : '' }}">{{ __('Añadir Permisos')}}</a>
 
                             <a href="{{url('towns')}}" class="menu-item {{ ($segment1 == 'towns') ? 'active' : '' }}">{{ __('Ciudades')}}</a>
+                            <a href="{{url('healthytowns')}}" class="menu-item {{ ($segment1 == 'healthytowns') ? 'active' : '' }}">{{ __('Ciudades sanas')}}</a>
 
                             <a href="{{url('devices')}}" class="menu-item {{ ($segment1 == 'devices') ? 'active' : '' }}">{{ __('Devices')}}</a>
                             <a href="{{url('devices/createForm')}}" class="menu-item {{ ($segment1 == 'devices' && $segment2 == 'createForm') ? 'active' : '' }}">{{ __('Añadir Device')}}</a>
