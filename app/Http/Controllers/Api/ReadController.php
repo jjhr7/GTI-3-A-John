@@ -144,4 +144,32 @@ class ReadController extends Controller
             'success' => 1
         ]);
     }*/
+
+    public function obtenerUltimasReadsByUser(){
+       $LNMediciones = new LNReads();
+       return response([
+           'mediciones' => $LNMediciones->obtenerTodasLasMedicionesPorUsuario(),
+           'success' => 1
+       ]);
+   }
+
+    public function obtenerUltimasReadsByTown(){
+
+        $LNMediciones = new LNReads();
+
+        return response([
+            'mediciones' => $LNMediciones->obtenerUltimasReadsByTown(),
+            'success' => 1
+        ]);
+    }
+
+    public function obtenerReadsByUserAndDate(Request $request){
+        $LNMediciones = new LNReads();
+        $medicionesFiltradas = $LNMediciones->obtenerReadsByUserAndDate($request->date);
+
+        return response([
+            'mediciones' => $medicionesFiltradas,
+            'success' => 1
+        ]);
+    }
 }

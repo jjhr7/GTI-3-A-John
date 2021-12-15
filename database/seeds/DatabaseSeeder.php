@@ -18,6 +18,7 @@ use App\Models\Device;
 use App\Models\Read;
 use Database\Seeders\UserAccountInformationSeeder;
 use App\Models\Gas;
+use Database\Seeders\TownSeeder;
 
 
 
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(UserAccountInformationSeeder::class);
         Device::factory(10)->create();
+        $this->call(TownSeeder::class);
         Town::factory(20)->create();
         Zone::factory(40)->create();
         $this->call(UserInformationSeeder::class);

@@ -5,6 +5,7 @@ namespace App\Http\LogicasDelNegocio;
 use App\Models\Read;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @author Leire Villarroya Martínez
@@ -27,7 +28,7 @@ class LNReads
      * @param $date
      * @return array
      */
-    public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value, $date){
+    public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value){
         //Crear una instancia del modelo vacío
         $read=new Read();
         $read->user_id=$user_id;
@@ -111,7 +112,46 @@ class LNReads
             return [0];
         }
     }
-    /*public function obtenerUltimasReads($nMediciones){
+
+    public function obtenerUltimasReads($nMediciones){
         return Read::latest()->take($nMediciones)->get();
-    }*/
+    }
+
+    public function obtenerTodasLasMedicionesPorUsuario(){
+
+        $mediciones = auth()->user()->reads;
+
+
+        return $mediciones;
+    }
+
+    public function obtenerReadsByUserAndDate($date){
+
+        // La fecha: Monday, 13-Dec-21 17:13:02 CET
+        $fecha_obtenida = strtotime($date);
+
+        $num =0;
+        $mediciones_dentro_fecha = [];
+
+        $mediciones = auth()->user()->reads;
+
+        foreach ($mediciones as $medicion ){
+
+            if(strtotime($medicion->date)<=$fecha_obtenida){
+                $mediciones_dentro_fecha[$num]= $medicion;
+
+            }
+            $num ++;
+        }
+
+        return $mediciones_dentro_fecha;
+    }
+
+    public function obtenerUltimasReadsByTown(){
+
+        $mediciones = auth()->user()->reads;
+
+
+        return $mediciones;
+    }
 }

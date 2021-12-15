@@ -31,4 +31,8 @@ class Userinformation extends Model
     public function town(){
         return $this->belongsTo(Town::class);
     }
+
+    public function reads(){
+        return $this->hasMany( Read::class);
+    }
 }

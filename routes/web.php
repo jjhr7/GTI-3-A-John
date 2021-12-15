@@ -12,7 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\GasGuideController;
 use App\Http\Controllers\TownController;
-
+use \App\Http\Controllers\DeviceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,6 +93,16 @@ Route::group(['middleware' => 'auth'], function(){
 
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
+
+
+
+    Route::get('/devices', [DeviceController::class, 'index']);
+    Route::get('/devices/get-list', [DeviceController::class, 'getDeviceList']);
+    Route::post('/devices/create', [DeviceController::class,'create']);
+    Route::get('/devices/createForm', [DeviceController::class, 'createForm']);
+    Route::get('/devices/{id}', [DeviceController::class, 'show']);
+    Route::post('/devices/update', [DeviceController::class,'update']);
+    Route::get('/devices/delete/{id}', [DeviceController::class,'delete']);
 
 
 	// permission examples

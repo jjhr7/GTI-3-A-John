@@ -73,6 +73,11 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('/medicion/delete/{id}', [ReadController::class,'destroy']);
     Route::post('/medicion/update/{id}', [ReadController::class, 'update']);
     //Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
+    Route::get('/mediciones/user', [ReadController::class, 'obtenerUltimasReadsByUser']);
+    Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
+    Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
+
+
 
     //Rutas para gestionar guía gases
     Route::get('/gases', [GasController::class, 'index']);
