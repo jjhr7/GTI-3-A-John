@@ -44,6 +44,9 @@
 
                             <a href="{{url('towns')}}" class="menu-item {{ ($segment1 == 'towns') ? 'active' : '' }}">{{ __('Ciudades')}}</a>
 
+                            <a href="{{url('devices')}}" class="menu-item {{ ($segment1 == 'devices') ? 'active' : '' }}">{{ __('Devices')}}</a>
+                            <a href="{{url('devices/createForm')}}" class="menu-item {{ ($segment1 == 'devices' && $segment2 == 'createForm') ? 'active' : '' }}">{{ __('Añadir Device')}}</a>
+
                         </div>
                     </div>
                 @endif

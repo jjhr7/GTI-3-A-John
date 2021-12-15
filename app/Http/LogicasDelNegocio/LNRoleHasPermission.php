@@ -37,22 +37,76 @@ class LNRoleHasPermission
         }
     }
 
-    public function actualizarRoleHasPermission($role_id, $permission_id){
-        $role=RoleHasPermission::find($id);
+    public function actualizarRoleHasPermission($role_id){
+        $roleHasPermissions=RoleHasPermission::get();
 
         //buscamos el rol por id
-        if($role) {
-            //los campos que queremos modificar
-            $role->role_id = $role_id;
-            $role->permission_id = $permission_id;
+        if($roleHasPermissions) {
+            foreach ($roleHasPermissions as $roleHasPermission){
 
-            $role->save();
-            //guardamos
-
-            //si ha ido bien
-            return [1, $role];
+                if($role_id == $roleHasPermission->role_id){
+                    $this->delete($roleHasPermission->id);
+                }
+            }
+            return [1, $roleHasPermissions];
         }else{
             //si no
+            return [0];
+        }
+
+    }
+
+
+    public function deleteRoleHasPermissionbyPermission($permission_id){
+        $roleHasPermissions=RoleHasPermission::get();
+
+        //buscamos el rol por id
+        if($roleHasPermissions) {
+            foreach ($roleHasPermissions as $roleHasPermission){
+
+                if($permission_id == $roleHasPermission->permission_id){
+                    $this->delete($roleHasPermission->id);
+                }
+            }
+            return [1, $roleHasPermissions];
+        }else{
+            //si no
+            return [0];
+        }
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id
+     * @return Response
+     */
+    public function delete($id)
+    {
+            $role = RoleHasPermission::find($id);
+        if($role){
+            $delete = $role->delete();
+        }else{
+            return redirect('404');
+        }
+    }
+
+    /**
+     * Store new roles with assigned permission
+     * Associate permissions will be stored in table
+     */
+
+    public function create($role_id, $permission_id)
+    {
+        $roleHasPermission = new RoleHasPermission();
+        $roleHasPermission->role_id=$role_id;
+        $roleHasPermission->permission_id=$permission_id;
+        $roleHasPermission->save();
+
+        if($roleHasPermission){
+            return [1,$roleHasPermission];
+        }else{
             return [0];
         }
     }
