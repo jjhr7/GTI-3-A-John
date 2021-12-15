@@ -5,6 +5,23 @@
 	height: 400px;
 }
 
+a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 .auth-wrapper .authentication-form .logo-centered {
     width: auto !important;
     text-align: center;
@@ -72,7 +89,7 @@
 	height:75px
 }
 #realtime-profit, #sale-diff{
-	height:150px;
+	height:300px;
 }
 #sec-ecommerce-chart-line{
 	height:30px;
@@ -130,7 +147,7 @@
 }*/
 
 #deal-analytic-chart{
-	height: 300px !important;
+	height:300 !important;
 }
 #tot-rev-chart{
 	width:100px;
@@ -204,7 +221,7 @@
   position: absolute;
   right: 23px;
   font-size: 25px;
-  color: #c7c7c7;
+  color: #F6F7FB;
   cursor: pointer;
 }
 .sidebar-mini .sidebar-action i:before {
