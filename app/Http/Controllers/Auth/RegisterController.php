@@ -83,7 +83,7 @@ class RegisterController extends Controller
 
         $userController->createNewUserAccountInformation($userCreated[1]->id);
 
-        $userInformationCreated = $userController->createUserInformation($userCreated[1]->id,5,3);
+        $userInformationCreated = $userController->createUserInformation($userCreated[1]->id,5,1);
 
         if($userInformationCreated[0] == 1){
             return redirect('/login');
@@ -94,8 +94,7 @@ class RegisterController extends Controller
     }
     public function registerUser(){
 
-        $municipios  = Town::pluck('name','id');
+        return view('pages.register');
 
-        return view('pages.register',compact('municipios'));
     }
 }

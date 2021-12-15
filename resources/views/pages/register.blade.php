@@ -63,21 +63,6 @@
                                     <div class="col-lg-10">
                                     <input type="password" class="form-control"  name="password_confirmation" required>
                                 </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label textForm">Municipio</label>
-                                        <div class="col-lg-10 d-flex">
-                                            <div class="dropdown">
-                                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Teulada
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Teulalda</a>
-                                                    <a class="dropdown-item" href="#">Gandía</a>
-                                                    <a class="dropdown-item" href="#">Manises</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 <div class="d-flex">
                                         <p class="btn text textoRegister2 centrarElementos centrar2">{{ __('¿Ya estás registrado?')}}
                                             <u> <a class="p-lg-5 textoRegister2" href="{{url('login')}}">{{ __('Iniciar sesión')}}</a></u></p>

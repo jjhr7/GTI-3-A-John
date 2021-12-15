@@ -25,7 +25,7 @@ class LNNotifications
      * @param $type
      * @return array
      */
-    public function guardarNotificacion($user_id,$date,$message,$type){
+    public function guardarNotificacion($user_id,$message,$type){
         $notification=new Notification();
         $notification->user_id=$user_id;
         $notification->date=Carbon::now('CET')->toRfc850String();
