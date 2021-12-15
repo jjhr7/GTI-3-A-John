@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/municipio/{id}', [TownController::class,'show']);
     Route::post('/municipio/update/{id}', [TownController::class,'update']);
     Route::delete('/municipio/delete/{id}', [TownController::class,'destroy']);
+    Route::get('/municipio/users/{id}', [TownController::class, 'users']);
 
 
     Route::get('/user/{id}', [UserController::class,'profile']);
@@ -77,7 +78,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/mediciones/user', [ReadController::class, 'obtenerUltimasReadsByUser']);
     Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
-
 
     // Rutas para gestionar healthyTowns
     Route::get('/healthytowns', [HealthyTownController::class,'index']);

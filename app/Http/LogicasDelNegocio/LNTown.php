@@ -10,6 +10,9 @@
 namespace App\Http\LogicasDelNegocio;
 use App\Models\Town; //Instanciar el modelo que conecta con la base de datos
 use Illuminate\Http\Request; //Validador para crear el municipio
+use App\User;
+use App\Models\Useraccountinformation;
+use App\Models\Userinformation;
 
 class LNTown
 {
@@ -101,6 +104,28 @@ class LNTown
         }else{
             return [0];
         }
+    }
+
+    public function obtenerTodosUsersDeUnaTown($id){
+
+        $users = Userinformation::get();
+
+        $contador=0;
+
+        $usersOfTown= [];
+        foreach ($users as $user){
+
+            if($user->town_id==$id){
+
+                $usersOfTown[$contador]=$user->user;
+
+                $contador++;
+            }
+
+        }
+
+        return $usersOfTown;
+
     }
 
 }
