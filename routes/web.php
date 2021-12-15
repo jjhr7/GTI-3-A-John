@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	//only those have manage_role permission will get access
-
+    Route::group(['middleware' => 'checkmanagerol'], function(){
 		Route::get('/roles', [RolesController::class,'index']);
 		Route::get('/role/get-list', [RolesController::class,'getRoleList']);
         Route::get('/role/createForm', [RolesController::class,'createForm']);
@@ -70,9 +70,11 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/role/edit/{id}', [RolesController::class,'edit']);
 		Route::post('/role/update', [RolesController::class,'update']);
 		Route::get('/role/delete/{id}', [RolesController::class,'delete']);
+    });
 
 
 	//only those have manage_permission permission will get access
+    Route::group(['middleware' => 'checkmanagepermission'], function(){
 		Route::get('/permission', [PermissionController::class,'index']);
 		Route::get('/permission/get-list', [PermissionController::class,'getPermissionList']);
 		Route::post('/permission/create', [PermissionController::class,'create']);
@@ -80,6 +82,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('/permission/update', [PermissionController::class,'update']);
 		Route::get('/permission/{id}', [PermissionController::class,'edit']);
 		Route::get('/permission/delete/{id}', [PermissionController::class,'delete']);
+    });
+
     //RutasMediciones
     //Route::resource('mediciones', ReadController::class)->parameters(['mediciones'=>'medicion']);
     //dengue
@@ -95,14 +99,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 
 
-
+    Route::group(['middleware' => 'checkmanagedevices'], function(){
+        Route::post('/devices/create', [DeviceController::class,'create']);
+        Route::get('/devices/createForm', [DeviceController::class, 'createForm']);
+        Route::post('/devices/update', [DeviceController::class,'update']);
+        Route::get('/devices/delete/{id}', [DeviceController::class,'delete']);
+    });
     Route::get('/devices', [DeviceController::class, 'index']);
     Route::get('/devices/get-list', [DeviceController::class, 'getDeviceList']);
-    Route::post('/devices/create', [DeviceController::class,'create']);
-    Route::get('/devices/createForm', [DeviceController::class, 'createForm']);
     Route::get('/devices/{id}', [DeviceController::class, 'show']);
-    Route::post('/devices/update', [DeviceController::class,'update']);
-    Route::get('/devices/delete/{id}', [DeviceController::class,'delete']);
+
 
 
 	// permission examples
@@ -161,6 +167,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     //Rutas para las towns
+    Route::group(['middleware' => 'checkmanagetown'], function(){
+    });
     Route::get('/towns',[TownController::class,'index']);
     Route::get('/town/get-list', [TownController::class,'getTownList']);
 
