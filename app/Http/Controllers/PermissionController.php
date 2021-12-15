@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\LogicasDelNegocio\LNPermission;
+use App\Http\LogicasDelNegocio\LNRoleHasPermission;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -126,10 +127,11 @@ class PermissionController extends Controller
 
     public function delete($id)
     {
-        $permission   = Permission::find($id);
+        $permission   = \App\Permission::find($id);
         if($permission){
             $delete = $permission->delete();
-            $perm   = $permission->roles()->delete();
+            $ln=new LNRoleHasPermission();
+            $perm   = $ln->deleteRoleHasPermissionbyPermission($id);
 
             return redirect('permission')->with('success', 'Permission deleted!');
         }else{

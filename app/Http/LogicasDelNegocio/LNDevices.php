@@ -5,7 +5,8 @@ namespace App\Http\LogicasDelNegocio;
 use App\Models\Device;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Seeder;
 /**
  * @author Leire Villarroya Martínez
  * LNDevices
@@ -21,11 +22,12 @@ class LNDevices
      *
      * @return array
      */
-    public function guardarDispositivo($serial){
+    public function guardarDispositivo(Request $request){
+        $faker = \Faker\Factory::create();
+
         //Crear una instancia del modelo vacío
         $device=new Device();
-        $device->serial=$serial;
-
+        $device->serial=$faker->uuid;
         $device->save();
         //para guardar
 

@@ -57,6 +57,25 @@ class LNRoleHasPermission
     }
 
 
+    public function deleteRoleHasPermissionbyPermission($permission_id){
+        $roleHasPermissions=RoleHasPermission::get();
+
+        //buscamos el rol por id
+        if($roleHasPermissions) {
+            foreach ($roleHasPermissions as $roleHasPermission){
+
+                if($permission_id == $roleHasPermission->permission_id){
+                    $this->delete($roleHasPermission->id);
+                }
+            }
+            return [1, $roleHasPermissions];
+        }else{
+            //si no
+            return [0];
+        }
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
