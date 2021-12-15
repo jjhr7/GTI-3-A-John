@@ -87,7 +87,7 @@ class HealthyTownController extends Controller
         $healthy_town   = Healthytown::find($id);
         if($healthy_town){
             $delete = $healthy_town->delete();
-            return redirect('towns')->with('success', 'Town deleted!');
+            return redirect('healthytowns')->with('success', 'Town deleted!');
         }else{
             return redirect('404');
         }
