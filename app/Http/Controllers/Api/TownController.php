@@ -139,4 +139,24 @@ class TownController extends Controller
         }
 
     }
+
+
+    public function users($id){
+        $LNTown=new LNTown(); // Creamos nueva logica town
+
+        $townBuscada=$LNTown->obtenerTodosUsersDeUnaTown($id);
+
+        if($townBuscada){
+            return response([
+                'message' => 'Se ha encontrado correctamente la town',
+                'town'=>$townBuscada,
+                'success' => 1
+            ]);
+        }else{
+            return response([
+                'message' => 'Error! No se ha podido encontrar la town',
+                'success' => 0
+            ]);
+        }
+    }
 }
