@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Roles')
+@section('title', 'Permisos')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Roles')}}</h5>
-                            <span>{{ __('Define roles of user')}}</span>
+                            <h5>{{ __('Permissions')}}</h5>
+                            <span>{{ __('Define permissions of user')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="../index.html"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Roles')}}</a>
+                                <a href="#">{{ __('Permissions')}}</a>
                             </li>
                         </ol>
                     </nav>

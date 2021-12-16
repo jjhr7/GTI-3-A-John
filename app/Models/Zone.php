@@ -10,7 +10,7 @@ class Zone extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['o2avg','area','geojson','town_id'];
+    protected $fillable = ['name','o2avg','area','geojson','town_id'];
     protected $guarded = [''];
 
     public function town(){

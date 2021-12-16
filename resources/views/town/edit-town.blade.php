@@ -40,7 +40,7 @@
             <!-- only those have manage_role permission will get access -->
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h3>{{ __('Add Town')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Edit Town')}}</h3></div>
                     <div class="card-body">
                         <form class="forms-sample" method="POST" action="{{url('town/update')}}">
                             @csrf
