@@ -67,7 +67,7 @@
 .auth-wrapper .authentication-form .form-group .form-control{
     border-radius: 4px;
     height: 1%;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif
 }
 
 .form-control{

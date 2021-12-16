@@ -12,6 +12,7 @@ class Healthytown extends Model
 
     protected $fillable = ['town_id','date'];
     public $timestamps = false;
+
     public function town(){
         return $this->belongsTo(Town::class);
     }
