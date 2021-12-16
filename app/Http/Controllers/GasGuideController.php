@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gas;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -14,6 +15,8 @@ class GasGuideController extends Controller
      * @return Factory|View
      */
     public function getView(){
-        return view('gas-guide.gas-guide');
+        $gases = Gas::all();
+        return view('gas-guide.gas-guide', compact('gases'));
     }
+
 }
