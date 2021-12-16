@@ -2272,3 +2272,11 @@ hr { box-sizing: content-box; height: 0; margin-top: 1rem; border: 0; border-top
 .swal-modal .swal-footer { text-align: center; }
 
 /*# sourceMappingURL=dist/css/theme.css.map */
+
+.ranking-next{
+    background-color: #5de7b496;
+}
+.ranking-previous{
+    background-color: #f39f9fd1;
+}
+

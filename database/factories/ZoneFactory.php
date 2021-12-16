@@ -22,6 +22,7 @@ class ZoneFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->city,
             'o2avg' => $this->faker->randomNumber(2),
             'area' => $this->faker->randomNumber(4),
             'town_id' => $this->faker->numberBetween(1,20)

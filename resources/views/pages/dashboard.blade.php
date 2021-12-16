@@ -177,7 +177,7 @@
                 <div class="col-xl-8 col-md-6">
                     <div class="row">
                         <div class="col-xl-6 col-md-6">
-                            <div class="card new-cust-card">
+                            <div class="card new-cust-card ranking-next">
                                 <div class="card-header">
                                     <h3>{{ __('Municipios por encima del tuyo')}}</h3>
                                     <div class="card-header-right">
@@ -190,14 +190,14 @@
                                 </div>
                                 <div class="card-block">
                                     <div class="align-middle mb-25">
-                                        <img src="../img/users/3.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
+                                        <img src="../img/imgsapp/gandia_flag.png" alt="user image" class="rounded-circle img-40 align-top mr-15">
                                         <div class="d-inline-block">
                                             <a href="#!"><h6>{{ __('Gandia')}}</h6></a>
                                             <span class="status deactive text-mute"><i class="far fa-trophy mr-10"></i>{{ __('#8')}}</span>
                                         </div>
                                     </div>
                                     <div class="align-middle mb-25">
-                                        <img src="../img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
+                                        <img src="../img/imgsapp/teulada_flag.png" alt="user image" class="rounded-circle img-40 align-top mr-15">
                                         <div class="d-inline-block">
                                             <a href="#!"><h6>{{ __('Teulada')}}</h6></a>
                                             <span class="status deactive text-mute"><i class="far fa-trophy mr-10"></i>{{ __('#9')}}</span>
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                         <div class="col-xl-6 col-md-6">
-                            <div class="card new-cust-card">
+                            <div class="card new-cust-card ranking-previous">
                                 <div class="card-header">
                                     <h3>{{ __('Municipios por debajo del tuyo')}}</h3>
                                     <div class="card-header-right">
@@ -220,14 +220,14 @@
                                 </div>
                                 <div class="card-block">
                                     <div class="align-middle mb-25">
-                                        <img src="../img/users/1.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
+                                        <img src="../img/imgsapp/manises_flag.png" alt="user image" class="rounded-circle img-40 align-top mr-15">
                                         <div class="d-inline-block">
                                             <a href="#!"><h6>{{ __('Manises')}}</h6></a>
                                             <span class="status deactive text-mute"><i class="far fa-trophy mr-10"></i>{{ __('#11')}}</span>
                                         </div>
                                     </div>
                                     <div class="align-middle mb-25">
-                                        <img src="../img/users/2.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
+                                        <img src="../img/imgsapp/valencia_flag.png" alt="user image" class="rounded-circle img-40 align-top mr-15">
                                         <div class="d-inline-block">
                                             <a href="#!"><h6>{{ __('Valencia')}}</h6></a>
                                             <span class="status deactive text-mute"><i class="far fa-trophy mr-10"></i>{{ __('#12')}}</span>
