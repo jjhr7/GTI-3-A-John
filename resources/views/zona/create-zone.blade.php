@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', $permission->name)
+@section('title', 'Zonas')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Permission')}}</h5>
-                            <span>{{ __('Edit permission')}}</span>
+                            <h5>{{ __('Add Zone from')}}</h5>
+                            <span>{{$town_name}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="../index.html"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Permissions')}}</a>
+                                <a href="#">{{ __('Zonas')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -40,18 +40,26 @@
             <!-- only those have manage_role permission will get access -->
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h3>{{ __('Edit Permission')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Add Zone')}}</h3></div>
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="{{url('permission/update')}}">
+                        <form class="forms-sample" method="POST" action="{{url('zone/create')}}">
                             @csrf
-                            <input type="hidden" name="id" value="{{$permission->id}}">
                             <div class="row">
+                                <input type="hidden" id="id_town" name="id_town" value="{{$idT}}">
+
                                 <div class="col-sm-5">
                                     <div class="form-group">
-                                        <label for="permission">{{ __('Name')}}<span class="text-red">*</span></label>
-                                        <input type="text" class="form-control is-valid" id="permission" name="permission" value="{{$permission->name}}" placeholder="Permission Name" required>
+                                        <label for="name">{{ __('Name')}}<span class="text-red">*</span></label>
+                                        <input type="text" class="form-control is-valid" id="name" name="name" placeholder="Town Name" required>
                                     </div>
                                 </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label for="area">{{ __('Area')}}<span class="text-red">*</span></label>
+                                        <input type="number" class="form-control is-valid" id="area" name="area" placeholder="Town Area" required>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -69,3 +77,4 @@
 
     @endpush
 @endsection
+

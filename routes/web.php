@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\GasGuideController;
 use App\Http\Controllers\TownController;
+use App\Http\Controllers\ZoneController;
 use \App\Http\Controllers\DeviceController;
 use App\Http\Controllers\HealthyTownController;
 /*
@@ -182,6 +183,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/town/{id}', [TownController::class, 'edit']);
     Route::post('/town/update', [TownController::class,'update']);
     Route::get('/town/delete/{id}', [TownController::class,'delete']);
+
+
+    Route::get('/zonas',[ZoneController::class,'index']);
+    Route::get('/zone/get-list', [ZoneController::class,'getZoneList']);
+    Route::post('/zone/create', [ZoneController::class,'create']);
+    Route::get('/zone/createForm/{id}', [ZoneController::class, 'createForm']);
+    Route::get('/zone/{id}', [ZoneController::class, 'edit']);
+    Route::post('/zone/update', [ZoneController::class,'update']);
+    Route::get('/zone/delete/{id}', [ZoneController::class,'delete']);
 
 });
 

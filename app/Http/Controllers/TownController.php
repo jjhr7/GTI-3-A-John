@@ -37,6 +37,7 @@ class TownController extends Controller
 
                 if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
                     return '<div class="table-actions">
+                                <a href="'.url('zone/createForm/'.$data->id).'" ><i class="ik ik-plus f-16 mr-15 text-green"></i></a>
                                 <a href="'.url('town/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
                                 <a href="'.url('town/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
                             </div>';

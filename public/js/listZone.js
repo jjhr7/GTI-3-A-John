@@ -16,7 +16,7 @@
         var selectable = [];
 
 
-        var dTable = $('#town_table').DataTable({
+        var dTable = $('#zone_table').DataTable({
 
             order: [],
             lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
@@ -32,15 +32,14 @@
             pagingType: "full_numbers",
             dom: "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>tipr",
             ajax: {
-                url: 'town/get-list',
+                url: 'zone/get-list',
                 type: "get"
             },
             columns: [
                 /*{data:'serial_no', name: 'serial_no'},*/
                 {data:'name', name: 'name', orderable: false, searchable: false, title: 'Nombre'},
-                {data:'postal_code', name: 'postal_code', title: 'Codigo Postal'},
+                {data:'town', name: 'town', title: 'Town'},
                 {data:'area', name: 'area', title: 'Area (m)'},
-                {data:'altitude', name: 'altitude', title: 'Altitud (m)'},
                 {data:'o2avg', name: 'o2avg', title: 'Media C02'},
                 {data:'action', name: 'action'}
 
@@ -49,7 +48,7 @@
                 {
                     extend: 'copy',
                     className: 'btn-sm btn-info',
-                    title: 'Towns',
+                    title: 'Zonas',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -59,7 +58,7 @@
                 {
                     extend: 'csv',
                     className: 'btn-sm btn-success',
-                    title: 'Towns',
+                    title: 'Zonas',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -69,7 +68,7 @@
                 {
                     extend: 'excel',
                     className: 'btn-sm btn-warning',
-                    title: 'Towns',
+                    title: 'Zonas',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -79,7 +78,7 @@
                 {
                     extend: 'pdf',
                     className: 'btn-sm btn-primary',
-                    title: 'Towns',
+                    title: 'Zonas',
                     pageSize: 'A2',
                     header: false,
                     footer: true,
@@ -90,7 +89,7 @@
                 {
                     extend: 'print',
                     className: 'btn-sm btn-default',
-                    title: 'Towns',
+                    title: 'Zonas',
                     // orientation:'landscape',
                     pageSize: 'A2',
                     header: true,

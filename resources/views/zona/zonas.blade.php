@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Towns')
+@section('title', 'Zonas')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-users bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Ciudades')}}</h5>
-                            <span>{{ __('List of towns')}}</span>
+                            <h5>{{ __('Zonas')}}</h5>
+                            <span>{{ __('List of zones')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Towns')}}</a>
+                                <a href="#">{{ __('Zonas')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -39,9 +39,9 @@
         <!-- end message area-->
             <div class="col-md-12">
                 <div class="card p-3">
-                    <div class="card-header"><h3>{{ __('Towns')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Zonas')}}</h3></div>
                     <div class="card-body">
-                        <table id="town_table" class="table">
+                        <table id="zone_table" class="table">
 
                         </table>
                     </div>
@@ -54,6 +54,7 @@
         <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
         <!--server side users table script-->
-        <script src="{{ asset('js/listTowns.js') }}"></script>
+        <script src="{{ asset('js/listZone.js') }}"></script>
     @endpush
 @endsection
+
