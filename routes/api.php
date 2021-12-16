@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\TownController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\UserInformationController;
 use App\Http\Controllers\Api\GasController;
+use App\Http\Controllers\Api\HealthyTownController;
 
 
 
@@ -43,6 +44,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/municipio/{id}', [TownController::class,'show']);
     Route::post('/municipio/update/{id}', [TownController::class,'update']);
     Route::delete('/municipio/delete/{id}', [TownController::class,'destroy']);
+    Route::get('/municipio/users/{id}', [TownController::class, 'users']);
 
 
     Route::get('/user/{id}', [UserController::class,'profile']);
@@ -77,7 +79,11 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
 
-
+    // Rutas para gestionar healthyTowns
+    Route::get('/healthytowns', [HealthyTownController::class,'index']);
+    Route::post('/healthytown/create', [HealthyTownController::class,'store']);
+    Route::get('/healthytown/{id}', [HealthyTownController::class,'show']);
+    Route::delete('/healthytown/delete/{id}', [HealthyTownController::class,'destroy']);
 
     //Rutas para gestionar guía gases
     Route::get('/gases', [GasController::class, 'index']);
