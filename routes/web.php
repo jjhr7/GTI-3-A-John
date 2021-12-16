@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/medicion/update', [ReadController::class,'update']);
     Route::get('/medicion/delete/{id}', [ReadController::class,'delete']);
 
+
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 

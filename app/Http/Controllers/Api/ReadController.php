@@ -172,4 +172,15 @@ class ReadController extends Controller
             'success' => 1
         ]);
     }
+
+    public function getMedicionesByTown($id){
+
+        $LNMediciones = new LNMediciones();
+        $mediciones = $LNMediciones->obtenerMedicionesPorCiudad($id);
+        return response([
+            'mediciones' => $mediciones,
+            'success' => 1
+        ]);
+
+    }
 }

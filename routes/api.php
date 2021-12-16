@@ -78,6 +78,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/mediciones/user', [ReadController::class, 'obtenerUltimasReadsByUser']);
     Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
+    Route::get('/mediciones/town/{id}', [ReadController::class, 'getMedicionesByTown']);
+
 
     // Rutas para gestionar healthyTowns
     Route::get('/healthytowns', [HealthyTownController::class,'index']);
