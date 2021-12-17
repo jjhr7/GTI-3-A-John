@@ -17,7 +17,7 @@
 }
 
 .titulo-guide{
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 28px;
     color: #333333;
@@ -47,6 +47,15 @@
 
 .borderColor{
     border:5px solid #2D2D2D;
+    top: 0;
+
+    -moz-transition: all 1s ease-in-out;
+
+    -webkit-transition: all 1s ease-in-out;
+
+    -o-transition: all 1s ease-in-out;
+
+    transition: all 1s ease-in-out;
 }
 
 .box-gas2{
@@ -96,6 +105,23 @@
     width: 18rem;
     height: 18rem;
     margin: 2rem;
+    top: 0;
+}
+.transicionImg {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .boxInfo{
@@ -108,15 +134,34 @@
 }
 
 .tituloBox{
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #AAAAAA;
 }
 
 .datosBox{
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     color: #555555;
     margin-top: 1rem;
 }
+
+.header-colour{
+    background-color: black!important;
+}
+
+.second-menu .main-menu ul li {
+    margin-left: 30px;
+}
+
+.main-menu ul li {
+    display: inline-block;
+    margin-left: 25px;
+    position: relative;
+}
+
+
+
+
+
 
