@@ -179,11 +179,14 @@ Route::group(['middleware' => 'auth'], function(){
     });
     Route::get('/towns',[TownController::class,'index']);
     Route::get('/town/get-list', [TownController::class,'getTownList']);
+    Route::get('/town/get-user-list/{id}', [TownController::class,'getUserList']);
     Route::post('/town/create', [TownController::class,'create']);
     Route::get('/town/createForm', [TownController::class, 'createForm']);
     Route::get('/town/{id}', [TownController::class, 'edit']);
     Route::post('/town/update', [TownController::class,'update']);
     Route::get('/town/delete/{id}', [TownController::class,'delete']);
+    Route::get('/town/users/{id}', [TownController::class, 'getUserView']);
+
 
 
     Route::get('/zonas',[ZoneController::class,'index']);

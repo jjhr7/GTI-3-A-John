@@ -54,6 +54,7 @@ class UserController extends Controller
 
         $data  = User::get();
 
+
         return Datatables::of($data)
                 ->addColumn('rol', function(User $user){
                     if($user->information->role->name != null){
