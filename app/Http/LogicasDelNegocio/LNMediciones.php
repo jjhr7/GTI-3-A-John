@@ -143,15 +143,13 @@ class LNMediciones
 
     public function obtenerMedicionesPorCiudad($idtown){
 
-        $mediciones = Reads::get();
+        $mediciones = auth()->user()->reads;
 
-        dd($mediciones);
         $contador=0;
 
         $medicionesByTown= [];
         foreach ($mediciones as $medicion){
-
-            if($medicion->user->information->town->id==$idtown){
+            if($medicion->user->information->town->id == auth()->user()->information->town->id){
 
 
                 $medicionesByTown[$contador]=$medicion;

@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\GasGuideController;
 use App\Http\Controllers\TownController;
+use App\Http\Controllers\ZoneController;
 use \App\Http\Controllers\DeviceController;
 use App\Http\Controllers\HealthyTownController;
 /*
@@ -96,6 +97,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/medicion/update', [ReadController::class,'update']);
     Route::get('/medicion/delete/{id}', [ReadController::class,'delete']);
 
+
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 
@@ -177,11 +179,23 @@ Route::group(['middleware' => 'auth'], function(){
     });
     Route::get('/towns',[TownController::class,'index']);
     Route::get('/town/get-list', [TownController::class,'getTownList']);
+    Route::get('/town/get-user-list/{id}', [TownController::class,'getUserList']);
     Route::post('/town/create', [TownController::class,'create']);
     Route::get('/town/createForm', [TownController::class, 'createForm']);
     Route::get('/town/{id}', [TownController::class, 'edit']);
     Route::post('/town/update', [TownController::class,'update']);
     Route::get('/town/delete/{id}', [TownController::class,'delete']);
+    Route::get('/town/users/{id}', [TownController::class, 'getUserView']);
+
+
+
+    Route::get('/zonas',[ZoneController::class,'index']);
+    Route::get('/zone/get-list', [ZoneController::class,'getZoneList']);
+    Route::post('/zone/create', [ZoneController::class,'create']);
+    Route::get('/zone/createForm/{id}', [ZoneController::class, 'createForm']);
+    Route::get('/zone/{id}', [ZoneController::class, 'edit']);
+    Route::post('/zone/update', [ZoneController::class,'update']);
+    Route::get('/zone/delete/{id}', [ZoneController::class,'delete']);
 
 });
 

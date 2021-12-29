@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\LogicasDelNegocio\LNTown;
 use App\Models\Town;
+use App\User;
 use Illuminate\Http\Request;
-use DataTables;
+use DataTables,Auth;
+use function Symfony\Component\Translation\t;
 
 
 class TownController extends Controller
 {
+
+    public $idTown;
+
+
     /**
      * Create a new controller instance.
      *
@@ -37,6 +43,8 @@ class TownController extends Controller
 
                 if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
                     return '<div class="table-actions">
+                                <a href="'.url('/town/users/'.$data->id).'" ><i class="ik ik-user f-16 mr-15 text-green"></i></a>
+                                <a href="'.url('zone/createForm/'.$data->id).'" ><i class="ik ik-plus f-16 mr-15 text-green"></i></a>
                                 <a href="'.url('town/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
                                 <a href="'.url('town/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
                             </div>';
@@ -130,6 +138,45 @@ class TownController extends Controller
             return redirect('404');
         }
     }
+
+
+    public function getUserView($id){
+        $ln=new LNTown();
+        config(['app.town_id' => $id]);
+        $this->idTown=$id;
+
+        $town = Town::find($this->idTown);
+        return view('town.town-users', compact('town'));
+    }
+
+
+    public function getUserList($id)
+    {
+        $LNTown=new LNTown(); // Creamos nueva logica town
+        $data  = $LNTown->obtenerTodosUsersDeUnaTown($id);
+
+        return Datatables::of($data)
+            ->addColumn('rol', function(User $user){
+                if($user->information->role->name != null){
+                    return $user->information->role->name;
+                }else{
+                    return '';
+                }
+            })
+            ->addColumn('action', function($data){
+
+                if (auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin'){
+                    return '<div class="table-actions">
+                                <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                            </div>';
+                }else{
+                    return '';
+                }
+            })
+            ->rawColumns(['action'])->toJson();
+    }
+
 
 
 }

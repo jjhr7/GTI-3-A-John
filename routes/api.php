@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\UserInformationController;
 use App\Http\Controllers\Api\GasController;
 use App\Http\Controllers\Api\HealthyTownController;
+use App\Http\Controllers\Api\ZoneController;
 
 
 
@@ -47,6 +48,16 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/municipio/users/{id}', [TownController::class, 'users']);
 
 
+
+    //Ruta obtener zonas
+    Route::get('/zonas', [ZoneController::class,'index']);
+    Route::post('/zone/create', [ZoneController::class,'store']);
+    Route::get('/zone/{id}', [ZoneController::class,'show']);
+    Route::post('/zone/update/{id}', [ZoneController::class,'update']);
+    Route::delete('/zone/delete/{id}', [ZoneController::class,'destroy']);
+    Route::get('/zone/users/{id}', [ZoneController::class, 'users']);
+
+
     Route::get('/user/{id}', [UserController::class,'profile']);
     Route::delete('/user/delete/{id}', [UserController::class,'delete']);
     Route::post('user/device/',[UserInformationController::class,'asignarDispositivo']);
@@ -78,6 +89,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/mediciones/user', [ReadController::class, 'obtenerUltimasReadsByUser']);
     Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
+    Route::get('/mediciones/town/{id}', [ReadController::class, 'getMedicionesByTown']);
+
 
     // Rutas para gestionar healthyTowns
     Route::get('/healthytowns', [HealthyTownController::class,'index']);

@@ -16,7 +16,7 @@
         var selectable = [];
 
 
-        var dTable = $('#town_table').DataTable({
+        var dTable = $('#users_table').DataTable({
 
             order: [],
             lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
@@ -32,16 +32,13 @@
             pagingType: "full_numbers",
             dom: "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>tipr",
             ajax: {
-                url: 'town/get-list',
+
+                url: '/town/get-user-list/' + window.twitter_js_handle || null,
                 type: "get"
             },
             columns: [
-                /*{data:'serial_no', name: 'serial_no'},*/
-                {data:'name', name: 'name', orderable: false, searchable: false, title: 'Nombre'},
-                {data:'postal_code', name: 'postal_code', title: 'Codigo Postal'},
-                {data:'area', name: 'area', title: 'Area (m)'},
-                {data:'altitude', name: 'altitude', title: 'Altitud (m)'},
-                {data:'o2avg', name: 'o2avg', title: 'Media C02'},
+                {data:'name', name: 'name', orderable: false, searchable: false, title: 'Name'},
+                {data:'email', name: 'email', title: 'Email'},
                 {data:'action', name: 'action'}
 
             ],
@@ -49,7 +46,7 @@
                 {
                     extend: 'copy',
                     className: 'btn-sm btn-info',
-                    title: 'Towns',
+                    title: 'Users',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -59,7 +56,7 @@
                 {
                     extend: 'csv',
                     className: 'btn-sm btn-success',
-                    title: 'Towns',
+                    title: 'Users',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -69,7 +66,7 @@
                 {
                     extend: 'excel',
                     className: 'btn-sm btn-warning',
-                    title: 'Towns',
+                    title: 'Users',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -79,7 +76,7 @@
                 {
                     extend: 'pdf',
                     className: 'btn-sm btn-primary',
-                    title: 'Towns',
+                    title: 'Users',
                     pageSize: 'A2',
                     header: false,
                     footer: true,
@@ -90,7 +87,7 @@
                 {
                     extend: 'print',
                     className: 'btn-sm btn-default',
-                    title: 'Towns',
+                    title: 'Users',
                     // orientation:'landscape',
                     pageSize: 'A2',
                     header: true,
