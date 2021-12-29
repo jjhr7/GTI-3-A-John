@@ -141,4 +141,26 @@ class LNMediciones
             ->rawColumns(['action'])->toJson();
     }
 
+    public function obtenerMedicionesPorCiudad($idtown){
+
+        $mediciones = Reads::get();
+
+        dd($mediciones);
+        $contador=0;
+
+        $medicionesByTown= [];
+        foreach ($mediciones as $medicion){
+
+            if($medicion->user->information->town->id==$idtown){
+
+
+                $medicionesByTown[$contador]=$medicion;
+
+                $contador++;
+            }
+
+        }
+
+    }
+
 }

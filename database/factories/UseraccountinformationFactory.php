@@ -25,7 +25,7 @@ class UseraccountinformationFactory extends Factory
             'user_id' => $this->faker->numberBetween(1,10),
             'email_verified' => $this->faker->boolean,
             'access_token' => $this->faker->macPlatformToken,
-
+            'phone_number' => $this->faker->phoneNumber
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUseraccountinformationsTable extends Migration
+class CreateUserActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateUseraccountinformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('useraccountinformations', function (Blueprint $table) {
+        Schema::create('user_activities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('email_verified')->default(false);
-            $table->string('access_token')->nullable();
-            $table->integer('phone_number');
-            $table->timestamps();
+            $table->double('time_activity');
+            $table->integer('distance_traveled');
+            $table->string('date');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateUseraccountinformationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('useraccountinformations');
+        Schema::dropIfExists('user_activities');
     }
 }

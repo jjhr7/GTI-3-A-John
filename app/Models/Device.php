@@ -17,4 +17,8 @@ class Device extends Model
         return $this->hasMany(Notification::class);
     }
 
+    public function userInformation(){
+        return $this->belongsTo(Userinformation::class);
+    }
+
 }

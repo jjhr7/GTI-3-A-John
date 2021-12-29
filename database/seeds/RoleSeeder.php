@@ -15,28 +15,28 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $role = new Role();
-        $role->name = 'Super admin';
-        $role->guard_name = 'web';
-        $role->save();
-
-        $role = new Role();
         $role->name = 'Admin';
-        $role->guard_name = 'web';
+        $role->guard_name = 'admin';
         $role->save();
 
         $role = new Role();
-        $role->name = 'Town Manager';
-        $role->guard_name = 'web';
+        $role->name = 'User manager';
+        $role->guard_name = 'user_manager';
         $role->save();
 
         $role = new Role();
-        $role->name = 'Factory device';
-        $role->guard_name = 'web';
+        $role->name = 'Town manager';
+        $role->guard_name = 'town_manager';
+        $role->save();
+
+        $role = new Role();
+        $role->name = 'Device manager';
+        $role->guard_name = 'device_manager';
         $role->save();
 
         $role = new Role();
         $role->name = 'Member';
-        $role->guard_name = 'web';
+        $role->guard_name = 'member';
         $role->save();
     }
 }

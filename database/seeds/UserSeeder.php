@@ -16,26 +16,32 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user =new User();
-        $user->name = 'Super Admin';
+        $user->name = 'John Hernández';
         $user->email = 'admin@test.com';
         $user->password = Hash::make('123456789');
         $user->save();
 
         $user =new User();
-        $user->name = 'Project Manager';
-        $user->email = 'pm@test.com';
+        $user->name = 'Jose Julio Peñaranda';
+        $user->email = 'townmanager@test.com';
         $user->password = Hash::make('123456789');
         $user->save();
 
         $user =new User();
-        $user->name = 'Sales Manager';
-        $user->email = 'sm@test.com';
+        $user->name = 'Andrey Kuzmin';
+        $user->email = 'devicemanager@test.com';
         $user->password = Hash::make('123456789');
         $user->save();
 
         $user =new User();
-        $user->name = 'HR';
-        $user->email = 'hr@test.com';
+        $user->name = 'Leire Villarroya';
+        $user->email = 'member@test.com';
+        $user->password = Hash::make('123456789');
+        $user->save();
+
+        $user =new User();
+        $user->name = 'Belén Grande';
+        $user->email = 'member2@test.com';
         $user->password = Hash::make('123456789');
         $user->save();
 

@@ -23,7 +23,7 @@ class ReadFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1,10),
+            'user_id' => $this->faker->numberBetween(1,5),
             'device_id' => $this->faker->numberBetween(1,10),
             'latitude' => $this->faker->latitude,
             'longitude' => $this->faker->longitude,

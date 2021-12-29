@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Notification;
+use App\Models\UserActivity;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NotificationFactory extends Factory
+class UserActivityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Notification::class;
+    protected $model = UserActivity::class;
 
     /**
      * Define the model's default state.
@@ -24,9 +24,9 @@ class NotificationFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1,5),
-            'date' => Carbon::now('CET')->toRfc850String(),
-            'message' => $this->faker->realText(50,2),
-            'type' => $this->faker->randomElement(['Information','Warnning','Danger','Device']),
+            'time_activity' => $this->faker->randomNumber(2),
+            'distance_traveled' => $this->faker->randomNumber(3),
+            'date' => Carbon::now('CET')->toRfc850String()
         ];
     }
 }
