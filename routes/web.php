@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -205,4 +206,9 @@ Route::get('/login-1', function () { return view('pages.login'); });
 
 //Guía de gases
 Route::get('/guia', [GasGuideController::class, 'getView']);
+
+//Mapa
+Route::get('/mapa', [MapController::class, 'getView']);
+
+//
 
