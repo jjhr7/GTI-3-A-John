@@ -17,6 +17,11 @@ class MapController extends Controller
      */
     public function getView(){
         $map= Map::all();
+        return view('maps.map', compact('map'));
+    }
+
+    public function getViewMobile(){
+        $map= Map::all();
         return view('maps.mapMobile', compact('map'));
     }
 }

@@ -211,4 +211,4 @@ Route::get('/guia', [GasGuideController::class, 'getView']);
 Route::get('/mapa', [MapController::class, 'getView']);
 
 //Mapa movil
-Route::get('/mapaMovil', [MapController::class, 'getView']);
+Route::get('/mapaMovil', [MapController::class, 'getViewMobile']);
