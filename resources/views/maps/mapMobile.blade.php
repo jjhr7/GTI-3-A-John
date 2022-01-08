@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mapa</title>
+    <title>Mapa móvil</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -76,26 +76,48 @@
 
 
 <script>
-    
+
     var testData = {
         max: 8,
         data: [{lat: 38.926810, lng:-0.165582, count: 3},{lat: 38.996860, lng:-0.165532, count: 2},{lat: 38.996810, lng:-0.145582, count: 3},{lat: 38.996857, lng:-0.165588, count: 1},{lat: 38.996834, lng:-0.165533, count: 1},{lat: 60.8, lng:11.1, count: 1}]
     };
 
-    var littleton = L.marker([38.996834, -0.165511]).bindPopup('This is Littleton, CO.'),
-        denver    = L.marker([38.996831, -0.165587]).bindPopup('This is Denver, CO.'),
-        aurora    = L.marker([38.996815, -0.165532]).bindPopup('This is Aurora, CO.'),
-        golden    = L.marker([38.996819, -0.165682]).bindPopup('This is Golden, CO.'),
-        walway = L.marker([38.996838, -0.165510]).bindPopup('This is Littleton, CO.'),
-        manises    = L.marker([38.996836, -0.165587]).bindPopup('This is Denver, CO.'),
-        xirivella    = L.marker([38.996825, -0.165512]).bindPopup('This is Aurora, CO.'),
-        bcristo    = L.marker([38.996818, -0.165682]).bindPopup('This is Golden, CO.');
+    var medicionIAQ1 = L.marker([38.996834, -0.165511]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ2    = L.marker([38.996831, -0.165587]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ3    = L.marker([38.996815, -0.165532]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ4    = L.marker([38.996819, -0.165682]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ5    = L.marker([38.996838, -0.178382]).bindPopup('La calidad del aire en este punto es normal'),
+        medicionIAQ6    = L.marker([38.996719, -0.145682]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ7    = L.marker([38.993819, -0.185682]).bindPopup('La calidad del aire en este punto es mala'),
+        medicionIAQ8    = L.marker([38.996813, -0.175682]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ9    = L.marker([38.996819, -0.175562]).bindPopup('La calidad del aire en este punto es normal'),
+        medicionIAQ10    = L.marker([38.976819, -0.165212]).bindPopup('La calidad del aire en este punto es mala'),
+        medicionIAQ11   = L.marker([38.986819, -0.165562]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ12    = L.marker([38.992229, -0.165342]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ13    = L.marker([38.996219, -0.165634]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ14    = L.marker([38.996349, -0.182682]).bindPopup('La calidad del aire en este punto es buena'),
+        medicionIAQ15    = L.marker([38.996763, -0.177682]).bindPopup('La calidad del aire en este punto es mala'),
 
-    var cities = L.layerGroup([littleton, denver, aurora, golden]);
-    var ciudades = L.layerGroup ([walway, manises, xirivella, bcristo]);
+
+        medicionSO21 = L.marker([38.996838, -0.165510]).bindPopup('El valor de SO2 es: 1'),
+        medicionSO22    = L.marker([38.896833, -0.165514]).bindPopup('El valor de SO2 es: 2'),
+        medicionSO23    = L.marker([38.966523, -0.165420]).bindPopup('El valor de SO2 es: 3'),
+        medicionSO24    = L.marker([38.984544, -0.165720]).bindPopup('El valor de SO2 es: 5');
+        medicionSO25    = L.marker([38.987619, -0.165827]).bindPopup('El valor de SO2 es: 4');
+        medicionSO26    = L.marker([38.972356, -0.165332]).bindPopup('El valor de SO2 es: 6');
+        medicionSO27    = L.marker([38.899833, -0.166682]).bindPopup('El valor de SO2 es: 7');
+        medicionSO28    = L.marker([38.936128, -0.167882]).bindPopup('El valor de SO2 es: 8');
+        medicionSO29    = L.marker([38.924763, -0.166542]).bindPopup('El valor de SO2 es: 9');
+        medicionSO210    = L.marker([38.992318, -0.163282]).bindPopup('El valor de SO2 es: ');
+        medicionSO211    = L.marker([38.976118, -0.163342]).bindPopup('El valor de SO2 es: ');
+        medicionSO12    = L.marker([38.989818, -0.166642]).bindPopup('El valor de SO2 es: ');
+
+    var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6,medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15]);
+    var SO2 = L.layerGroup ([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28,medicionSO29,medicionSO210,medicionSO211, medicionSO12]);
+
     var baseMaps = {
-        "Cities": cities,
-        "Ciudades" : ciudades
+        "Calidad del aire": IAQ,
+        "SO2" : SO2
     };
 
     var baseLayer = L.tileLayer(
