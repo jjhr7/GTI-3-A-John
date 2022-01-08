@@ -210,5 +210,5 @@ Route::get('/guia', [GasGuideController::class, 'getView']);
 //Mapa
 Route::get('/mapa', [MapController::class, 'getView']);
 
-//
-
+//Mapa movil
+Route::get('/mapaMovil', [MapController::class, 'getView']);
