@@ -8,6 +8,7 @@ use App\Http\Requests\StoreRead;
 use Illuminate\Http\Request;
 use App\Http\LogicasDelNegocio\LNMediciones;
 use Illuminate\Http\Response;
+use stdClass;
 
 /**
  * @author Leire Villarroya Martínez
@@ -182,5 +183,23 @@ class ReadController extends Controller
             'success' => 1
         ]);
 
+    }
+
+    public function convertReadsToObjects(){
+        $objetoMediciones = [];
+        $LNMediciones = new LNMediciones();
+        $mediciones = $LNMediciones->obtenerTodasLasMediciones();
+        $contador=0;
+        //dd($mediciones[1]);
+        foreach ($mediciones as $medicion){
+            $newObject= new stdClass();
+            $newObject->lat=$medicion->latitude;
+            $newObject->lng=$medicion->longitude;
+            $newObject->count=$medicion->value;
+            $objetoMediciones[$contador] = $newObject;
+            $contador++;
+            //$newObject={"lat": $medicion->latitude, "lng": $medicion->longitude, "count": $medicion->value};
+        }
+        return $objetoMediciones;
     }
 }
