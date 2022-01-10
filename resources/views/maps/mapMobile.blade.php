@@ -77,6 +77,28 @@
 
 <script>
 
+    /**
+     * Descripción de obtenerMedicionDeLasEstaciones. Función que devuelve la medicion de las estaciones oficiales de medida
+     * Haciendo una petición a la api oficial
+     * @return Response
+     */
+    public function obtenerMedicionDeLasEstaciones($lat, $lon){
+        $url = 'http://api.airvisual.com/v2/nearest_city?lat='.$lat.'&lon='.$lon.'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
+
+        $response = Requests::get($url);
+
+        return $response;
+    }
+
+
+
+    var estacionPrat = L.marker([40.136944, 0.165555]).bindPopup('Estacion de Prat de Cabanes: '+ obtenerMedicionDeLasEstaciones(40.136944, 0.165555)),
+        estacionDenia = L.marker([38.67194, 0.0358333]).bindPopup('Estacion de Dénia: '+ obtenerMedicionDeLasEstaciones(38.67194, 0.0358333)),
+        estacionAras = L.marker([39.950277, -1.108888]).bindPopup('Estacion de Aras de los olmos:' + obtenerMedicionDeLasEstaciones(39.950277, -1.108888)),
+        estacionValencia = L.marker([39.950277, -0.035833]).bindPopup('Estacion de Valencia: '+ obtenerMedicionDeLasEstaciones(39.950277, -0.035833)),
+        estacionTorrevieja = L.marker([38.00833, -0.658611]).bindPopup('Estacion de Torrevieja: '+ obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
+
+
     var testData = {
         max: 8,
         data: [{lat: 38.926810, lng:-0.165582, count: 3},{lat: 38.996860, lng:-0.165532, count: 2},{lat: 38.996810, lng:-0.145582, count: 3},{lat: 38.996857, lng:-0.165588, count: 1},{lat: 38.996834, lng:-0.165533, count: 1},{lat: 60.8, lng:11.1, count: 1}]
