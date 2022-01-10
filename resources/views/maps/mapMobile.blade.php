@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,7 @@
     <link rel="stylesheet" href="css/style-landing.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+
     <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
@@ -75,7 +77,34 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
 
 
+
 <script>
+
+
+    /**
+     * Descripción de obtenerMedicionDeLasEstaciones. Función que devuelve la medicion de las estaciones oficiales de medida
+     * Haciendo una petición a la api oficial
+     * @return Response
+     */
+    function obtenerMedicionDeLasEstaciones(lat, lon){
+        const Http = new XMLHttpRequest();
+        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            return "Http.responseText"
+        }
+
+    }
+    var medu=obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
+
+    var estacionPrat = L.marker([40.136944, 0.165555]).bindPopup('Estacion de Prat de Cabanes: '+  medu),
+        estacionDenia = L.marker([38.67194, 0.0358333]).bindPopup('Estacion de Dénia: '+ obtenerMedicionDeLasEstaciones(38.67194, 0.0358333)),
+        estacionAras = L.marker([39.950277, -1.108888]).bindPopup('Estacion de Aras de los olmos:' + obtenerMedicionDeLasEstaciones(39.950277, -1.108888)),
+        estacionValencia = L.marker([39.950277, -0.035833]).bindPopup('Estacion de Valencia: '+ obtenerMedicionDeLasEstaciones(39.950277, -0.035833)),
+        estacionTorrevieja = L.marker([38.00833, -0.658611]).bindPopup('Estacion de Torrevieja: '+ obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
+
 
     var testData = {
         max: 8,
@@ -114,10 +143,11 @@
 
     var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6,medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15]);
     var SO2 = L.layerGroup ([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28,medicionSO29,medicionSO210,medicionSO211, medicionSO12]);
-
+    var estacionesMedica = L.layerGroup ([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
     var baseMaps = {
         "Calidad del aire": IAQ,
-        "SO2" : SO2
+        "SO2" : SO2,
+        "Estaciones de medida" : estacionesMedica
     };
 
     var baseLayer = L.tileLayer(
