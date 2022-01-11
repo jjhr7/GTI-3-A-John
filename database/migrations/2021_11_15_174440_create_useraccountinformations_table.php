@@ -19,7 +19,7 @@ class CreateUseraccountinformationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('email_verified')->default(false);
             $table->string('access_token')->nullable();
-            $table->integer('phone_number');
+            $table->integer('phone_number')->default('000000000');
             $table->timestamps();
         });
     }

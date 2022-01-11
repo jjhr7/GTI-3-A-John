@@ -22,7 +22,8 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'serial' => $this->faker->uuid
+            'serial' => $this->faker->uuid,
+            'delta' => $this->faker->numberBetween(1,10000)
         ];
     }
 }
