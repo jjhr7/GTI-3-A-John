@@ -113,6 +113,11 @@
 
     var resultado;
 
+    var testDataCO = {
+        max: 8,
+        data: []
+    };
+
     const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
     const http = new XMLHttpRequest();
 
@@ -128,17 +133,19 @@
 
         if(this.readyState == 4 && this.status == 200){
             resultado = this.responseText;
-            console.log(resultado);
+            testDataCO = {
+                max: 8,
+                data: [resultado]
+            };
+
         }
     }
 
     http.send();
 
-    var testDataCO = {
-        max: 8,
-        data: [resultado]
-    };
 
+
+    console.log(testDataCO.data)
 
     /*var testDataSO2 = {
         max: 8,
