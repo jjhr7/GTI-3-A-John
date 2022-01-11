@@ -29,7 +29,7 @@ class ReadFactory extends Factory
             'longitude' => $this->faker->longitude,
             'type_read' => $this->faker->streetSuffix,
             'value' => $this->faker->randomNumber(2),
-            'date' =>  Carbon::now('CET')->toRfc850String(),
+            'date' =>  Carbon::now('CET')->format('Y-m-d')(),
         ];
     }
 }

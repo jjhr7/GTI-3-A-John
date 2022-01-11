@@ -28,6 +28,7 @@ class LNReads
      * @param $date
      * @return array
      */
+
     public function guardarRead($user_id, $device_id, $latitude, $longitude,$type_read, $value){
         //Crear una instancia del modelo vacío
         $read=new Read();
@@ -37,7 +38,7 @@ class LNReads
         $read->longitude=$longitude;
         $read->type_read=$type_read;
         $read->value=$value;
-        $read->date=Carbon::now('CET')->toRfc850String();
+        $read->date=Carbon::now('CET')->format('Y-m-d');
 
         $read->save();
 
@@ -147,11 +148,13 @@ class LNReads
         return $mediciones_dentro_fecha;
     }
 
-    public function obtenerUltimasReadsByTown(){
+    public function obtenerReadsByTown(){
 
         $mediciones = auth()->user()->reads;
 
 
         return $mediciones;
     }
+
+
 }
