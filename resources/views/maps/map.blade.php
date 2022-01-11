@@ -111,30 +111,33 @@
 
 <script>
 
-    var testDataCO = {
-        max: 8,
-        data: []
-    };
+    var resultado;
 
-    const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert';
+    const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
     const http = new XMLHttpRequest();
 
     http.open("GET", url);
 
+    /*
     http.setRequestHeader("Accept", "application/json");
     http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
     http.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTIzYzVkNjMyNDM4MDc4NWFiNjgzMjRjM2NkZGU5NGE1NjdjNjNhZTViOTRmMWRjNTkzZDIyM2EyMDk1YTdlMWU2NDUwOGI1NTI2NTFiNzYiLCJpYXQiOjE2NDE4Mjk5MDQuNTEyMDQ1LCJuYmYiOjE2NDE4Mjk5MDQuNTEyMDUyLCJleHAiOjE2NzMzNjU5MDQuNTA3NjgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bJlbDSxOG_CHb4b0GH6RAvgZJhyMTCU-gU9kJFPLmynnps4v4_RlUTsVE2XUpDPp1jPuwchL87dqxlWa3wqR6oYj-xDZvEZDlSLJyVwFdNczk2lP8xBpsG6n32hZihGG2-mKTH65O1O9ngjZhWxnWFGOwxluQJKnZhb8NqNB9NGZ7rTgKpeIOlelr7CAhA5JnC0TlcIKQEr2YrIsOush7LrczOKA_-yihBmdbgh1QH48qBdqWbijxaXQf025rk_fz6G5-vY_LiwV9oRUE8MstEimVSJd3zGjM63QTgoBXXBEg3trIZpiQUYTuSJRPm2kg0LaygncRyk204RNaqvW5nynqMOxC7EQgVWQkEZmHOx0bGtv2UnZvpiofdg_iCm7N7XOXwRdoL_OThrl6dU3Wok5o4HITzlfn5ipFFLz_rNXTsX_GpPpcOEopKHruWeaeMsyxR_2rumQNlBLhafhN7XVB7KyQ_cDw6SLaEH9UROZhUlGcrGcPb2Z_oZ3vrFTaV0lVveX4u_s3Ax3QbyyzGfDcKajlzEZJ8dZIhTwzH1sp1oZmPQ_NHL7yd8oDzdDykcL6PabyI0MsCH8vhExm5xGOPqmvB8HfQ9UeVx1awaLKchq68gHScO3AKWRTzH6DUovE0gwbqLwvky9uLYfflWoovhx05oPHVdqaixWfsA");
 
+     */
     http.onreadystatechange = function(){
 
         if(this.readyState == 4 && this.status == 200){
-            var resultado = this.responseText;
+            resultado = this.responseText;
             console.log(resultado);
         }
     }
 
     http.send();
 
+    var testDataCO = {
+        max: 8,
+        data: [resultado]
+    };
 
 
     /*var testDataSO2 = {
@@ -224,11 +227,12 @@
     var heatmapLayer = new HeatmapOverlay(cfg);
     var map = new L.Map('map', {
         center: new L.LatLng(38.996810, -0.165582),
-        zoom: 12,
+        zoom: 13,
         layers: [baseLayer, heatmapLayer]
     });
     heatmapLayer.setData(testDataCO);
-    // make accessible for debugging
+    // pinta los colores en el mapa según los datos que le pasamos fijándose en el peso
+
     layer = heatmapLayer;
 
     L.control.layers(null, baseMaps).addTo(map);

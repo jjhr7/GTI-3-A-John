@@ -91,8 +91,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/mediciones/town', [ReadController::class, 'obtenerUltimasReadsByTown']);
     Route::post('/mediciones/date', [ReadController::class, 'obtenerReadsByUserAndDate']);
     Route::get('/mediciones/town/{id}', [ReadController::class, 'getMedicionesByTown']);
-    Route::get('/mediciones/convert', [ReadController::class,'convertReadsToObjects']);
-    Route::get('/mediciones/convert/filter', [ReadController::class,'convertReadsToObjectsFilter']);
 
 
     // Rutas para gestionar healthyTowns
@@ -163,3 +161,8 @@ Route::get('/mapa', [MapController::class,'index']);
 Route::post('/mapa/create', [MapController::class,'store']);
 Route::get('/mapa/{id}', [MapController::class,'show']);
 Route::delete('/mapa/delete/{id}', [MapController::class,'destroy']);
+
+
+Route::get('/mediciones/convert', [ReadController::class,'convertReadsToObjects']);
+Route::get('/mediciones/convert/filter', [ReadController::class,'convertReadsToObjectsFilter']);
+
