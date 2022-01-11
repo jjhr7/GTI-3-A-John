@@ -78,6 +78,7 @@ class LNDevices
             //campos que vamos a actualizar
             $device->serial = $request->serial;
 
+
             $device->save();
             //guardamos los cambiamos
 
