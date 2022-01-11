@@ -10,7 +10,7 @@ class Device extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['serial'];
+    protected $fillable = ['serial','delta'];
     protected $guarded = [''];
 
     public function notifications(){

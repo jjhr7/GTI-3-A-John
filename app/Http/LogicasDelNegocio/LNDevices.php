@@ -77,6 +77,7 @@ class LNDevices
         if($device) {
             //campos que vamos a actualizar
             $device->serial = $request->serial;
+            $device->delta = $request->delta;
 
 
             $device->save();
