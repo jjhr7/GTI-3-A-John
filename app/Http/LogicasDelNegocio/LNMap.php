@@ -3,6 +3,7 @@
 namespace App\Http\LogicasDelNegocio;
 
 
+use App\Models\Map;
 use App\Models\Reads;
 use http\Env\Response;
 
@@ -26,5 +27,64 @@ class LNMap
             return $response::all();
         }
 
+    /**
+     * Descripción de guardarMapa. Función que guarda una medición
+     * @param $date
+     * @return array
+     */
+    public function guardarMapa($date){
+
+        $map = new Map();
+        $map->date = $date;
+
+        $map->save();
+
+        if($map){
+            return [1,$map];
+        }else{
+            return [0];
+        }
+    }
+
+    /**
+     * Descripción de obtenerTodosLosMapas. Función que devuelve todos los mapas
+     *
+     * @return Map[]|Collection
+     */
+    public function obtenerTodosLosMapas(){
+        return Map::all();
+    }
+
+    /**
+     * Descripción de obtenerMapa. Función que devuelve un mapa.
+     *
+     * @param $id
+     * @return array
+     */
+    public function obtenerMapa($id){
+        $map=Map::find($id);
+
+        if($map){
+            return [1,$map];
+        }else{
+            return[0];
+        }
+    }
+
+    /**
+     * Descripción de eliminarMapa. Función que elimina el mapa dado su id
+     * @param $id id del mapa
+     * @return int
+     */
+    public function eliminarMapa($id){
+        $map=Map::find($id);
+
+        if($map){
+            $map->delete();
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
 }
