@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\LogicasDelNegocio\LNMap;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
@@ -14,7 +15,12 @@ class MapController extends Controller
      */
     public function index()
     {
-        //
+        $LNMap=new LNMap();
+
+        return response([
+            'devices'=>$LNMap->obtenerTodosLosMapas(),
+            'success'=>1
+        ]);
     }
 
     /**
@@ -25,7 +31,23 @@ class MapController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $LNMap=new LNMap();
+
+        $mapaCreado=$LNMap->guardarMapa($request->date);
+
+        if($mapaCreado[0]==1){
+            return response([
+                'message' => 'Device creado correctamente!',
+                'device' => $mapaCreado[1],
+                'success' => 1
+            ]);
+        }else {
+            return response([
+                'message' => 'Error! No se ha podido crear el dispositivo',
+                'success' => 0
+            ]);
+        }
+
     }
 
     /**
@@ -36,7 +58,21 @@ class MapController extends Controller
      */
     public function show($id)
     {
-        //
+        $LNMap=new LNMap();
+        $map=$LNMap->obtenerMapa($id);
+
+        if($map[0]==1){
+            return response([
+                'message' => 'Device encontrado',
+                'device' => $map[1],
+                'success' => 1
+            ]);
+        }else{
+            return response([
+                'message'=>'Error! No se ha encontrado el device',
+                'success'=>0
+            ]);
+        }
     }
 
     /**
@@ -48,7 +84,7 @@ class MapController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //no se debe de poder actualizar un mapa de una fecha en concreto
     }
 
     /**
@@ -59,6 +95,20 @@ class MapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $LNMap=new LNMap();
+
+        $mapaEliminado=$LNMap->eliminarMapa($id);
+
+        if($mapaEliminado){
+            return response([
+                'message' => 'Se ha eliminado correctamente el dispositivo',
+                'success' => 1
+            ]);
+        }else{
+            return response([
+                'message' => 'Error! No se ha podido eliminar el dispositivo',
+                'success' => 0
+            ]);
+        }
     }
 }
