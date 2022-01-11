@@ -111,11 +111,63 @@
 
 <script>
 
+    var resultado;
 
-    var testData = {
+    var testDataCO = {
         max: 8,
-        data: [{lat: 38.926810, lng:-0.165582, count: 3},{lat: 38.996860, lng:-0.165532, count: 2},{lat: 38.996810, lng:-0.145582, count: 3},{lat: 38.996857, lng:-0.165588, count: 1},{lat: 38.996834, lng:-0.165533, count: 1},{lat: 60.8, lng:11.1, count: 1}]
+        data: []
     };
+
+    const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
+    const http = new XMLHttpRequest();
+
+    http.open("GET", url);
+
+    /*
+    http.setRequestHeader("Accept", "application/json");
+    http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    http.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTIzYzVkNjMyNDM4MDc4NWFiNjgzMjRjM2NkZGU5NGE1NjdjNjNhZTViOTRmMWRjNTkzZDIyM2EyMDk1YTdlMWU2NDUwOGI1NTI2NTFiNzYiLCJpYXQiOjE2NDE4Mjk5MDQuNTEyMDQ1LCJuYmYiOjE2NDE4Mjk5MDQuNTEyMDUyLCJleHAiOjE2NzMzNjU5MDQuNTA3NjgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bJlbDSxOG_CHb4b0GH6RAvgZJhyMTCU-gU9kJFPLmynnps4v4_RlUTsVE2XUpDPp1jPuwchL87dqxlWa3wqR6oYj-xDZvEZDlSLJyVwFdNczk2lP8xBpsG6n32hZihGG2-mKTH65O1O9ngjZhWxnWFGOwxluQJKnZhb8NqNB9NGZ7rTgKpeIOlelr7CAhA5JnC0TlcIKQEr2YrIsOush7LrczOKA_-yihBmdbgh1QH48qBdqWbijxaXQf025rk_fz6G5-vY_LiwV9oRUE8MstEimVSJd3zGjM63QTgoBXXBEg3trIZpiQUYTuSJRPm2kg0LaygncRyk204RNaqvW5nynqMOxC7EQgVWQkEZmHOx0bGtv2UnZvpiofdg_iCm7N7XOXwRdoL_OThrl6dU3Wok5o4HITzlfn5ipFFLz_rNXTsX_GpPpcOEopKHruWeaeMsyxR_2rumQNlBLhafhN7XVB7KyQ_cDw6SLaEH9UROZhUlGcrGcPb2Z_oZ3vrFTaV0lVveX4u_s3Ax3QbyyzGfDcKajlzEZJ8dZIhTwzH1sp1oZmPQ_NHL7yd8oDzdDykcL6PabyI0MsCH8vhExm5xGOPqmvB8HfQ9UeVx1awaLKchq68gHScO3AKWRTzH6DUovE0gwbqLwvky9uLYfflWoovhx05oPHVdqaixWfsA");
+
+     */
+    http.onreadystatechange = function(){
+
+        if(this.readyState == 4 && this.status == 200){
+            resultado = this.responseText;
+            testDataCO = {
+                max: 8,
+                data: [resultado]
+            };
+
+        }
+    }
+
+    http.send();
+
+
+
+    console.log(testDataCO.data)
+
+    /*var testDataSO2 = {
+        max: 8,
+        data: [{lat: 38.926810, lng:-0.165582, count: 3},
+            {lat: 38.996860, lng:-0.165532, count: 2},
+            {lat: 38.996810, lng:-0.145582, count: 3},
+            {lat: 38.996857, lng:-0.165588, count: 1},
+            {lat: 38.996834, lng:-0.165533, count: 1},
+            {lat: 60.8, lng:11.1, count: 1}
+        ]
+    }; */
+
+    /*var testDataCO = {
+        max: 8,
+        data: [{lat: 38.926810, lng:-0.165582, count: 3},
+            {lat: 38.996860, lng:-0.165532, count: 2},
+            {lat: 38.996810, lng:-0.145582, count: 3},
+            {lat: 38.996857, lng:-0.165588, count: 1},
+            {lat: 38.996834, lng:-0.165533, count: 1},
+            {lat: 60.8, lng:11.1, count: 1}
+        ]
+    };*/
 
     var medicionIAQ1 = L.marker([38.996834, -0.165511]).bindPopup('La calidad del aire en este punto es buena'),
         medicionIAQ2    = L.marker([38.996831, -0.165587]).bindPopup('La calidad del aire en este punto es buena'),
@@ -182,97 +234,16 @@
     var heatmapLayer = new HeatmapOverlay(cfg);
     var map = new L.Map('map', {
         center: new L.LatLng(38.996810, -0.165582),
-        zoom: 12,
+        zoom: 13,
         layers: [baseLayer, heatmapLayer]
     });
-    heatmapLayer.setData(testData);
-    // make accessible for debugging
+    heatmapLayer.setData(testDataCO);
+    // pinta los colores en el mapa según los datos que le pasamos fijándose en el peso
+
     layer = heatmapLayer;
 
     L.control.layers(null, baseMaps).addTo(map);
 
-
-
-    /*
-
-        var addressPoints ={
-            max: 8,
-            data: [
-            {lat:38.996786, long:-0.164808, count: 1},
-                {lat:38.996600, long:-0.164820, count: 3},
-                {lat:38.996227, long: -0.164698, count: 2},
-                {lat:38.996334, long:-0.164814, count: 1},
-                {lat: 38.995099, long: -0.164489,count: 2},
-                {lat: 38.995515, long: -0.164713, count:1},
-                {lat:38.994610, long:-0.163643, count: 3}
-        ]};
-
-        var cfg = {
-            // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-            // if scaleRadius is false it will be the constant radius used in pixels
-            "radius": 2,
-            "maxOpacity": .8,
-            // scales the radius based on map zoom
-            "scaleRadius": true,
-            // if set to false the heatmap uses the global maximum for colorization
-            // if activated: uses the data maximum within the current map boundaries
-            //   (there will always be a red spot with useLocalExtremas true)
-            "useLocalExtrema": true,
-            // which field name in your data represents the latitude - default "lat"
-            latField: 'lat',
-            // which field name in your data represents the longitude - default "lng"
-            lngField: 'long',
-            // which field name in your data represents the data value - default "value"
-            valueField: 'count'
-        };
-
-        var heatmapLayer = new HeatmapOverlay(cfg);
-
-
-        var littleton = L.marker([38.996834, -0.165511]).bindPopup('This is Littleton, CO.'),
-            denver    = L.marker([38.996831, -0.165587]).bindPopup('This is Denver, CO.'),
-            aurora    = L.marker([38.996815, -0.165532]).bindPopup('This is Aurora, CO.'),
-            golden    = L.marker([38.996819, -0.165682]).bindPopup('This is Golden, CO.'),
-            walway = L.marker([38.996838, -0.165510]).bindPopup('This is Littleton, CO.'),
-            manises    = L.marker([38.996836, -0.165587]).bindPopup('This is Denver, CO.'),
-            xirivella    = L.marker([38.996825, -0.165512]).bindPopup('This is Aurora, CO.'),
-            bcristo    = L.marker([38.996818, -0.165682]).bindPopup('This is Golden, CO.');
-
-        var cities = L.layerGroup([littleton, denver, aurora, golden]);
-        var ciudades = L.layerGroup ([walway, manises, xirivella, bcristo]);
-
-
-        //var map = L.map('map').setView([38.996810, -0.165582], 12);
-
-        var map = L.map('map', {
-            center: [38.996810, -0.165582],
-            zoom: 12,
-            layers: [ciudades, heatmapLayer]
-        });
-
-
-         var baseMaps = {
-             "Cities": cities,
-             "Ciudades" : ciudades,
-             "Colores" : heatmapLayer
-         };
-
-
-
-        var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
-        L.control.layers(null, baseMaps).addTo(map);
-
-
-        addressPoints = addressPoints.map(function (p) {
-            return [p[0], p[1], p[2]]
-        });
-
-
-        var heat = L.heatLayer(addressPoints.data).addTo(map);
-        */
 
 </script>
 
@@ -371,6 +342,8 @@
     </div>
 </footer>
 <!-- footer-end -->
+
+
 
 </body>
 </html>

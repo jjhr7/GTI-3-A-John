@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\MapController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -154,3 +155,14 @@ Route::get('/municipios', [TownController::class,'index']);
 //Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
 Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
+
+//Rutas para mapas
+Route::get('/mapa', [MapController::class,'index']);
+Route::post('/mapa/create', [MapController::class,'store']);
+Route::get('/mapa/{id}', [MapController::class,'show']);
+Route::delete('/mapa/delete/{id}', [MapController::class,'destroy']);
+
+
+Route::get('/mediciones/convert', [ReadController::class,'convertReadsToObjects']);
+Route::get('/mediciones/convert/filter', [ReadController::class,'convertReadsToObjectsFilter']);
+
