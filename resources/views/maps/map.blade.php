@@ -262,15 +262,11 @@
                 var hora='00';
                 var minutos='00';
                 for(var i=0; i<arrayDate.length; i++){
-                    L.marker([arrayDate[i].lat, arrayDate[i].lng], {time: arrayDate[i].dt + hora + ":42:00"}).bindPopup('La medición es ' + arrayDate[i].count + 'hora: ' + hora).addTo(map);
-                    if(hora<23 && hora<10){
-                        hora='0'+(hora+1);
-                    }else if(hora[1]==9) {
-                        hora = 10;
-                    }else if(hora>=10){
-                        hora=hora+1
-                    }else if(hora==23){
-                        hora='00';
+                    L.marker([arrayDate[i].lat, arrayDate[i].lng], {time: arrayDate[i].dt+ " " + hora + ":30:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
+                    L.marker([arrayDate[i].lat, arrayDate[i].lng], {time: arrayDate[i].dt+ " " + hora + ":00:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
+                    hora = Math.floor(Math.random() * (25 - 0) + 0);
+                    if(hora<10){
+                        hora='0'+hora;
                     }
                 }
             }
