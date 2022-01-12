@@ -229,4 +229,27 @@ class ReadController extends Controller
         }
         return $objetoMediciones;
     }
+
+    public function convertReadsToObjectsDate(){
+        $objetoMediciones = [];
+        $LNMediciones = new LNMediciones();
+        $mediciones = $LNMediciones->obtenerTodasLasMediciones();
+        $contador=0;
+        //dd($mediciones[1]);
+        foreach ($mediciones as $medicion){
+            $newObject= new stdClass();
+            $newObject->lat=$medicion->latitude;
+            $newObject->lng=$medicion->longitude;
+            $newObject->dt=$medicion->date;
+            //$newObject->count=$medicion->value;
+            $filter=$medicion->value;
+            //para definir umbrales del peligro de las medciones
+            $newObject->count=$filter;
+            $objetoMediciones[$contador] = $newObject;
+            $contador++;
+            //$newObject={"lat": $medicion->latitude, "lng": $medicion->longitude, "count": $medicion->value};
+        }
+        return $objetoMediciones;
+    }
+
 }

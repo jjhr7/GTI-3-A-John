@@ -48,6 +48,7 @@
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <style>
         #map { width: 100vw; height: 45vw; }
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; }
@@ -109,43 +110,19 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
 
 
-<script>
-
+<script type="text/javascript">
     var resultado;
+    var array;
+    var arrayDate;
 
     var testDataCO = {
         max: 8,
         data: []
     };
 
-    const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
-    const http = new XMLHttpRequest();
-
-    http.open("GET", url);
-
-    /*
-    http.setRequestHeader("Accept", "application/json");
-    http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    http.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTIzYzVkNjMyNDM4MDc4NWFiNjgzMjRjM2NkZGU5NGE1NjdjNjNhZTViOTRmMWRjNTkzZDIyM2EyMDk1YTdlMWU2NDUwOGI1NTI2NTFiNzYiLCJpYXQiOjE2NDE4Mjk5MDQuNTEyMDQ1LCJuYmYiOjE2NDE4Mjk5MDQuNTEyMDUyLCJleHAiOjE2NzMzNjU5MDQuNTA3NjgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bJlbDSxOG_CHb4b0GH6RAvgZJhyMTCU-gU9kJFPLmynnps4v4_RlUTsVE2XUpDPp1jPuwchL87dqxlWa3wqR6oYj-xDZvEZDlSLJyVwFdNczk2lP8xBpsG6n32hZihGG2-mKTH65O1O9ngjZhWxnWFGOwxluQJKnZhb8NqNB9NGZ7rTgKpeIOlelr7CAhA5JnC0TlcIKQEr2YrIsOush7LrczOKA_-yihBmdbgh1QH48qBdqWbijxaXQf025rk_fz6G5-vY_LiwV9oRUE8MstEimVSJd3zGjM63QTgoBXXBEg3trIZpiQUYTuSJRPm2kg0LaygncRyk204RNaqvW5nynqMOxC7EQgVWQkEZmHOx0bGtv2UnZvpiofdg_iCm7N7XOXwRdoL_OThrl6dU3Wok5o4HITzlfn5ipFFLz_rNXTsX_GpPpcOEopKHruWeaeMsyxR_2rumQNlBLhafhN7XVB7KyQ_cDw6SLaEH9UROZhUlGcrGcPb2Z_oZ3vrFTaV0lVveX4u_s3Ax3QbyyzGfDcKajlzEZJ8dZIhTwzH1sp1oZmPQ_NHL7yd8oDzdDykcL6PabyI0MsCH8vhExm5xGOPqmvB8HfQ9UeVx1awaLKchq68gHScO3AKWRTzH6DUovE0gwbqLwvky9uLYfflWoovhx05oPHVdqaixWfsA");
-
-     */
-    http.onreadystatechange = function(){
-
-        if(this.readyState == 4 && this.status == 200){
-            resultado = this.responseText;
-            testDataCO = {
-                max: 8,
-                data: [resultado]
-            };
-
-        }
-    }
-
-    http.send();
 
 
 
-    console.log(testDataCO.data)
 
     /*var testDataSO2 = {
         max: 8,
@@ -237,8 +214,71 @@
         zoom: 13,
         layers: [baseLayer, heatmapLayer]
     });
-    heatmapLayer.setData(testDataCO);
-    // pinta los colores en el mapa según los datos que le pasamos fijándose en el peso
+
+    $( document ).ready(function() {
+
+        const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
+        const http = new XMLHttpRequest();
+
+        http.open("GET", url);
+
+        /*
+        http.setRequestHeader("Accept", "application/json");
+        http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        http.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTIzYzVkNjMyNDM4MDc4NWFiNjgzMjRjM2NkZGU5NGE1NjdjNjNhZTViOTRmMWRjNTkzZDIyM2EyMDk1YTdlMWU2NDUwOGI1NTI2NTFiNzYiLCJpYXQiOjE2NDE4Mjk5MDQuNTEyMDQ1LCJuYmYiOjE2NDE4Mjk5MDQuNTEyMDUyLCJleHAiOjE2NzMzNjU5MDQuNTA3NjgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bJlbDSxOG_CHb4b0GH6RAvgZJhyMTCU-gU9kJFPLmynnps4v4_RlUTsVE2XUpDPp1jPuwchL87dqxlWa3wqR6oYj-xDZvEZDlSLJyVwFdNczk2lP8xBpsG6n32hZihGG2-mKTH65O1O9ngjZhWxnWFGOwxluQJKnZhb8NqNB9NGZ7rTgKpeIOlelr7CAhA5JnC0TlcIKQEr2YrIsOush7LrczOKA_-yihBmdbgh1QH48qBdqWbijxaXQf025rk_fz6G5-vY_LiwV9oRUE8MstEimVSJd3zGjM63QTgoBXXBEg3trIZpiQUYTuSJRPm2kg0LaygncRyk204RNaqvW5nynqMOxC7EQgVWQkEZmHOx0bGtv2UnZvpiofdg_iCm7N7XOXwRdoL_OThrl6dU3Wok5o4HITzlfn5ipFFLz_rNXTsX_GpPpcOEopKHruWeaeMsyxR_2rumQNlBLhafhN7XVB7KyQ_cDw6SLaEH9UROZhUlGcrGcPb2Z_oZ3vrFTaV0lVveX4u_s3Ax3QbyyzGfDcKajlzEZJ8dZIhTwzH1sp1oZmPQ_NHL7yd8oDzdDykcL6PabyI0MsCH8vhExm5xGOPqmvB8HfQ9UeVx1awaLKchq68gHScO3AKWRTzH6DUovE0gwbqLwvky9uLYfflWoovhx05oPHVdqaixWfsA");
+
+         */
+        http.onreadystatechange = function(){
+
+            if(this.readyState == 4 && this.status == 200){
+                resultado = this.response;
+                array = JSON.parse(this.response);
+                //let array = JSON.parse(this.response);
+                array.forEach(item => testDataCO.data.push(item));
+                heatmapLayer.setData(testDataCO);
+
+
+                /*for(var i=0; i<array.length; i++){
+                    var lat1=array[i].lat;
+                    console.log(array[i].lat);
+                    var lng1=array[i].lng;
+                    var count1=array[i].count;
+                    L.marker([lat1, lng1]).bindPopup('La medición es' + count1);
+                }*/
+            }
+        }
+
+        http.send();
+
+
+        const url1 = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/dates';
+        const http1 = new XMLHttpRequest();
+
+        http1.open("GET", url1);
+        http1.onreadystatechange = function(){
+
+            if(this.readyState == 4 && this.status == 200){
+                arrayDate = JSON.parse(this.response);
+                var hora='00';
+                var minutos='00';
+                for(var i=0; i<arrayDate.length; i++){
+                    L.marker([arrayDate[i].lat, arrayDate[i].lng], {time: arrayDate[i].dt + hora + ":42:00"}).bindPopup('La medición es ' + arrayDate[i].count + 'hora: ' + hora).addTo(map);
+                    if(hora<23 && hora<10){
+                        hora='0'+(hora+1);
+                    }else if(hora[1]==9) {
+                        hora = 10;
+                    }else if(hora>=10){
+                        hora=hora+1
+                    }else if(hora==23){
+                        hora='00';
+                    }
+                }
+            }
+        }
+
+        http1.send();
+
+    });
 
     layer = heatmapLayer;
 
@@ -246,7 +286,7 @@
 
 
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <!-- footer -->
 <footer id="footer" class="footer-bg footer-p pt-60" style="background-image: url(img/bg/f-bg.png); background-position: center top; background-size: auto;background-repeat: no-repeat;">
 

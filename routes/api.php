@@ -165,4 +165,5 @@ Route::delete('/mapa/delete/{id}', [MapController::class,'destroy']);
 
 Route::get('/mediciones/convert', [ReadController::class,'convertReadsToObjects']);
 Route::get('/mediciones/convert/filter', [ReadController::class,'convertReadsToObjectsFilter']);
+Route::get('/mediciones/convert/dates', [ReadController::class,'convertReadsToObjectsDate']);
 
