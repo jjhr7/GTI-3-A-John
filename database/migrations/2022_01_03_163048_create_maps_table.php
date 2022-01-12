@@ -16,6 +16,8 @@ class CreateMapsTable extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
             $table->string('date');
+            $table->foreignId('town_id');
+            $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
