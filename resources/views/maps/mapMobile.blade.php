@@ -343,32 +343,112 @@
      */
 
     async function obtenerMedicionDeLasEstaciones(lat, lon){
-        const Http = new XMLHttpRequest();
-        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
-        Http.open("GET", url);
-        Http.send();
+        /*    const Http = new XMLHttpRequest();
+            const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
+            Http.open("GET", url);
+        try{
 
-        return new Promise(resolve => {
-            Http.onreadystatechange = (e) => {
-                const gei = JSON.parse(Http.responseText);
-                console.log(gei)
+            Http.send();
 
-                resolve(gei)
-            }
-        })
+            return new Promise(resolve => {
+                Http.onreadystatechange = (e) => {
+                    const gei = JSON.parse(Http.responseText);
+                    console.log(gei)
+
+                    resolve(gei)
+                }
+            })
+        } catch (e) {*/
+            var fakeadito = {
+                 "status": "success",
+                 "data": {
+                     "city": "Valencia",
+                     "state": "Valencia",
+                     "country": "Spain",
+                     "location": {
+                         "type": "Point",
+                         "coordinates": [
+                             -0.37739,
+                             39.46975
+                         ]
+                     },
+                     "current": {
+                         "weather": {
+                             "ts": "2022-01-12T16:00:00.000Z",
+                             "tp": 14,
+                             "pr": 1026,
+                             "hu": 66,
+                             "ws": 2.24,
+                             "wd": 90,
+                             "ic": "02d"
+                         },
+                         "pollution": {
+                             "ts": "2022-01-12T13:00:00.000Z",
+                             "aqius": 26,
+                             "mainus": "o3",
+                             "aqicn": 20,
+                             "maincn": "o3"
+                         }
+                     }
+                 }
+             };
+            resolve(fakeadito)
+        //}
 
 
     }
 
 
     async function getMediciones(){
-        const prat = await obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-        const denia =  await obtenerMedicionDeLasEstaciones(38.67194, 0.0358333);
-        const aras =  await obtenerMedicionDeLasEstaciones(39.950277, -1.108888);
-        const valencia = await obtenerMedicionDeLasEstaciones(39.950277, -0.035833);
-        const torrevieja = await obtenerMedicionDeLasEstaciones(38.00833, -0.658611);
 
-        return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
+        var fakeadito = {
+            "status": "success",
+            "data": {
+                "city": "Valencia",
+                "state": "Valencia",
+                "country": "Spain",
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        -0.37739,
+                        39.46975
+                    ]
+                },
+                "current": {
+                    "weather": {
+                        "ts": "2022-01-12T16:00:00.000Z",
+                        "tp": 14,
+                        "pr": 1026,
+                        "hu": 66,
+                        "ws": 2.24,
+                        "wd": 90,
+                        "ic": "02d"
+                    },
+                    "pollution": {
+                        "ts": "2022-01-12T13:00:00.000Z",
+                        "aqius": 26,
+                        "mainus": "o3",
+                        "aqicn": 20,
+                        "maincn": "o3"
+                    }
+                }
+            }
+        };
+
+
+
+        try{
+            const prat = await obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
+            const denia =  await obtenerMedicionDeLasEstaciones(38.67194, 0.0358333);
+            const aras =  await obtenerMedicionDeLasEstaciones(39.950277, -1.108888);
+            const valencia = await obtenerMedicionDeLasEstaciones(39.950277, -0.035833);
+            const torrevieja = await obtenerMedicionDeLasEstaciones(38.00833, -0.658611);
+
+            return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
+        }catch (e) {
+            return [ fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current]
+        }
+
     }
 
 
