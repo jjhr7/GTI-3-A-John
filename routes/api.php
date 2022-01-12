@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\MapController;
+use App\Http\Controllers\Api\UseractivityController;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -72,6 +74,15 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/notificacion/update/{id}', [NotificationsController::class,'update']);
     Route::delete('/notificacion/delete/{id}', [NotificationsController::class,'destroy']);
     Route::delete('/notificaciones/user', [NotificationsController::class,'eliminarNotificacionesByUser']);
+
+    //Ruta obtener useractivities
+    Route::get('/useractivities', [UseractivityController::class,'index']);
+    Route::get('/useractivities/user', [UseractivityController::class,'getActivitiesByUser']);
+    Route::post('/useractivities/create', [UseractivityController::class,'store']);
+    Route::get('/useractivities/{id}', [UseractivityController::class,'obtenerUserActivity']);
+    Route::post('/useractivities/update/{id}', [UseractivityController::class,'update']);
+    Route::delete('/useractivities/delete/{id}', [UseractivityController::class,'destroy']);
+    Route::delete('/useractivities/user', [UseractivityController::class,'eliminarActivitiesByUser']);
 
     //Ruta obtener dispositivos
     Route::get('/dispositivos', [DeviceController::class,'index']);
