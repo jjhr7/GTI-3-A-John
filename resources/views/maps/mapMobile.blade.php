@@ -730,52 +730,10 @@
 <script>
 
 
-    /**
-     * Descripción de obtenerMedicionDeLasEstaciones. Función que devuelve la medicion de las estaciones oficiales de medida
-     * Haciendo una petición a la api oficial
-     * @return Response
-     */
-
-    /*
-    function obtenerMedicionDeLasEstaciones(lat, lon){
-        const Http = new XMLHttpRequest();
-        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
-        Http.open("GET", url);
-        Http.send();
-
-        Http.onreadystatechange = (e) => {
-            return "Http.responseText"
-        }
-
+    async function catchEm(promise) {
+        return promise.then(data => [null, data])
+            .catch(err => [err]);
     }
-    var medu=obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-
-    var estacionPrat = L.marker([40.136944, 0.165555], {icon: fontAwesomeIcon}).bindPopup('Estacion de Prat de Cabanes: '+  medu),
-        estacionDenia = L.marker([38.67194, 0.0358333]).bindPopup('Estacion de Dénia: '+ obtenerMedicionDeLasEstaciones(38.67194, 0.0358333)),
-        estacionAras = L.marker([39.950277, -1.108888]).bindPopup('Estacion de Aras de los olmos:' + obtenerMedicionDeLasEstaciones(39.950277, -1.108888)),
-        estacionValencia = L.marker([39.950277, -0.035833]).bindPopup('Estacion de Valencia: '+ obtenerMedicionDeLasEstaciones(39.950277, -0.035833)),
-        estacionTorrevieja = L.marker([38.00833, -0.658611]).bindPopup('Estacion de Torrevieja: '+ obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
-
-
-    /*
-/*
-    var marker1 = L.marker([38.996836, -0.165513], {time: "2013-01-22 08:42:26+01"});
-    var marker2 = L.marker([38.996838, -0.165510], {time: "2013-01-22 10:00:26+01"});
-    var marker3 = L.marker([38.996823, -0.165545], {time: "2013-01-22 10:03:29+01"});
-
-    var pointA = new L.LatLng(38.996832, -0.165511);
-    var pointB = new L.LatLng(38.996838, -0.165513);
-    var pointList = [pointA, pointB];
-
-    var polyline = new L.Polyline(pointList, {
-        time: "2013-01-22 10:24:59+01",
-        color: 'red',
-        weight: 3,
-        opacity: 1,
-        smoothFactor: 1
-    });
-
-     */
 
 
     /**
@@ -785,64 +743,23 @@
      */
 
     async function obtenerMedicionDeLasEstaciones(lat, lon){
-        /*    const Http = new XMLHttpRequest();
-            const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
-            Http.open("GET", url);
-        try{
 
-            Http.send();
-
-            return new Promise(resolve => {
-                Http.onreadystatechange = (e) => {
-                    const gei = JSON.parse(Http.responseText);
-                    console.log(gei)
-
-                    resolve(gei)
-                }
-            })
-        } catch (e) {*/
-            var fakeadito = {
-                 "status": "success",
-                 "data": {
-                     "city": "Valencia",
-                     "state": "Valencia",
-                     "country": "Spain",
-                     "location": {
-                         "type": "Point",
-                         "coordinates": [
-                             -0.37739,
-                             39.46975
-                         ]
-                     },
-                     "current": {
-                         "weather": {
-                             "ts": "2022-01-12T16:00:00.000Z",
-                             "tp": 14,
-                             "pr": 1026,
-                             "hu": 66,
-                             "ws": 2.24,
-                             "wd": 90,
-                             "ic": "02d"
-                         },
-                         "pollution": {
-                             "ts": "2022-01-12T13:00:00.000Z",
-                             "aqius": 26,
-                             "mainus": "o3",
-                             "aqicn": 20,
-                             "maincn": "o3"
-                         }
-                     }
-                 }
-             };
-            resolve(fakeadito)
-        //}
-
+        const Http = new XMLHttpRequest();
+        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
+        Http.open("GET", url);
+        Http.send();
+        return new Promise(resolve => {
+            Http.onreadystatechange = (e) => {
+                const gei = JSON.parse(Http.responseText);
+                console.log(gei)
+                resolve(gei)
+            }
+        })
 
     }
 
 
     async function getMediciones(){
-
         var fakeadito = {
             "status": "success",
             "data": {
@@ -877,20 +794,56 @@
             }
         };
 
+        let prat=fakeadito;
+        let denia=fakeadito;
+        let aras=fakeadito;
+        let valencia=fakeadito
+        let torrevieja=fakeadito;
 
+        var [err,data] = await catchEm(obtenerMedicionDeLasEstaciones(40.136944, 0.165555));
+        if (err){
+            console.log("fake");
 
-        try{
-            const prat = await obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-            const denia =  await obtenerMedicionDeLasEstaciones(38.67194, 0.0358333);
-            const aras =  await obtenerMedicionDeLasEstaciones(39.950277, -1.108888);
-            const valencia = await obtenerMedicionDeLasEstaciones(39.950277, -0.035833);
-            const torrevieja = await obtenerMedicionDeLasEstaciones(38.00833, -0.658611);
+            prat=fakeadito;
+        }else{
+            prat=data;
+        }
+        const [err1,data1] = await catchEm(obtenerMedicionDeLasEstaciones(38.67194, 0.0358333));
+        if (err1){
+            console.log("fake");
 
-            return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
-        }catch (e) {
-            return [ fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current]
+            denia=fakeadito;
+        }else{
+            denia=data1;
+        }
+        const [err2,data2] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -1.108888));
+        if (err2){
+            console.log("fake");
+
+            aras=fakeadito;
+        }else{
+             aras=data2;
         }
 
+        const [err3,data3] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -0.035833));
+        if (err3){
+            console.log("fake");
+
+            valencia=fakeadito;
+        }else{
+            valencia=data3;
+        }
+
+        const [err4,data4] = await catchEm(obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
+        if (err4){
+            console.log("fake");
+
+            torrevieja=fakeadito;
+        }else{
+            torrevieja=data4;
+        }
+
+        return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
     }
 
 
@@ -1197,10 +1150,14 @@
 
 
 
+        try {
+            getMediciones().then(value => {
+                inicializarMapa(value[0],value[1],value[2],value[3],value[4]);
+            });
+        }catch (e){
+            console.log(deng)
+        }
 
-    getMediciones().then(value => {
-        inicializarMapa(value[0],value[1],value[2],value[3],value[4]);
-    });
 
 
 </script>
