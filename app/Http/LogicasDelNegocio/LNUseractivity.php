@@ -3,6 +3,7 @@
 namespace App\Http\LogicasDelNegocio;
 
 use App\Models\UserActivity;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,12 @@ class LNUseractivity
      * @param $date
      * @return array
      */
-    public function guardarUseractivity($user_id, $time_activity, $distance_traveled, $date){
+    public function guardarUseractivity($user_id, $time_activity, $distance_traveled){
         $useractivty=new UserActivity();
         $useractivty->user_id=$user_id;
         $useractivty->time_activity=$time_activity;
         $useractivty->distance_traveled=$distance_traveled;
-        $useractivty->date=$date;
-
+        $useractivty->date=Carbon::now('CET')->toRfc850String();
         $useractivty->save();
 
         if($useractivty){

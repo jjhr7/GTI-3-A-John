@@ -40,7 +40,7 @@ class UseractivityController extends Controller
     {
         $LNUseractivity=new LNUseractivity();
 
-        $activityUser=$LNUseractivity->guardarUseractivity($request->user_id,$request->time_activity,$request->distance_traveled, $request->date);
+        $activityUser=$LNUseractivity->guardarUseractivity($request->user_id,$request->time_activity,$request->distance_traveled);
 
         if($activityUser[0]==1) {
             return response([
