@@ -1,7 +1,7 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 @section('title', 'Profile')
 @section('content')
-    
+
 
     <div class="container-fluid">
         <div class="page-header">
@@ -10,8 +10,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-file-text bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Profile')}}</h5>
-                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                            <h5>{{ __('Perfil')}}</h5>
+                            <span>{{ __('Aquí podras ver toda tu información')}}</span>
                         </div>
                     </div>
                 </div>
@@ -20,9 +20,6 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">{{ __('Pages')}}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ __('Profile')}}</li>
                         </ol>
@@ -35,32 +32,23 @@
             <div class="col-lg-4 col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="text-center"> 
+                        <div class="text-center">
                             <img src="../img/user.jpg" class="rounded-circle" width="150" />
-                            <h4 class="card-title mt-10">{{ __('John Doe')}}</h4>
-                            <p class="card-subtitle">{{ __('Front End Developer')}}</p>
-                            <div class="row text-center justify-content-md-center">
-                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-user"></i> <font class="font-medium">254</font></a></div>
-                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-image"></i> <font class="font-medium">54</font></a></div>
-                            </div>
+                            <h4 class="card-title mt-10">{{ __(auth()->user()->name)}}</h4>
+                            <p class="card-subtitle">{{ __(auth()->user()->information->role->name)}}</p>
                         </div>
                     </div>
-                    <hr class="mb-0"> 
-                    <div class="card-body"> 
-                        <small class="text-muted d-block">{{ __('Email address')}} </small>
-                        <h6>johndoe@admin.com</h6> 
-                        <small class="text-muted d-block pt-10">{{ __('Phone')}}</small>
-                        <h6>(123) 456 7890</h6> 
-                        <small class="text-muted d-block pt-10">{{ __('Address')}}</small>
-                        <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <small class="text-muted d-block">{{ __('Email')}} </small>
+                        <h6>{{__(auth()->user()->email)}}</h6>
+                        <small class="text-muted d-block pt-10">{{ __('Telefono')}}</small>
+                        <h6>{{__(auth()->user()->accountInformation->phone_number)}}</h6>
+                        <small class="text-muted d-block pt-10">{{ __('Ciudad')}}</small>
+                        <h6>{{__(auth()->user()->information->town->name)}}</h6>
                         <div class="map-box">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d77.49085452149588!3d12.953959988118836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C+Karnataka!5e0!3m2!1sen!2sin!4v1542005497600" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div> 
-                        <small class="text-muted d-block pt-30">{{ __('Social Profile')}}</small>
-                        <br/>
-                        <button class="btn btn-icon btn-facebook"><i class="fab fa-facebook-f"></i></button>
-                        <button class="btn btn-icon btn-twitter"><i class="fab fa-twitter"></i></button>
-                        <button class="btn btn-icon btn-instagram"><i class="fab fa-instagram"></i></button>
+                            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Carrer%20del%20Paranimf,%201,%2046730%20Gandia,%20Valencia+(UPV,%20Campus%20Gand%C3%ADa)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0" allowfullscreen><a href="https://www.gps.ie/car-satnav-gps/">Car Navigation Systems</a></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,9 +80,9 @@
                                                     <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img4.jpg" class="img-fluid rounded" /></div>
                                                     <div class="col-lg-3 col-md-6 mb-20"><img src="../img/big/img5.jpg" class="img-fluid rounded" /></div>
                                                 </div>
-                                                <div class="like-comm"> 
-                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
+                                                <div class="like-comm">
+                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a>
+                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,9 +98,9 @@
                                                         <p> {{ __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.')}}</p> <a href="javascript:void(0)" class="btn btn-success"> Design weblayout</a>
                                                     </div>
                                                 </div>
-                                                <div class="like-comm mt-20"> 
-                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
+                                                <div class="like-comm mt-20">
+                                                    <a href="javascript:void(0)" class="link mr-10">2 comment</a>
+                                                    <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,9 +113,9 @@
                                                 <a href="javascript:void(0)" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                                 <p class="mt-10">{{ __(' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper')}} </p>
                                             </div>
-                                            <div class="like-comm mt-20"> 
-                                                <a href="javascript:void(0)" class="link mr-10">2 comment</a> 
-                                                <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> 
+                                            <div class="like-comm mt-20">
+                                                <a href="javascript:void(0)" class="link mr-10">2 comment</a>
+                                                <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a>
                                             </div>
                                         </div>
                                     </div>

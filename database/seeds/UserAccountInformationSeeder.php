@@ -20,35 +20,35 @@ class UserAccountInformationSeeder extends Seeder
         $user->user_id = 1;
         $user->email_verified = 1;
         $user->access_token = Str::random(10);
-        $user->phone_number = 123456789;
+        $user->phone_number = 666666666;
         $user->save();
 
         $user =new Useraccountinformation();
         $user->user_id = 2;
         $user->email_verified = 1;
         $user->access_token = Str::random(10);
-        $user->phone_number = 123456789;
+        $user->phone_number = 666666666;
         $user->save();
 
         $user =new Useraccountinformation();
         $user->user_id = 3;
         $user->email_verified = 1;
         $user->access_token = Str::random(10);
-        $user->phone_number = 123456789;
+        $user->phone_number = 666666666;
         $user->save();
 
         $user =new Useraccountinformation();
         $user->user_id = 4;
         $user->email_verified = 1;
         $user->access_token = Str::random(10);
-        $user->phone_number = 123456789;
+        $user->phone_number = 666666666;
         $user->save();
 
         $user =new Useraccountinformation();
         $user->user_id = 5;
         $user->email_verified = 1;
         $user->access_token = Str::random(10);
-        $user->phone_number = 123456789;
+        $user->phone_number = 666666666;
         $user->save();
     }
 }
