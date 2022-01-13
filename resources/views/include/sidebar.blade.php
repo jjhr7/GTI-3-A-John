@@ -55,11 +55,11 @@
                     </div>
                 @endif
                 <div class="nav-lavel">{{ __('Datos')}} </div>
-
+                @if(auth()->user()->information->role->name == 'Super admin'||auth()->user()->information->role->name == 'Device manager' )
                 <div class="nav-item {{ ($segment1 == 'reads') ? 'active open' : '' }}">
-                    <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}"><i class="ik ik-rss"></i>{{ __('Mediciones')}}</a>
+                    <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}"><i class="ik ik-rss"></i>{{ __('Informe dispositivos')}}</a>
                 </div>
-
+                @endif
 
                 <div class="nav-item {{ ($segment1 == 'perfil') ? 'active open' : ''  }}">
                     <a href="{{url('profile')}}" class="menu-item {{ ($segment1 == 'Perfil') ? 'active' : '' }}"><i class="ik ik-user"></i>{{ __('Perfil')}}</a>

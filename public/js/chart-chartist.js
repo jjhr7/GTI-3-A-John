@@ -1,11 +1,13 @@
 "use strict";
 $(document).ready(function() {
     new Chartist.Line('#lineChart', {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        labels: ['2020-01-10', '2020-01-11', '2020-01-12', '2020-01-13', '2020-01-14'],
         series: [
-            [12, 9, 7, 8, 5],
-            [2, 1, 3.5, 7, 3],
-            [1, 3, 4, 5, 6]
+            [12, 90, 70, 80, 50],
+            [10, 10, 30.5, 70, 80],
+            [50, 20, 30, 40, 50],
+            [12, 20, 15, 30, 45],
+            [20, 10, 30, 60, 10]
         ]
     }, {
         fullWidth: true,
@@ -157,7 +159,7 @@ $(document).ready(function() {
     };
     new Chartist.Bar('#barChart_bipolar', data, options);
     var data = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
         series: [
             [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
             [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]

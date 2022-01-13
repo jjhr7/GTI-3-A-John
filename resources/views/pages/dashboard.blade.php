@@ -13,72 +13,6 @@
     <div class="container-fluid">
     	<div class="row">
 
-    		<!-- page statustic chart start --
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-red text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h4 class="mb-0">{{ __('2,563')}}</h4>
-                                <p class="mb-0">{{ __('Products')}}</p>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="fas fa-cube f-30"></i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart1" class="chart-line chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-blue text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h4 class="mb-0">{{ __('3,612')}}</h4>
-                                <p class="mb-0">{{ __('Orders')}}</p>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-shopping-cart f-30"></i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart2" class="chart-line chart-shadow" ></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-green text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h4 class="mb-0">{{ __('865')}}</h4>
-                                <p class="mb-0">{{ __('Customers')}}</p>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="ik ik-user f-30"></i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart3" class="chart-line chart-shadow"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card card-yellow text-white">
-                    <div class="card-block">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h4 class="mb-0">{{ __('35,500')}}</h4>
-                                <p class="mb-0">{{ __('Sales')}}</p>
-                            </div>
-                            <div class="col-4 text-right">
-                                <i class="ik f-30">৳</i>
-                            </div>
-                        </div>
-                        <div id="Widget-line-chart4" class="chart-line chart-shadow" ></div>
-                    </div>
-                </div>
-            </div>
-            -- page statustic chart end -->
 
             <!-- sale 2 card start -->
             <div class="col-xl-8 col-md-6">
@@ -88,7 +22,7 @@
                     </div>
                     <div class="card-block text-center">
                         <h4>{{ __('Mediciones')}}</h4>
-                        <div id="realtime-profit"></div>
+                        <div id="lineChart" class="chart-shadow st-cir-chart"></div>
                     </div>
                 </div>
             </div>
@@ -238,16 +172,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="card sale-card">
-                        <div class="card-header">
-                            <h3>{{ __('Pasos dados')}}</h3>
-                        </div>
-                        <div class="card-block text-center">
-                            <div id="sale-diff" class="chart-shadow"></div>
-                        </div>
-                    </div>
-                </div>
 
     	</div>
     </div>
@@ -268,6 +192,9 @@
         <script src="{{ asset('js/widget-statistic.js') }}"></script>
         <script src="{{ asset('js/widget-data.js') }}"></script>
         <script src="{{ asset('js/dashboard-charts.js') }}"></script>
+
+        <script src="{{ asset('plugins/chartist/dist/chartist.min.js') }}"></script>
+        <script src="{{ asset('js/chart-chartist.js') }}"></script>
 
     @endpush
 @endsection

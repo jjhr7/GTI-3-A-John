@@ -124,7 +124,7 @@ class LNTown
 
         }
 
-
+        
         return $usersOfTown;
 
     }
