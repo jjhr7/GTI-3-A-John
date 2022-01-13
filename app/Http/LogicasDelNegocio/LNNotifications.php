@@ -52,6 +52,14 @@ class LNNotifications
         return $notifications;
     }
 
+    public function obtenerNotificacionesDevice(){
+        $notifications=Notification::where('type',"Device")->get();
+        return $notifications;
+    }
+
+
+
+
     public function deleteNotificacionesByUser(){
         $notifications=$this->obtenerNotificacionesByUser();
 //        dd($notifications[0]->id, $notifications[1]->id);

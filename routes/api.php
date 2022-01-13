@@ -75,6 +75,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('/notificacion/delete/{id}', [NotificationsController::class,'destroy']);
     Route::delete('/notificaciones/user', [NotificationsController::class,'eliminarNotificacionesByUser']);
 
+    Route::get('/notifications/get-list', [App\Http\Controllers\NotificationsController::class,'getNotificationList']);
+
+
     //Ruta obtener useractivities
     Route::get('/useractivities', [UseractivityController::class,'index']);
     Route::get('/useractivities/user', [UseractivityController::class,'getActivitiesByUser']);
