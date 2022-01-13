@@ -16,6 +16,7 @@ use App\Http\Controllers\TownController;
 use App\Http\Controllers\ZoneController;
 use \App\Http\Controllers\DeviceController;
 use App\Http\Controllers\HealthyTownController;
+use App\Http\Controllers\NotificationsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,6 +99,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/medicion/update', [ReadController::class,'update']);
     Route::get('/medicion/delete/{id}', [ReadController::class,'delete']);
 
+    Route::get('/notifications/get-list', [NotificationsController::class,'getNotificationList']);
 
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
@@ -147,7 +149,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/layouts', function () { return view('pages.layouts'); });
 
 	Route::get('/navbar', function () { return view('pages.navbar'); });
-	Route::get('/profile', function () { return view('pages.profile'); });
+	Route::get('/profile', [UserController::class,'userActivity']);
 	Route::get('/project', function () { return view('pages.project'); });
 	Route::get('/view', function () { return view('pages.view'); });
 

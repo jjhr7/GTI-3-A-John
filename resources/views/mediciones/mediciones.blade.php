@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-rss bg-orange"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Mediciones')}}</h5>
-                            <span>{{ __('Lista de mediciones')}}</span>
+                            <h5>{{ __('Actividad')}}</h5>
+                            <span>{{ __('Informes de los dispositivos')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Mediciones')}}</a>
+                                <a href="#">{{ __('Actividad')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -39,7 +39,7 @@
         <!-- end message area-->
             <div class="col-md-12">
                 <div class="card p-3">
-                    <div class="card-header"><h3>{{ __('Mediciones')}}</h3></div>
+                    <div class="card-header"><h3>{{ __('Actividad')}}</h3></div>
                     <div class="card-body">
                         <table id="reads_table" class="table">
 
