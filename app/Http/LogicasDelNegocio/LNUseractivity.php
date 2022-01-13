@@ -22,7 +22,7 @@ class LNUseractivity
         $useractivty->user_id=$user_id;
         $useractivty->time_activity=$time_activity;
         $useractivty->distance_traveled=$distance_traveled;
-        $useractivty->date=Carbon::now('CET')->toRfc850String();
+        $useractivty->date=Carbon::now('CET')->format('Y-m-d');;
         $useractivty->save();
 
         if($useractivty){
