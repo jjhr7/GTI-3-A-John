@@ -16,6 +16,7 @@ class CreateDevicesTable extends Migration
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
             $table->string('serial')->unique();
+            $table->double('delta');
             $table->timestamps();
         });
     }

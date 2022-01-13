@@ -9,7 +9,7 @@ class Map extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date'];
+    protected $fillable = ['date','town_id'];
     protected $guarded = [''];
 
 }

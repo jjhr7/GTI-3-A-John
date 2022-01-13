@@ -19,13 +19,13 @@
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
                 <div class="nav-item {{ ($segment1 == 'dashboard') ? 'active' : '' }}">
-                    <a href="{{route('dashboard')}}"><i class="ik ik-home"></i><span>{{ __('Panel de control')}}</span></a>
+                    <a href="{{route('dashboard')}}"><i class="ik ik-home"></i><span>{{ __('Inicio')}}</span></a>
                 </div>
 
                 @if(auth()->user()->information->role->name == 'Super admin' || auth()->user()->information->role->name == 'Admin' || auth()->user()->information->role->name == 'Project Manager' )
 
                     <div class="nav-item {{ ($segment1 == 'users' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
-                        <a href="#"><i class="ik ik-lock"></i><span>{{ __('Administrador')}}</span></a>
+                        <a href="#"><i class="ik ik-lock"></i><span>{{ __('Panel de administración')}}</span></a>
                         <div class="submenu-content">
 
                             <!-- only those have manage_user permission will get access -->
@@ -55,43 +55,19 @@
                     </div>
                 @endif
                 <div class="nav-lavel">{{ __('Datos')}} </div>
+                @if(auth()->user()->information->role->name == 'Super admin'||auth()->user()->information->role->name == 'Device manager' )
+                <div class="nav-item {{ ($segment1 == 'reads') ? 'active open' : '' }}">
+                    <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}"><i class="ik ik-rss"></i>{{ __('Informe dispositivos')}}</a>
+                </div>
+                @endif
 
-                <div class="nav-item {{ ($segment1 == 'reads') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-rss"></i><span>{{ __('Mediciones')}}</span> </a>
-                    <div class="submenu-content">
-                        <a href="{{url('mediciones')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}">{{ __('Mediciones')}}</a>
-                    </div>
+                <div class="nav-item {{ ($segment1 == 'perfil') ? 'active open' : ''  }}">
+                    <a href="{{url('profile')}}" class="menu-item {{ ($segment1 == 'Perfil') ? 'active' : '' }}"><i class="ik ik-user"></i>{{ __('Perfil')}}</a>
                 </div>
 
-                <div class="nav-item {{ ($segment1 == 'charts-chartist' || $segment1 == 'charts-flot'||$segment1 == 'charts-knob'||$segment1 == 'charts-amcharts') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-pie-chart"></i><span>{{ __('Gráficas')}}</span> </a>
-                    <div class="submenu-content">
-                        <a href="{{url('charts-chartist')}}" class="menu-item {{ ($segment1 == 'charts-chartist') ? 'active' : '' }}">{{ __('Chartist')}}</a>
-                        <a href="{{url('charts-flot')}}" class="menu-item {{ ($segment1 == 'charts-flot') ? 'active' : '' }}">{{ __('Flot')}}</a>
-                        <a href="{{url('charts-knob')}}" class="menu-item {{ ($segment1 == 'charts-knob') ? 'active' : '' }}">{{ __('Knob')}}</a>
-                        <a href="{{url('charts-amcharts')}}" class="menu-item {{ ($segment1 == 'charts-amcharts') ? 'active' : '' }}">{{ __('Amcharts')}}</a>
-                    </div>
-                </div>
 
-                <div class="nav-item {{ ($segment1 == 'calendario') ? 'active' : '' }}">
-                    <a href="{{url('calendar')}}"><i class="ik ik-calendar"></i><span>{{ __('Calendario')}}</span></a>
-                </div>
-
-                <div class="nav-item {{ ($segment1 == 'tareas') ? 'active' : '' }}">
-                    <a href="{{url('taskboard')}}"><i class="ik ik-file-text"></i><span>{{ __('Tareas')}}</span></a>
-                </div>
-
-                <div class="nav-item {{ ($segment1 == 'perfil' || $segment1 == 'Contrato') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Mi cuenta')}}</span></a>
-                    <div class="submenu-content">
-                        <a href="{{url('profile')}}" class="menu-item {{ ($segment1 == 'Perfil') ? 'active' : '' }}">{{ __('Perfil')}}</a>
-                        <a href="{{url('invoice')}}" class="menu-item {{ ($segment1 == 'Contrato') ? 'active' : '' }}">{{ __('Contrato')}}</a>
-                        <a href="{{url('project')}}" class="menu-item {{ ($segment1 == 'Proyecto') ? 'active' : '' }}">{{ __('Proyecto')}}</a>
-                        <a href="{{url('view')}}" class="menu-item {{ ($segment1 == 'Vista general') ? 'active' : '' }}">{{ __('Vista general')}}</a>
-                    </div>
-                </div>
-                <div class="nav-item {{ ($segment1 == 'Subscripciones') ? 'active' : '' }}">
-                    <a href="{{url('pricing')}}"><i class="ik ik-dollar-sign"></i><span>{{ __('Subscripciones')}}</span></a>
+                <div class="nav-item {{ ($segment1 == 'mapa') ? 'active open' : ''  }}">
+                    <a href="{{url('mapa')}}" class="menu-item {{ ($segment1 == 'mapa') ? 'active' : '' }}"><i class="ik ik-map"></i>{{ __('Mapa')}}</a>
                 </div>
 
                 <div class="nav-lavel">{{ __('Documentation')}} </div>

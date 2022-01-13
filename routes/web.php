@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -146,7 +147,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/layouts', function () { return view('pages.layouts'); });
 
 	Route::get('/navbar', function () { return view('pages.navbar'); });
-	Route::get('/profile', function () { return view('pages.profile'); });
+	Route::get('/profile', [UserController::class,'userActivity']);
 	Route::get('/project', function () { return view('pages.project'); });
 	Route::get('/view', function () { return view('pages.view'); });
 
@@ -206,3 +207,8 @@ Route::get('/login-1', function () { return view('pages.login'); });
 //Guía de gases
 Route::get('/guia', [GasGuideController::class, 'getView']);
 
+//Mapa
+Route::get('/mapa', [MapController::class, 'getView']);
+
+//Mapa movil
+Route::get('/mapaMovil', [MapController::class, 'getViewMobile']);

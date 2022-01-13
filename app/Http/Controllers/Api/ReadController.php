@@ -145,7 +145,7 @@ class ReadController extends Controller
         ]);
     }*/
 
-    public function obtenerUltimasReadsByUser(){
+    public function obtenerReadsByUser(){
        $LNMediciones = new LNReads();
        return response([
            'mediciones' => $LNMediciones->obtenerTodasLasMedicionesPorUsuario(),
@@ -153,12 +153,12 @@ class ReadController extends Controller
        ]);
    }
 
-    public function obtenerUltimasReadsByTown(){
+    public function obtenerReadsByTown(){
 
         $LNMediciones = new LNReads();
 
         return response([
-            'mediciones' => $LNMediciones->obtenerUltimasReadsByTown(),
+            'mediciones' => $LNMediciones->obtenerReadsByTown(),
             'success' => 1
         ]);
     }

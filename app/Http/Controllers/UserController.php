@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\LogicasDelNegocio\LNUser;
+use App\Http\LogicasDelNegocio\LNUseractivity;
 use App\Models\Town;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
@@ -236,5 +237,13 @@ class UserController extends Controller
         }else{
             return redirect('users')->with('error', 'User not found');
         }
+    }
+
+    public function userActivity(){
+        $LNUseractivity = new LNUseractivity();
+
+        $useractivities = $LNUseractivity->obtenerActivitiesByUser();
+
+        return view('pages.profile',compact('useractivities'));
     }
 }
