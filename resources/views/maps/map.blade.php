@@ -1053,46 +1053,46 @@
             }, {lat: 60.8, lng: 11.1, count: 1}]
         };
 
-        var medicionIAQ1 = L.marker([38.966623, -0.175211], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ2 = L.marker([38.992851, -0.195587], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ3 = L.marker([38.991045, -0.165532], {time: "2013-01-22 08:42:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ4 = L.marker([38.994319, -0.161632], {time: "2013-01-22 08:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ5 = L.marker([38.956838, -0.178382], {time: "2013-01-22 09:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ6 = L.marker([38.986419, -0.165682], {time: "2013-01-22 10:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ7 = L.marker([38.983519, -0.185682], {time: "2013-01-22 11:00:26"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ8 = L.marker([38.996813, -0.175682], {time: "2013-01-22 11:06:26"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ9 = L.marker([38.956719, -0.175562], {time: "2013-01-22 11:10:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ10 = L.marker([38.976829, -0.175212], {time: "2013-01-22 11:20:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ11 = L.marker([38.986859, -0.168862], {time: "2013-01-22 11:30:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ12 = L.marker([38.992229, -0.175342], {time: "2013-01-22 12:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ13 = L.marker([38.984544, -0.165634], {time: "2013-01-22 12:23:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ14 = L.marker([38.976349, -0.182682], {time: "2013-01-22 12:29:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ15 = L.marker([38.968223, -0.177682], {time: "2013-01-22 12:37:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ16 = L.marker([38.998224, -0.177683], {time: "2013-01-22 12:55:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ17 = L.marker([38.988243, -0.177682], {time: "2013-01-23 13:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ18 = L.marker([38.789987, -0.189682], {time: "2013-01-23 13:30:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ19 = L.marker([38.954423, -0.177682], {time: "2013-01-23 14:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ20 = L.marker([38.969280, -0.187316], {time: "2013-01-23 15:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ21 = L.marker([38.994423, -0.165434], {time: "2013-01-23 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ22 = L.marker([38.893223, -0.167682], {time: "2013-01-23 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ23 = L.marker([38.988623, -0.178942], {time: "2013-01-23 16:30:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ24 = L.marker([38.996723, -0.156632], {time: "2013-01-23 18:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ25 = L.marker([38.993423, -0.176341], {time: "2013-01-23 19:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ26 = L.marker([38.979880, -0.189316], {time: "2013-01-23 20:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+        var medicionIAQ1 = L.marker([38.966623, -0.175211], {time: "2022-01-14 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ2 = L.marker([38.992851, -0.195587], {time: "2022-01-14 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ3 = L.marker([38.991045, -0.165532], {time: "2022-01-14 08:42:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ4 = L.marker([38.994319, -0.161632], {time: "2022-01-14 08:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ5 = L.marker([38.956838, -0.178382], {time: "2022-01-14 09:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ6 = L.marker([38.986419, -0.165682], {time: "2022-01-14 10:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ7 = L.marker([38.983519, -0.185682], {time: "2022-01-14 11:00:26"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ8 = L.marker([38.996813, -0.175682], {time: "2022-01-14 11:06:26"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ9 = L.marker([38.956719, -0.175562], {time: "2022-01-14 11:10:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ10 = L.marker([38.976829, -0.175212], {time: "2022-01-14 11:20:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ11 = L.marker([38.986859, -0.168862], {time: "2022-01-14 11:30:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ12 = L.marker([38.992229, -0.175342], {time: "2022-01-14 12:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ13 = L.marker([38.984544, -0.165634], {time: "2022-01-14 12:23:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ14 = L.marker([38.976349, -0.182682], {time: "2022-01-14 12:29:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ15 = L.marker([38.968223, -0.177682], {time: "2022-01-14 12:37:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ16 = L.marker([38.998224, -0.177683], {time: "2022-01-14 12:55:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ17 = L.marker([38.988243, -0.177682], {time: "2022-01-14 13:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ18 = L.marker([38.789987, -0.189682], {time: "2022-01-14 13:30:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ19 = L.marker([38.954423, -0.177682], {time: "2022-01-14 14:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ20 = L.marker([38.969280, -0.187316], {time: "2022-01-14 15:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ21 = L.marker([38.994423, -0.165434], {time: "2022-01-14 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ22 = L.marker([38.893223, -0.167682], {time: "2022-01-14 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ23 = L.marker([38.988623, -0.178942], {time: "2022-01-14 16:30:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ24 = L.marker([38.996723, -0.156632], {time: "2022-01-14 18:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ25 = L.marker([38.993423, -0.176341], {time: "2022-01-14 19:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ26 = L.marker([38.979880, -0.189316], {time: "2022-01-14 20:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
 
 
-            medicionSO21 = L.marker([38.996838, -0.165510], {icon: SOIcon}, {time: "2013-01-22 11:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO22 = L.marker([38.896833, -0.165514], {icon: SOIcon}, {time: "2013-01-22 12:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO23 = L.marker([38.966523, -0.165420], {icon: SOIcon}, {time: "2013-01-22 13:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO24 = L.marker([38.984544, -0.165720], {icon: SOIcon}, {time: "2013-01-22 14:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO25 = L.marker([38.987619, -0.165827], {icon: SOIcon}, {time: "2013-01-22 15:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO26 = L.marker([38.972356, -0.165332], {icon: SOIcon}, {time: "2013-01-22 16:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO27 = L.marker([38.899833, -0.166682], {icon: SOIcon}, {time: "2013-01-22 17:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO28 = L.marker([38.936128, -0.167882], {icon: SOIcon}, {time: "2013-01-22 18:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO29 = L.marker([38.924763, -0.166542], {icon: SOIcon}, {time: "2013-01-22 19:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2013-01-22 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2013-01-22 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2013-01-22 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo ');
+            medicionSO21 = L.marker([38.996838, -0.165510], {icon: SOIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO22 = L.marker([38.896833, -0.165514], {icon: SOIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO23 = L.marker([38.966523, -0.165420], {icon: SOIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO24 = L.marker([38.984544, -0.165720], {icon: SOIcon}, {time: "2022-01-14 14:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO25 = L.marker([38.987619, -0.165827], {icon: SOIcon}, {time: "2022-01-14 15:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO26 = L.marker([38.972356, -0.165332], {icon: SOIcon}, {time: "2022-01-14 16:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO27 = L.marker([38.899833, -0.166682], {icon: SOIcon}, {time: "2022-01-14 17:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO28 = L.marker([38.936128, -0.167882], {icon: SOIcon}, {time: "2022-01-14 18:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO29 = L.marker([38.924763, -0.166542], {icon: SOIcon}, {time: "2022-01-14 19:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo ');
 
 
         var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
@@ -1111,7 +1111,7 @@
         );
         var cfg = {
             // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-            "radius": 0.002,
+            "radius": 0.0019,
             "maxOpacity": .8,
             // scales the radius based on map zoom
             "scaleRadius": true,
@@ -1124,8 +1124,11 @@
             // which field name in your data represents the longitude - default "lng"
             lngField: 'lng',
             // which field name in your data represents the data value - default "value"
-            valueField: 'count'
+            max:3,
+            valueField: 'count',
+            gradient: {0.0: "#00FF00",0.5: "#FFFF00",1.0: "#FF0000"}
         };
+
         var heatmapLayer = new HeatmapOverlay(cfg);
         var map = new L.Map('map', {
             center: new L.LatLng(38.996810, -0.165582),
@@ -1243,7 +1246,7 @@
         sliderControl.startSlider();
 
 
-        heatmapLayer.setData(testData);
+        // heatmapLayer.setData(testData);
         // make accessible for debugging
         layer = heatmapLayer;
 
@@ -1257,102 +1260,6 @@
 
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<!-- footer -->
-<footer id="footer" class="footer-bg footer-p pt-60" style="background-image: url(img/bg/f-bg.png); background-position: center top; background-size: auto;background-repeat: no-repeat;">
-
-    <div class="footer-top">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="logo mt-15 mb-15">
-                            <a href="#"><img src="img/logo/logo_largo_blanco.png" alt="logo" width="200px" height="auto"></a>
-                        </div>
-                        <div class="footer-text mb-20">
-                            <p>Tecnologías Interactivas EPSG</p>
-                        </div>
-                        <div class="footer-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Nuestra compañía</h5>
-                        </div>
-                        <div class="footer-link">
-                            <ul>
-                                <li><a href="#">Sobre nosotros</a></li>
-                                <li><a href="#">Términos y condiciones</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Enlaces de interés</h5>
-                        </div>
-                        <div class="footer-link">
-                            <ul>
-                                <li><a href="#">Inicio</a></li>
-                                <li><a href="#">Quienes somos</a></li>
-                                <li><a href="#">Nuestras funcionalidades</a></li>
-                                <li><a href="#">Nuestra app</a></li>
-                                <li><a href="#">Noticias</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-30">
-                        <div class="f-widget-title">
-                            <h5>Contáctanos</h5>
-                        </div>
-                        <div class="footer-link">
-                            <div class="f-contact">
-                                <ul>
-                                    <li>
-                                        <i class="icon dripicons-phone"></i>
-                                        <span>6786786789<br>+34 6786786789</span>
-                                    </li>
-                                    <li>
-                                        <i class="icon dripicons-mail"></i>
-                                        <span><a href="mailto:info@example.com">marselosa@epsg.upv.es</a><br><a href="mailto:sale@example.com">marselocontact@epsg.upv.es</a></span>
-                                    </li>
-                                    <li>
-                                        <i class="fal fa-map-marker-alt"></i>
-                                        <span>UPV Campus de Gandía<br>Carrer del Paraninf, 1, Playa de Gandía</span>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-wrap text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright-text">
-                        <p>&copy; 2021 @ Marselo SA.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- footer-end -->
-
 
 
 </body>
