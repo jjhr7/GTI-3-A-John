@@ -26,22 +26,20 @@
             pagingType: "full_numbers",
             dom: "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>tipr",
             ajax: {
-                url: 'mediciones/get-list',
+                url: 'notifications/get-list',
                 type: "get"
             },
             columns: [
                 /*{data:'serial_no', name: 'serial_no'},*/
-                {data:'data', name: 'data', orderable: false, searchable: false, title: 'Datos'},
-                {data:'read_date', name: 'read_date', title: 'Fecha de la medición'},
-                {data:'device', name: 'device', title: 'Dispositivo'},
-                {data:'action', name: 'action'}
-
+                {data:'date', name: 'date', orderable: false, searchable: false, title: 'Fecha'},
+                {data:'message', name: 'message', title: 'Mensaje'},
+                {data:'serial', name: 'serial', title: 'Dispositivo'},
             ],
             buttons: [
                 {
                     extend: 'copy',
                     className: 'btn-sm btn-info',
-                    title: 'Mediciones',
+                    title: 'Actividad',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -51,7 +49,7 @@
                 {
                     extend: 'csv',
                     className: 'btn-sm btn-success',
-                    title: 'Mediciones',
+                    title: 'Actividad',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -61,7 +59,7 @@
                 {
                     extend: 'excel',
                     className: 'btn-sm btn-warning',
-                    title: 'Mediciones',
+                    title: 'Actividad',
                     header: false,
                     footer: true,
                     exportOptions: {
@@ -71,7 +69,7 @@
                 {
                     extend: 'pdf',
                     className: 'btn-sm btn-primary',
-                    title: 'Mediciones',
+                    title: 'Actividad',
                     pageSize: 'A2',
                     header: false,
                     footer: true,
@@ -82,7 +80,7 @@
                 {
                     extend: 'print',
                     className: 'btn-sm btn-default',
-                    title: 'Mediciones',
+                    title: 'Actividad',
                     // orientation:'landscape',
                     pageSize: 'A2',
                     header: true,

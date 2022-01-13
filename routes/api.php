@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\MapController;
+use App\Http\Controllers\Api\UseractivityController;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -71,6 +74,18 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/notificacion/update/{id}', [NotificationsController::class,'update']);
     Route::delete('/notificacion/delete/{id}', [NotificationsController::class,'destroy']);
     Route::delete('/notificaciones/user', [NotificationsController::class,'eliminarNotificacionesByUser']);
+
+    Route::get('/notifications/get-list', [App\Http\Controllers\NotificationsController::class,'getNotificationList']);
+
+
+    //Ruta obtener useractivities
+    Route::get('/useractivities', [UseractivityController::class,'index']);
+    Route::get('/useractivities/user', [UseractivityController::class,'getActivitiesByUser']);
+    Route::post('/useractivities/create', [UseractivityController::class,'store']);
+    Route::get('/useractivities/{id}', [UseractivityController::class,'obtenerUserActivity']);
+    Route::post('/useractivities/update/{id}', [UseractivityController::class,'update']);
+    Route::delete('/useractivities/delete/{id}', [UseractivityController::class,'destroy']);
+    Route::delete('/useractivities/user', [UseractivityController::class,'eliminarActivitiesByUser']);
 
     //Ruta obtener dispositivos
     Route::get('/dispositivos', [DeviceController::class,'index']);
@@ -154,3 +169,15 @@ Route::get('/municipios', [TownController::class,'index']);
 //Rutas para gestionar Mediciones - Read
 Route::get('/mediciones', [ReadController::class,'index']);
 Route::get('/mediciones/latest/{nMediciones}',[ReadController::class, 'obtenerUltimasMediciones']);
+
+//Rutas para mapas
+Route::get('/mapa', [MapController::class,'index']);
+Route::post('/mapa/create', [MapController::class,'store']);
+Route::get('/mapa/{id}', [MapController::class,'show']);
+Route::delete('/mapa/delete/{id}', [MapController::class,'destroy']);
+
+
+Route::get('/mediciones/convert', [ReadController::class,'convertReadsToObjects']);
+Route::get('/mediciones/convert/filter', [ReadController::class,'convertReadsToObjectsFilter']);
+Route::get('/mediciones/convert/dates', [ReadController::class,'convertReadsToObjectsDate']);
+

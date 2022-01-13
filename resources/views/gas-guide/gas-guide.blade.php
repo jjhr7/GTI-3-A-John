@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | Laravel Admin Starter Kit - Radmin</title>
+    <title>Información adicional</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/logo/logo_icono.png">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -56,13 +57,13 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="has-sub">
-                                        <a href="#parallax">Inicio</a>
+                                        <a href="/">Inicio</a>
                                     </li>
-                                    <li><a href="#features">Funcionalidades</a></li>
-                                    <li><a href="#screen">Pantallas</a></li>
+                                    <li><a href="/mapa">Mapa</a></li>
+                                    <li><a href="/#screen">Pantallas</a></li>
                                     <li><a href="/guia">Información adicional</a></li>
-                                    <li><a href="#blog">Blog</a></li>
-                                    <li><a href="#contact">Contacto</a></li>
+                                    <li><a href="/#blog">Blog</a></li>
+                                    <li><a href="/#contact">Contacto</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -101,15 +102,10 @@
                 <div class="card-body">
                     <div class="row md-12">
                         <div class="col boxIcono"><a href="#"><img class="box-gas1" id="co2" onclick="datosCO2()" src="{{asset('img/gas-guide-img/co2.png')}}"></a></div>
-                        <div class="col boxIcono"><a href="#"><img class="box-gas2" id="bencenopireno" onclick="datosBencenopireno()" src="{{asset('img/gas-guide-img/h2s.png')}}"></a></div>
-                        <div class="col boxIcono"><a href="#"><img class="box-gas3" id="no2" onclick="datosNO2()" src="{{asset('img/gas-guide-img/no2.png')}}"></a></div>
                         <div class="col boxIcono"><a href="#"><img class="box-gas4" id="so2" onclick="datosSO2()" src="{{asset('img/gas-guide-img/so2.png')}}"></a></div>
                         <div class="col boxIcono"><a href="#"><img class="box-gas5" id="o3" onclick="datosO3()" src="{{asset('img/gas-guide-img/o3.png')}}"></a></div>
                         <div class="col boxIcono"><a href="#"><img class="box-gas1" id="pm25" onclick="datosPm25()" src="{{asset('img/gas-guide-img/pm25.png')}}"></a></div>
                         <div class="col boxIcono"><a href="#"><img class="box-gas2" id="pm10" onclick="datosPm10()" src="{{asset('img/gas-guide-img/pm10.png')}}"></a></div>
-                        <div class="col boxIcono"><a href="#"><img class="box-gas3" id="plomo" onclick="datosPlomo()" src="{{asset('img/gas-guide-img/pb.png')}}"></a></div>
-                        <div class="col boxIcono"><a href="#"><img class="box-gas4" id="benceno" onclick="datosBenceno()" src="{{asset('img/gas-guide-img/benceno.png')}}"></a></div>
-                        <div class="col boxIcono"><a href="#"><img class="box-gas5" id="arsenico" onclick="datosArsenico()" src="{{asset('img/gas-guide-img/arsenico.png')}}"></a></div>
                     </div>
                     <div class="row mb-12">
                         <div class="col-5 boxIcono"><a href="#"><img class="imgGas transicionImg" id="imagenGas" src="{{asset('img/gas-guide-img/humo.png')}}"></a></div>
