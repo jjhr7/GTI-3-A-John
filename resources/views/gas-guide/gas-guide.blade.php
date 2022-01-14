@@ -250,15 +250,10 @@
         document.getElementById("descGas").innerText = "{{$gases[0]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[0]->route_image}}");
         document.getElementById("co2").classList.add("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
 
     }
@@ -271,15 +266,10 @@
         document.getElementById("descGas").innerText = "{{$gases[9]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[9]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.add("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -291,15 +281,10 @@
         document.getElementById("descGas").innerText = "{{$gases[4]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[4]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.add("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
     }
 
     function datosSO2() {
@@ -310,15 +295,10 @@
         document.getElementById("descGas").innerText = "{{$gases[5]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[5]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.add("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -330,15 +310,10 @@
         document.getElementById("descGas").innerText = "{{$gases[3]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[3]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.add("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -350,15 +325,10 @@
         document.getElementById("descGas").innerText = "{{$gases[1]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[1]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.add("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -370,15 +340,10 @@
         document.getElementById("descGas").innerText = "{{$gases[6]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[2]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.add("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -390,15 +355,10 @@
         document.getElementById("descGas").innerText = "{{$gases[6]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[6]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.add("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -410,15 +370,10 @@
         document.getElementById("descGas").innerText = "{{$gases[7]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[7]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.add("borderColor");
-        document.getElementById("arsenico").classList.remove("borderColor");
 
     }
 
@@ -430,15 +385,10 @@
         document.getElementById("descGas").innerText = "{{$gases[8]->description}}";
         document.getElementById("imagenGas").setAttribute("src", "{{$gases[8]->route_image}}");
         document.getElementById("co2").classList.remove("borderColor");
-        document.getElementById("bencenopireno").classList.remove("borderColor");
-        document.getElementById("no2").classList.remove("borderColor");
         document.getElementById("so2").classList.remove("borderColor");
         document.getElementById("o3").classList.remove("borderColor");
         document.getElementById("pm25").classList.remove("borderColor");
         document.getElementById("pm10").classList.remove("borderColor");
-        document.getElementById("plomo").classList.remove("borderColor");
-        document.getElementById("benceno").classList.remove("borderColor");
-        document.getElementById("arsenico").classList.add("borderColor");
 
     }
 </script>
