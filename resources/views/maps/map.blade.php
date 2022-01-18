@@ -1127,23 +1127,38 @@
             medicionIAQ26 = L.marker([38.979880, -0.189316], {time: "2013-01-23 20:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
 
 
-            medicionSO21 = L.marker([38.996838, -0.165510], {icon: SOIcon}, {time: "2013-01-22 11:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO22 = L.marker([38.896833, -0.165514], {icon: SOIcon}, {time: "2013-01-22 12:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO23 = L.marker([38.966523, -0.165420], {icon: SOIcon}, {time: "2013-01-22 13:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO24 = L.marker([38.984544, -0.165720], {icon: SOIcon}, {time: "2013-01-22 14:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO25 = L.marker([38.987619, -0.165827], {icon: SOIcon}, {time: "2013-01-22 15:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO26 = L.marker([38.972356, -0.165332], {icon: SOIcon}, {time: "2013-01-22 16:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO27 = L.marker([38.899833, -0.166682], {icon: SOIcon}, {time: "2013-01-22 17:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
-            medicionSO28 = L.marker([38.936128, -0.167882], {icon: SOIcon}, {time: "2013-01-22 18:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO29 = L.marker([38.924763, -0.166542], {icon: SOIcon}, {time: "2013-01-22 19:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
-            medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2013-01-22 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2013-01-22 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
-            medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2013-01-22 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo ');
+            medicionSO21 = L.marker([38.996838, -0.165510], {icon: SOIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO22 = L.marker([38.896833, -0.165514], {icon: SOIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO23 = L.marker([38.966523, -0.165420], {icon: SOIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO24 = L.marker([38.984544, -0.165720], {icon: SOIcon}, {time: "2022-01-14 14:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO25 = L.marker([38.987619, -0.165827], {icon: SOIcon}, {time: "2022-01-14 15:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO26 = L.marker([38.972356, -0.165332], {icon: SOIcon}, {time: "2022-01-14 16:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO27 = L.marker([38.899833, -0.166682], {icon: SOIcon}, {time: "2022-01-14 17:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo'),
+            medicionSO28 = L.marker([38.936128, -0.167882], {icon: SOIcon}, {time: "2022-01-14 18:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO29 = L.marker([38.924763, -0.166542], {icon: SOIcon}, {time: "2022-01-14 19:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser medio'),
+            medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
+            medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo '),
+            medicionco1 = L.marker([38.966838, -0.175510], {icon: COIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+            medicionco2 = L.marker([38.886833, -0.166514], {icon: COIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+            medicionco3 = L.marker([38.966523, -0.165420], {icon: COIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+            medicionco4 = L.marker([38.974544, -0.165720], {icon: COIcon}, {time: "2022-01-14 14:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+            medicionco5 = L.marker([38.987619, -0.165827], {icon: COIcon}, {time: "2022-01-14 15:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
+            medicionco6 = L.marker([38.972356, -0.165332], {icon: COIcon}, {time: "2022-01-14 16:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
+            medicionco7 = L.marker([38.899833, -0.166682], {icon: COIcon}, {time: "2022-01-14 17:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
+            medicionco8 = L.marker([38.936128, -0.167882], {icon: COIcon}, {time: "2022-01-14 18:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+            medicionco9 = L.marker([38.924763, -0.166542], {icon: COIcon}, {time: "2022-01-14 19:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+            medicionco10 = L.marker([38.992318, -0.163282], {icon: COIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+            medicionco11 = L.marker([38.976118, -0.163342], {icon: COIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+            medicionco12 = L.marker([38.989818, -0.166642], {icon: COIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo ');
+
+
 
 
         var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
         var SO2 = L.layerGroup([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
         var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
+        var CO = L.layerGroup ([medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12]);
 
 
         var mix = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
@@ -1227,21 +1242,15 @@
                     var hora = '00';
                     var minutos = '00';
                     for (var i = 0; i < arrayDate.length; i++) {
-                        m1 = L.marker([arrayDate[i].lat, arrayDate[i].lng], {icon: COIcon}, {time: arrayDate[i].dt + " " + hora + ":00:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
+                        //m1 = L.marker([arrayDate[i].lat, arrayDate[i].lng], {icon: COIcon}, {time: arrayDate[i].dt + " " + hora + ":00:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
                         hora = Math.floor(Math.random() * (25 - 0) + 0);
                         if (hora < 10) {
                             hora = '0' + hora;
                         }
 
-                        var CO = L.layerGroup([m1]);
                     }
 
-                    basemaps2 = {
-                        "Calidad del aire": IAQ,
-                        "SO2": SO2,
-                        "Estaciones de medida": estacionesMedica,
-                        "CO (siempre fijo)": CO
-                    };
+
 
 
                     L.control.layers(null, basemaps2).addTo(map);
@@ -1258,7 +1267,7 @@
             collapsed: false,
             symbolWidth: 24,
             opacity: 1,
-            column: 1,
+            column: 2,
             legends: [{
                 label: "Calidad del aire",
                 type: "image",
@@ -1282,7 +1291,30 @@
                 url: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png",
                 weight: 2,
                 layers: SO2
-            },]
+            },{
+                label: "    Peligro",
+                type: "image",
+                url:"http://assets.stickpng.com/images/58afdad6829958a978a4a693.png",
+                weight: 2,
+                layers: SO2
+            },{
+                label: "   Medio",
+                type: "image",
+                url:"https://img2.freepng.es/20181107/llt/kisspng-portable-network-graphics-scalable-vector-graphics-ye-hover-clip-art-at-clker-com-vector-clip-art-o-5be327f8741ca9.1106634215416135604756.jpg",
+                weight: 2,
+                layers: SO2
+            },{
+                label: "   Bueno",
+                type: "image",
+                url:"https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-vert.png",
+                weight: 2,
+                layers: SO2
+            }
+
+
+
+
+                ,]
         }).addTo(map);
 
 
@@ -1293,7 +1325,14 @@
         sliderControl.startSlider();
         @endif
 
-       // heatmapLayer.setData(testData);
+        basemaps2 = {
+            "Calidad del aire": IAQ,
+            "SO2": SO2,
+            "Estaciones de medida": estacionesMedica,
+            "CO": CO
+        };
+
+        // heatmapLayer.setData(testData);
         // make accessible for debugging
         layer = heatmapLayer;
 
