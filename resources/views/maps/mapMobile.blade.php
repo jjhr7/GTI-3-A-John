@@ -895,19 +895,19 @@
 
         var estacionPrat = L.marker([40.136944, 0.165555], {icon: estacionesIcon}).bindPopup('Estacion de Prat de Cabanes:' + '\r' + ' Humedad: ' + prat.weather.hu + "\r" +
                 'Temperatura: ' + prat.weather.tp + "\r" +
-                'Calidad del aire: ' + prat.pollution.aqicn + "\r"),
+                'Calidad del aire: ' + prat.pollution.aqius + "\r"),
             estacionDenia = L.marker([38.67194, 0.0358333],  {icon: estacionesIcon}).bindPopup('Estacion de Dénia: ' + '\r' + ' Humedad: ' + denia.weather.hu + "\r" +
                 'Temperatura: ' + denia.weather.tp + "\r" +
-                'Calidad del aire: ' + denia.pollution.aqicn + "\r"),
-            estacionAras = L.marker([39.950277, -1.108888], {icon: estacionesIcon}).bindPopup('Estacion de Aras de los olmos:' + '\r' + ' Humedad: ' + aras.weather.hu + "\r" +
+                'Calidad del aire: ' + denia.pollution.aqius + "\r"),
+            estacionAras = L.marker([39.950277, -1.108888], {icon: estacionesIcon}).bindPopup('Estacion de Villar del Arzobispo:' + '\r' + ' Humedad: ' + aras.weather.hu + "\r" +
                 'Temperatura: ' + aras.weather.tp + "\r" +
-                'Calidad del aire: ' + aras.pollution.aqicn + "\r"),
-            estacionValencia = L.marker([39.950277, -0.035833], {icon: estacionesIcon}).bindPopup('Estacion de Valencia: ' + '\r' + ' Humedad: ' + valencia.weather.hu + "\r" +
+                'Calidad del aire: ' + aras.pollution.aqius + "\r"),
+            estacionValencia = L.marker([39.950277, -0.35833], {icon: estacionesIcon}).bindPopup('Estacion de Valencia: ' + '\r' + ' Humedad: ' + valencia.weather.hu + "\r" +
                 'Temperatura: ' + valencia.weather.tp + "\r" +
-                'Calidad del aire: ' + valencia.pollution.aqicn + "\r"),
+                'Calidad del aire: ' + valencia.pollution.aqius + "\r"),
             estacionTorrevieja = L.marker([38.00833, -0.658611], {icon: estacionesIcon}).bindPopup('Estacion de Torrevieja: ' + '\r' + ' Humedad: ' + torrevieja.weather.hu + "\r" +
                 'Temperatura: ' + torrevieja.weather.tp + "\r" +
-                'Calidad del aire: ' + torrevieja.pollution.aqicn + "\r");
+                'Calidad del aire: ' + torrevieja.pollution.aqius + "\r");
 
         var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
 

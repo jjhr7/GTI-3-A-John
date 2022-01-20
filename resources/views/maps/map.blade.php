@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Marselo O2 Mapa</title>
-
-    @if(auth()->user()!= null)
-        <link rel="stylesheet" href="{{ asset('plugins/weather-icons/css/weather-icons.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/owl.carousel/dist/assets/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/owl.carousel/dist/assets/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
-        @include('include.head')
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/all.css">
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/dist/css/theme.css">
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/plugins/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/plugins/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/plugins/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="http://vmi621282.contaboserver.net/css/style.css">
-
-        <style>
-            .sidebar-header h2{
-                    color:#fff;
-            }
-        </style>
-    @endif
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa móvil</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
 
@@ -40,7 +18,6 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/icon-kit/dist/css/iconkit.min.css') }}">
@@ -48,7 +25,6 @@
     <link rel="stylesheet" href="{{ asset('dist/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/gas-guide.css') }}">
-
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
 
@@ -60,7 +36,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/dripicons.css">
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/default.css">
@@ -68,16 +43,19 @@
     <link rel="stylesheet" href="css/style-landing.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+
     <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <style>
-        #map { width: 100vw; height: 40vw; }
-        body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; }
-        .ghbtns { position: relative; top: 4px; margin-left: 5px; }
-        a { color: #0077ff; }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+        }
 
         .ghbtns { position: relative; top: 4px; margin-left: 5px; }
         a { color: #0077ff; }
@@ -168,82 +146,17 @@
 
     </style>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 </head>
 
-<body id="app">
+<body>
 
-@if(auth()->user()!= null)
-    <div class="wrapper">
-        @include('include.header')
-        <div class="page-wrap">
-            @include('include.sidebar')
-        @else
-                <header class="header-area header-colour">
-                    <div id="header-sticky" class="menu-area">
-                        <div class="container">
-                            <div class="second-menu">
-                                <div class="row align-items-center">
-                                    <div class="col-xl-2 col-lg-2">
-                                        <div class="logo">
-                                            <a href="index.html"><img src="img/logo/logo_largo_blanco.png" alt="logo" width="230" height="auto"></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 col-lg-9">
-                                        <div class="responsive"><i class="icon dripicons-align-right"></i></div>
-                                        <div class="main-menu text-right text-xl-right">
-                                            <nav id="mobile-menu">
-                                                <ul>
-                                                    <li class="has-sub">
-                                                        <a href="/">Inicio</a>
-                                                    </li>
-                                                    <li><a href="/mapa">Mapa</a></li>
-                                                    <li><a href="/#screen">Pantallas</a></li>
-                                                    <li><a href="/guia">Información adicional</a></li>
-                                                    <li><a href="/#blog">Blog</a></li>
-                                                    <li><a href="/#contact">Contacto</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-2 text-right d-none d-xl-block">
-                                        <div class="header-btn second-header-btn d-xl-flex">
-                                            <a href="/login" class="btn">Iniciar sesión</a>
-                                            <a href="/register" class="btn">Registro</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-@endif
-<!-- header -->
-
-<!-- header-end -->
-            @if(auth()->user()!= null)
-                <div class="main-content">
-                    @endif
 <div id="map"></div>
-                    @if(auth()->user()!= null)
-                        <div/>
-                        @endif
-                    @if(auth()->user()!= null)
-                    <!-- initiate footer section-->
-                        @include('include.footer')
 
-                </div>
-        </div>
-
-        <!-- initiate modal menu section-->
-    @include('include.modalmenu')
-
-    <!-- initiate scripts-->
-    @include('include.script')
-                        @endif
 <!-- <script src="../node_modules/simpleheat/simpleheat.js"></script>
 <script src="../src/HeatLayer.js"></script> -->
 
-<script src="../../../public/js/leaflet-heat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
 
@@ -454,7 +367,6 @@
 
 
 </script>
-
 
 <script>
     (function (factory, window) {
@@ -815,56 +727,13 @@
 </script>
 
 
-<script type="text/javascript">
+<script>
 
 
-
-    /**
-     * Descripción de obtenerMedicionDeLasEstaciones. Función que devuelve la medicion de las estaciones oficiales de medida
-     * Haciendo una petición a la api oficial
-     * @return Response
-     */
-
-    /*
-    function obtenerMedicionDeLasEstaciones(lat, lon){
-        const Http = new XMLHttpRequest();
-        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
-        Http.open("GET", url);
-        Http.send();
-
-        Http.onreadystatechange = (e) => {
-            return "Http.responseText"
-        }
-
+    async function catchEm(promise) {
+        return promise.then(data => [null, data])
+            .catch(err => [err]);
     }
-    var medu=obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-
-    var estacionPrat = L.marker([40.136944, 0.165555], {icon: fontAwesomeIcon}).bindPopup('Estacion de Prat de Cabanes: '+  medu),
-        estacionDenia = L.marker([38.67194, 0.0358333]).bindPopup('Estacion de Dénia: '+ obtenerMedicionDeLasEstaciones(38.67194, 0.0358333)),
-        estacionAras = L.marker([39.950277, -1.108888]).bindPopup('Estacion de Aras de los olmos:' + obtenerMedicionDeLasEstaciones(39.950277, -1.108888)),
-        estacionValencia = L.marker([39.950277, -0.035833]).bindPopup('Estacion de Valencia: '+ obtenerMedicionDeLasEstaciones(39.950277, -0.035833)),
-        estacionTorrevieja = L.marker([38.00833, -0.658611]).bindPopup('Estacion de Torrevieja: '+ obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
-
-
-    /*
-/*
-    var marker1 = L.marker([38.996836, -0.165513], {time: "2013-01-22 08:42:26+01"});
-    var marker2 = L.marker([38.996838, -0.165510], {time: "2013-01-22 10:00:26+01"});
-    var marker3 = L.marker([38.996823, -0.165545], {time: "2013-01-22 10:03:29+01"});
-
-    var pointA = new L.LatLng(38.996832, -0.165511);
-    var pointB = new L.LatLng(38.996838, -0.165513);
-    var pointList = [pointA, pointB];
-
-    var polyline = new L.Polyline(pointList, {
-        time: "2013-01-22 10:24:59+01",
-        color: 'red',
-        weight: 3,
-        opacity: 1,
-        smoothFactor: 1
-    });
-
-     */
 
 
     /**
@@ -874,64 +743,23 @@
      */
 
     async function obtenerMedicionDeLasEstaciones(lat, lon){
-        /*    const Http = new XMLHttpRequest();
-            const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
-            Http.open("GET", url);
-        try{
 
-            Http.send();
-
-            return new Promise(resolve => {
-                Http.onreadystatechange = (e) => {
-                    const gei = JSON.parse(Http.responseText);
-                    console.log(gei)
-
-                    resolve(gei)
-                }
-            })
-        } catch (e) {*/
-        var fakeadito = {
-            "status": "success",
-            "data": {
-                "city": "Valencia",
-                "state": "Valencia",
-                "country": "Spain",
-                "location": {
-                    "type": "Point",
-                    "coordinates": [
-                        -0.37739,
-                        39.46975
-                    ]
-                },
-                "current": {
-                    "weather": {
-                        "ts": "2022-01-12T16:00:00.000Z",
-                        "tp": 14,
-                        "pr": 1026,
-                        "hu": 66,
-                        "ws": 2.24,
-                        "wd": 90,
-                        "ic": "02d"
-                    },
-                    "pollution": {
-                        "ts": "2022-01-12T13:00:00.000Z",
-                        "aqius": 26,
-                        "mainus": "o3",
-                        "aqicn": 20,
-                        "maincn": "o3"
-                    }
-                }
+        const Http = new XMLHttpRequest();
+        const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
+        Http.open("GET", url);
+        Http.send();
+        return new Promise(resolve => {
+            Http.onreadystatechange = (e) => {
+                const gei = JSON.parse(Http.responseText);
+                console.log(gei)
+                resolve(gei)
             }
-        };
-        resolve(fakeadito)
-        //}
-
+        })
 
     }
 
 
     async function getMediciones(){
-
         var fakeadito = {
             "status": "success",
             "data": {
@@ -966,24 +794,63 @@
             }
         };
 
+        let prat=fakeadito;
+        let denia=fakeadito;
+        let aras=fakeadito;
+        let valencia=fakeadito
+        let torrevieja=fakeadito;
 
+        var [err,data] = await catchEm(obtenerMedicionDeLasEstaciones(40.136944, 0.165555));
+        if (err){
+            console.log("fake");
 
-        try{
-            const prat = await obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-            const denia =  await obtenerMedicionDeLasEstaciones(38.67194, 0.0358333);
-            const aras =  await obtenerMedicionDeLasEstaciones(39.950277, -1.108888);
-            const valencia = await obtenerMedicionDeLasEstaciones(39.950277, -0.035833);
-            const torrevieja = await obtenerMedicionDeLasEstaciones(38.00833, -0.658611);
+            prat=fakeadito;
+        }else{
+            prat=data;
+        }
+        const [err1,data1] = await catchEm(obtenerMedicionDeLasEstaciones(38.67194, 0.0358333));
+        if (err1){
+            console.log("fake");
 
-            return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
-        }catch (e) {
-            return [ fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current]
+            denia=fakeadito;
+        }else{
+            denia=data1;
+        }
+        const [err2,data2] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -1.108888));
+        if (err2){
+            console.log("fake");
+
+            aras=fakeadito;
+        }else{
+            aras=data2;
         }
 
+        const [err3,data3] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -0.035833));
+        if (err3){
+            console.log("fake");
+
+            valencia=fakeadito;
+        }else{
+            valencia=data3;
+        }
+
+        const [err4,data4] = await catchEm(obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
+        if (err4){
+            console.log("fake");
+
+            torrevieja=fakeadito;
+        }else{
+            torrevieja=data4;
+        }
+
+        return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
     }
 
 
+
+
     async function inicializarMapa(prat, denia, aras, valencia, torrevieja) {
+
 
         var resultado;
         var array;
@@ -996,28 +863,6 @@
             data: []
         };
 
-
-        /*var testDataSO2 = {
-            max: 8,
-            data: [{lat: 38.926810, lng:-0.165582, count: 3},
-                {lat: 38.996860, lng:-0.165532, count: 2},
-                {lat: 38.996810, lng:-0.145582, count: 3},
-                {lat: 38.996857, lng:-0.165588, count: 1},
-                {lat: 38.996834, lng:-0.165533, count: 1},
-                {lat: 60.8, lng:11.1, count: 1}
-            ]
-        }; */
-
-        /*var testDataCO = {
-            max: 8,
-            data: [{lat: 38.926810, lng:-0.165582, count: 3},
-                {lat: 38.996860, lng:-0.165532, count: 2},
-                {lat: 38.996810, lng:-0.145582, count: 3},
-                {lat: 38.996857, lng:-0.165588, count: 1},
-                {lat: 38.996834, lng:-0.165533, count: 1},
-                {lat: 60.8, lng:11.1, count: 1}
-            ]
-        };*/
 
         var estacionesIcon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -1047,21 +892,22 @@
         });
 
 
+
         var estacionPrat = L.marker([40.136944, 0.165555], {icon: estacionesIcon}).bindPopup('Estacion de Prat de Cabanes:' + '\r' + ' Humedad: ' + prat.weather.hu + "\r" +
                 'Temperatura: ' + prat.weather.tp + "\r" +
-                'Calidad del aire: ' + prat.pollution.aqicn + "\r"),
-            estacionDenia = L.marker([38.67194, 0.0358333], {icon: estacionesIcon}).bindPopup('Estacion de Dénia: ' + '\r' + ' Humedad: ' + denia.weather.hu + "\r" +
+                'Calidad del aire: ' + prat.pollution.aqius + "\r"),
+            estacionDenia = L.marker([38.67194, 0.0358333],  {icon: estacionesIcon}).bindPopup('Estacion de Dénia: ' + '\r' + ' Humedad: ' + denia.weather.hu + "\r" +
                 'Temperatura: ' + denia.weather.tp + "\r" +
-                'Calidad del aire: ' + denia.pollution.aqicn + "\r"),
-            estacionAras = L.marker([39.950277, -1.108888], {icon: estacionesIcon}).bindPopup('Estacion de Aras de los olmos:' + '\r' + ' Humedad: ' + aras.weather.hu + "\r" +
+                'Calidad del aire: ' + denia.pollution.aqius + "\r"),
+            estacionAras = L.marker([39.950277, -1.108888], {icon: estacionesIcon}).bindPopup('Estacion de Villar del Arzobispo:' + '\r' + ' Humedad: ' + aras.weather.hu + "\r" +
                 'Temperatura: ' + aras.weather.tp + "\r" +
-                'Calidad del aire: ' + aras.pollution.aqicn + "\r"),
-            estacionValencia = L.marker([39.950277, -0.035833], {icon: estacionesIcon}).bindPopup('Estacion de Valencia: ' + '\r' + ' Humedad: ' + valencia.weather.hu + "\r" +
+                'Calidad del aire: ' + aras.pollution.aqius + "\r"),
+            estacionValencia = L.marker([39.950277, -0.35833], {icon: estacionesIcon}).bindPopup('Estacion de Valencia: ' + '\r' + ' Humedad: ' + valencia.weather.hu + "\r" +
                 'Temperatura: ' + valencia.weather.tp + "\r" +
-                'Calidad del aire: ' + valencia.pollution.aqicn + "\r"),
+                'Calidad del aire: ' + valencia.pollution.aqius + "\r"),
             estacionTorrevieja = L.marker([38.00833, -0.658611], {icon: estacionesIcon}).bindPopup('Estacion de Torrevieja: ' + '\r' + ' Humedad: ' + torrevieja.weather.hu + "\r" +
                 'Temperatura: ' + torrevieja.weather.tp + "\r" +
-                'Calidad del aire: ' + torrevieja.pollution.aqicn + "\r");
+                'Calidad del aire: ' + torrevieja.pollution.aqius + "\r");
 
         var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
 
@@ -1086,45 +932,38 @@
         var sliderControl = null;
 
 
+
         var testData = {
             max: 8,
-            data: [{lat: 38.926810, lng: -0.165582, count: 3}, {
-                lat: 38.996860,
-                lng: -0.165532,
-                count: 2
-            }, {lat: 38.996810, lng: -0.145582, count: 3}, {lat: 38.996857, lng: -0.165588, count: 1}, {
-                lat: 38.996834,
-                lng: -0.165533,
-                count: 1
-            }, {lat: 60.8, lng: 11.1, count: 1}]
+            data: [{lat: 38.926810, lng:-0.165582, count: 3},{lat: 38.996860, lng:-0.165532, count: 2},{lat: 38.996810, lng:-0.145582, count: 3},{lat: 38.996857, lng:-0.165588, count: 1},{lat: 38.996834, lng:-0.165533, count: 1},{lat: 60.8, lng:11.1, count: 1}]
         };
 
-        var medicionIAQ1 = L.marker([38.966623, -0.175211], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ2 = L.marker([38.992851, -0.195587], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ3 = L.marker([38.991045, -0.165532], {time: "2013-01-22 08:42:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ4 = L.marker([38.994319, -0.161632], {time: "2013-01-22 08:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ5 = L.marker([38.956838, -0.178382], {time: "2013-01-22 09:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ6 = L.marker([38.986419, -0.165682], {time: "2013-01-22 10:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ7 = L.marker([38.983519, -0.185682], {time: "2013-01-22 11:00:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ8 = L.marker([38.996813, -0.175682], {time: "2013-01-22 11:06:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ9 = L.marker([38.956719, -0.175562], {time: "2013-01-22 11:10:26"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ10 = L.marker([38.976829, -0.175212], {time: "2013-01-22 11:20:26"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ11 = L.marker([38.986859, -0.168862], {time: "2013-01-22 11:30:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ12 = L.marker([38.992229, -0.175342], {time: "2013-01-22 12:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ13 = L.marker([38.984544, -0.165634], {time: "2013-01-22 12:23:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ14 = L.marker([38.976349, -0.182682], {time: "2013-01-22 12:29:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ15 = L.marker([38.968223, -0.177682], {time: "2013-01-22 12:37:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ16 = L.marker([38.998224, -0.177683], {time: "2013-01-22 12:55:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ17 = L.marker([38.988243, -0.177682], {time: "2013-01-23 13:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ18 = L.marker([38.789987, -0.189682], {time: "2013-01-23 13:30:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ19 = L.marker([38.954423, -0.177682], {time: "2013-01-23 14:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ20 = L.marker([38.969280, -0.187316], {time: "2013-01-23 15:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
-            medicionIAQ21 = L.marker([38.994423, -0.165434], {time: "2013-01-23 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ22 = L.marker([38.893223, -0.167682], {time: "2013-01-23 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ23 = L.marker([38.988623, -0.178942], {time: "2013-01-23 16:30:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ24 = L.marker([38.996723, -0.156632], {time: "2013-01-23 18:03:29"}).bindPopup('La calidad del aire en este punto es media'),
-            medicionIAQ25 = L.marker([38.993423, -0.176341], {time: "2013-01-23 19:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
-            medicionIAQ26 = L.marker([38.979880, -0.189316], {time: "2013-01-23 20:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
+        var medicionIAQ1 = L.marker([38.966623, -0.175211], {time: "2022-01-14 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ2 = L.marker([38.992851, -0.195587], {time: "2022-01-14 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ3 = L.marker([38.991045, -0.165532], {time: "2022-01-14 08:42:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ4 = L.marker([38.994319, -0.161632], {time: "2022-01-14 08:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ5 = L.marker([38.956838, -0.178382], {time: "2022-01-14 09:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ6 = L.marker([38.986419, -0.165682], {time: "2022-01-14 10:00:26"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ7 = L.marker([38.983519, -0.185682], {time: "2022-01-14 11:00:26"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ8 = L.marker([38.996813, -0.175682], {time: "2022-01-14 11:06:26"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ9 = L.marker([38.956719, -0.175562], {time: "2022-01-14 11:10:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ10 = L.marker([38.976829, -0.175212], {time: "2022-01-14 11:20:26"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ11 = L.marker([38.986859, -0.168862], {time: "2022-01-14 11:30:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ12 = L.marker([38.992229, -0.175342], {time: "2022-01-14 12:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ13 = L.marker([38.984544, -0.165634], {time: "2022-01-14 12:23:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ14 = L.marker([38.976349, -0.182682], {time: "2022-01-14 12:29:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ15 = L.marker([38.968223, -0.177682], {time: "2022-01-14 12:37:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ16 = L.marker([38.998224, -0.177683], {time: "2022-01-14 12:55:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ17 = L.marker([38.988243, -0.177682], {time: "2022-01-14 13:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ18 = L.marker([38.789987, -0.189682], {time: "2022-01-14 13:30:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ19 = L.marker([38.954423, -0.177682], {time: "2022-01-14 14:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ20 = L.marker([38.969280, -0.187316], {time: "2022-01-14 15:03:29"}).bindPopup('La calidad del aire en este punto es mala'),
+            medicionIAQ21 = L.marker([38.994423, -0.165434], {time: "2022-01-14 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ22 = L.marker([38.893223, -0.167682], {time: "2022-01-14 16:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ23 = L.marker([38.988623, -0.178942], {time: "2022-01-14 16:30:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ24 = L.marker([38.996723, -0.156632], {time: "2022-01-14 18:03:29"}).bindPopup('La calidad del aire en este punto es media'),
+            medicionIAQ25 = L.marker([38.993423, -0.176341], {time: "2022-01-14 19:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
+            medicionIAQ26 = L.marker([38.979880, -0.189316], {time: "2022-01-14 20:03:29"}).bindPopup('La calidad del aire en este punto es buena'),
 
 
             medicionSO21 = L.marker([38.996838, -0.165510], {icon: SOIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
@@ -1139,6 +978,7 @@
             medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
             medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
             medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo '),
+
             medicionco1 = L.marker([38.966838, -0.175510], {icon: COIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
             medicionco2 = L.marker([38.886833, -0.166514], {icon: COIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
             medicionco3 = L.marker([38.966523, -0.165420], {icon: COIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
@@ -1155,21 +995,22 @@
 
 
 
-        var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
-        var SO2 = L.layerGroup([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
-        var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
+        var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6,medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24,medicionIAQ25, medicionIAQ26]);
+        var SO2 = L.layerGroup ([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28,medicionSO29,medicionSO210,medicionSO211, medicionSO12]);
+        var estacionesMedica = L.layerGroup ([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
         var CO = L.layerGroup ([medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12]);
 
-
-        var mix = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
+        var mix = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6,medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10 ,medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28,medicionSO29,medicionSO210,medicionSO211, medicionSO12]);
 
 
         var baseLayer = L.tileLayer(
-            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
                 maxZoom: 18
             }
         );
+
+
         var cfg = {
             // radius should be small ONLY if scaleRadius is true (or small radius is intended)
             "radius": 0.002,
@@ -1186,16 +1027,25 @@
             lngField: 'lng',
             // which field name in your data represents the data value - default "value"
             valueField: 'count',
-            gradient: {0.0: "#00FF00", 0.2: "#00FF00", 0.7: "#FFFF00",1.0: "#FF0000"}
+            max:3,
+            gradient: {0.0: "#00FF00",0.5: "#FFFF00",1.0: "#FF0000"}
         };
+
         var heatmapLayer = new HeatmapOverlay(cfg);
+
+
+
+
         var map = new L.Map('map', {
             center: new L.LatLng(38.996810, -0.165582),
-            zoom: 13,
-            layers: [baseLayer, heatmapLayer]
+            zoom: 12,
+            layers: [baseLayer,heatmapLayer]
+
         });
 
-        $(document).ready(function () {
+
+
+        $( document ).ready(function() {
 
             const url = 'http://vmi621282.contaboserver.net/api/v1/mediciones/convert/filter';
             const http = new XMLHttpRequest();
@@ -1208,9 +1058,9 @@
             http.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTIzYzVkNjMyNDM4MDc4NWFiNjgzMjRjM2NkZGU5NGE1NjdjNjNhZTViOTRmMWRjNTkzZDIyM2EyMDk1YTdlMWU2NDUwOGI1NTI2NTFiNzYiLCJpYXQiOjE2NDE4Mjk5MDQuNTEyMDQ1LCJuYmYiOjE2NDE4Mjk5MDQuNTEyMDUyLCJleHAiOjE2NzMzNjU5MDQuNTA3NjgxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bJlbDSxOG_CHb4b0GH6RAvgZJhyMTCU-gU9kJFPLmynnps4v4_RlUTsVE2XUpDPp1jPuwchL87dqxlWa3wqR6oYj-xDZvEZDlSLJyVwFdNczk2lP8xBpsG6n32hZihGG2-mKTH65O1O9ngjZhWxnWFGOwxluQJKnZhb8NqNB9NGZ7rTgKpeIOlelr7CAhA5JnC0TlcIKQEr2YrIsOush7LrczOKA_-yihBmdbgh1QH48qBdqWbijxaXQf025rk_fz6G5-vY_LiwV9oRUE8MstEimVSJd3zGjM63QTgoBXXBEg3trIZpiQUYTuSJRPm2kg0LaygncRyk204RNaqvW5nynqMOxC7EQgVWQkEZmHOx0bGtv2UnZvpiofdg_iCm7N7XOXwRdoL_OThrl6dU3Wok5o4HITzlfn5ipFFLz_rNXTsX_GpPpcOEopKHruWeaeMsyxR_2rumQNlBLhafhN7XVB7KyQ_cDw6SLaEH9UROZhUlGcrGcPb2Z_oZ3vrFTaV0lVveX4u_s3Ax3QbyyzGfDcKajlzEZJ8dZIhTwzH1sp1oZmPQ_NHL7yd8oDzdDykcL6PabyI0MsCH8vhExm5xGOPqmvB8HfQ9UeVx1awaLKchq68gHScO3AKWRTzH6DUovE0gwbqLwvky9uLYfflWoovhx05oPHVdqaixWfsA");
 
              */
-            http.onreadystatechange = function () {
+            http.onreadystatechange = function(){
 
-                if (this.readyState == 4 && this.status == 200) {
+                if(this.readyState == 4 && this.status == 200){
                     resultado = this.response;
                     array = JSON.parse(this.response);
                     //let array = JSON.parse(this.response);
@@ -1235,32 +1085,37 @@
             const http1 = new XMLHttpRequest();
 
             http1.open("GET", url1);
-            http1.onreadystatechange = function () {
+            http1.onreadystatechange = function(){
 
-                if (this.readyState == 4 && this.status == 200) {
+                if(this.readyState == 4 && this.status == 200){
                     arrayDate = JSON.parse(this.response);
-                    var hora = '00';
-                    var minutos = '00';
-                    for (var i = 0; i < arrayDate.length; i++) {
-                        //m1 = L.marker([arrayDate[i].lat, arrayDate[i].lng], {icon: COIcon}, {time: arrayDate[i].dt + " " + hora + ":00:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
+                    var hora='00';
+                    var minutos='00';
+                    for(var i=0; i<arrayDate.length; i++){
+                        //m1 = L.marker([arrayDate[i].lat, arrayDate[i].lng], {icon: COIcon}, {time: arrayDate[i].dt+ " " + hora + ":00:00"}).bindPopup('La medición es ' + arrayDate[i].count).addTo(map);
                         hora = Math.floor(Math.random() * (25 - 0) + 0);
-                        if (hora < 10) {
-                            hora = '0' + hora;
+                        if(hora<10){
+                            hora='0'+hora;
                         }
 
                     }
 
+                    basemaps2 = {
+                        "Calidad del aire": IAQ,
+                        "SO2" : SO2,
+                        "Estaciones de medida" : estacionesMedica,
+                        "CO" : CO
+                    };
 
 
 
-                    L.control.layers(null, basemaps2).addTo(map);
+                    L.control.layers(null, basemaps2,{position: 'bottomright'}).addTo(map);
                 }
             }
 
             http1.send();
 
         });
-
 
         L.control.Legend({
             position: "bottomleft",
@@ -1279,16 +1134,16 @@
                 url: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png",
                 weight: 2,
                 layers: SO2
-            }, {
+            },{
                 label: "Estaciones de medida",
                 type: "image",
                 url: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
                 weight: 2,
                 layers: SO2
-            }, {
+            },{
                 label: "CO",
                 type: "image",
-                url: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png",
+                url:"https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png",
                 weight: 2,
                 layers: SO2
             },{
@@ -1317,40 +1172,31 @@
                 ,]
         }).addTo(map);
 
-
-
-        @if(auth()->user() != null)
-        var sliderControl = L.control.sliderControl({position: "bottomright", layer: mix});
+        var sliderControl = L.control.sliderControl({position: "topright", layer: mix});
         map.addControl(sliderControl);
         sliderControl.startSlider();
-        @endif
 
-        basemaps2 = {
-            "Calidad del aire": IAQ,
-            "SO2": SO2,
-            "Estaciones de medida": estacionesMedica,
-            "CO": CO
-        };
 
-        // heatmapLayer.setData(testData);
+        heatmapLayer.setData(testData);
         // make accessible for debugging
         layer = heatmapLayer;
+
 
     }
 
 
-    getMediciones().then(value => {
-        inicializarMapa(value[0],value[1],value[2],value[3],value[4]);
-    });
+
+    try {
+        getMediciones().then(value => {
+            inicializarMapa(value[0],value[1],value[2],value[3],value[4]);
+        });
+    }catch (e){
+        console.log(deng)
+    }
+
 
 
 </script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-
-
-
 
 </body>
 </html>
