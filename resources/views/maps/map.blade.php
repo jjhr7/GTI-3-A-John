@@ -998,33 +998,6 @@ f
                 var m1;
                 var basemaps2;
 
-                var testDataCO = {
-                    max: 8,
-                    data: []
-                };
-
-
-                /*var testDataSO2 = {
-                    max: 8,
-                    data: [{lat: 38.926810, lng:-0.165582, count: 3},
-                        {lat: 38.996860, lng:-0.165532, count: 2},
-                        {lat: 38.996810, lng:-0.145582, count: 3},
-                        {lat: 38.996857, lng:-0.165588, count: 1},
-                        {lat: 38.996834, lng:-0.165533, count: 1},
-                        {lat: 60.8, lng:11.1, count: 1}
-                    ]
-                }; */
-
-                /*var testDataCO = {
-                    max: 8,
-                    data: [{lat: 38.926810, lng:-0.165582, count: 3},
-                        {lat: 38.996860, lng:-0.165532, count: 2},
-                        {lat: 38.996810, lng:-0.145582, count: 3},
-                        {lat: 38.996857, lng:-0.165588, count: 1},
-                        {lat: 38.996834, lng:-0.165533, count: 1},
-                        {lat: 60.8, lng:11.1, count: 1}
-                    ]
-                };*/
 
                 var estacionesIcon = new L.Icon({
                     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -1092,20 +1065,6 @@ f
 
                 var sliderControl = null;
 
-
-                var testData = {
-                    max: 8,
-                    data: [{lat: 38.926810, lng: -0.165582, count: 3}, {
-                        lat: 38.996860,
-                        lng: -0.165532,
-                        count: 2
-                    }, {lat: 38.996810, lng: -0.145582, count: 3}, {lat: 38.996857, lng: -0.165588, count: 1}, {
-                        lat: 38.996834,
-                        lng: -0.165533,
-                        count: 1
-                    }, {lat: 60.8, lng: 11.1, count: 1}]
-                };
-
                 var medicionIAQ1 = L.marker([38.966623, -0.175211], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
                     medicionIAQ2 = L.marker([38.992851, -0.195587], {time: "2013-01-22 07:42:26"}).bindPopup('La calidad del aire en este punto es buena'),
                     medicionIAQ3 = L.marker([38.991045, -0.165532], {time: "2013-01-22 08:42:26"}).bindPopup('La calidad del aire en este punto es mala'),
@@ -1146,26 +1105,52 @@ f
                     medicionSO210 = L.marker([38.992318, -0.163282], {icon: SOIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
                     medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
                     medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo '),
-                    medicionco1 = L.marker([38.966838, -0.175510], {icon: COIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco2 = L.marker([38.886833, -0.166514], {icon: COIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco3 = L.marker([38.966523, -0.165420], {icon: COIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
-                    medicionco4 = L.marker([38.974544, -0.165720], {icon: COIcon}, {time: "2022-01-14 14:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco5 = L.marker([38.987619, -0.165827], {icon: COIcon}, {time: "2022-01-14 15:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
-                    medicionco6 = L.marker([38.972356, -0.165332], {icon: COIcon}, {time: "2022-01-14 16:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
+
+                    medicionco1 = L.marker([38.966838, -0.165510], {icon: COIcon}, {time: "2022-01-14 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco2 = L.marker([38.876833, -0.166514], {icon: COIcon}, {time: "2022-01-14 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco3 = L.marker([38.966523, -0.161420], {icon: COIcon}, {time: "2022-01-14 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+                    medicionco4 = L.marker([38.979544, -0.165720], {icon: COIcon}, {time: "2022-01-14 14:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco5 = L.marker([38.967619, -0.162827], {icon: COIcon}, {time: "2022-01-14 15:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
+                    medicionco6 = L.marker([38.972356, -0.175332], {icon: COIcon}, {time: "2022-01-14 16:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
                     medicionco7 = L.marker([38.899833, -0.166682], {icon: COIcon}, {time: "2022-01-14 17:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
-                    medicionco8 = L.marker([38.936128, -0.167882], {icon: COIcon}, {time: "2022-01-14 18:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
-                    medicionco9 = L.marker([38.924763, -0.166542], {icon: COIcon}, {time: "2022-01-14 19:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+                    medicionco8 = L.marker([38.946128, -0.177882], {icon: COIcon}, {time: "2022-01-14 18:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+                    medicionco9 = L.marker([38.924763, -0.176542], {icon: COIcon}, {time: "2022-01-14 19:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
                     medicionco10 = L.marker([38.992318, -0.163282], {icon: COIcon}, {time: "2022-01-14 20:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
                     medicionco11 = L.marker([38.976118, -0.163342], {icon: COIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco12 = L.marker([38.989818, -0.166642], {icon: COIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo ');
+                    medicionco12 = L.marker([38.869818, -0.189642], {icon: COIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo ');
 
 
 
+                // CO pero nombre cambiado pq petaba
+                var testDataSO = {
+                    max: 8,
+                    data: [{lat: 38.966838, lng: -0.165510, count: 3},{lat: 38.876833, lng:-0.165514, count: 3}, {lat: 38.966523, lng:-0.161420, count: 2},
+                        {lat:38.979544, lng:-0.165720, count: 3}, {lat: 38.967619, lng:-0.164827, count: 1}, {lat: 38.972356, lng:-0.165332, count: 1}, {lat: 38.899833, lng:-0.166682, count: 1}
+                    , {lat:38.946128, lng:-0.177882, count: 2},  {lat:38.992318, lng:-0.163282, count: 2},
+                        {lat:38.992318, lng:-0.163282, count: 3},{lat:38.976118, lng:-0.163342, count: 3},{lat:38.869818, lng:-0.179642, count: 1},]
+                };
 
-                var IAQ = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
+                var testDataSO2 = {
+                    max: 8,
+                    data: [{lat: 38.996838, lng: -0.165510, count: 3},{lat: 38.896833, lng:-0.165514, count: 3}, {lat: 38.966523, lng:-0.165420, count: 2},
+                        {lat:38.984544, lng:-0.165720, count: 3}, {lat: 38.987619, lng:-0.165827, count: 3}, {lat: 38.972356, lng:-0.165332, count: 1}, {lat: 38.899833, lng:-0.166682, count: 1}
+                        ,  {lat:38.936128, lng: -0.167882, count: 1},  {lat:38.924763, lng:-0.166542, count: 2},  {lat:38.992318, lng:-0.163282, count: 2},
+                        {lat:38.976118, lng:-0.163342, count: 3},{lat:38.992318, lng:-0.163282, count: 3},{lat:38.989818, lng:-0.166642, count: 1},]
+                };
+
+                var testDataSO1 = {
+                    max: 8,
+                    data: [{lat: 38.996838, lng: -0.165510, count: 3},{lat: 38.896833, lng:-0.165514, count: 3}, {lat: 38.966523, lng:-0.165420, count: 2},
+                        {lat:38.984544, lng:-0.165720, count: 3}, {lat: 38.987619, lng:-0.165827, count: 3}, {lat: 38.972356, lng:-0.165332, count: 1}, {lat: 38.899833, lng:-0.166682, count: 1}
+                        ,  {lat:38.936128, lng: -0.167882, count: 1},  {lat:38.924763, lng:-0.166542, count: 2},  {lat:38.992318, lng:-0.163282, count: 2},
+                        {lat:38.976118, lng:-0.163342, count: 3},{lat:38.992318, lng:-0.163282, count: 3},{lat:38.989818, lng:-0.166642, count: 1},]
+                };
+
+
+                var CO = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
                 var SO2 = L.layerGroup([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
                 var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
-                var CO = L.layerGroup ([medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12]);
+                var IAQ = L.layerGroup ([medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12]);
 
 
                 var mix = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
@@ -1195,12 +1180,60 @@ f
                     valueField: 'count',
                     gradient: {0.0: "#00FF00", 0.2: "#00FF00", 0.7: "#FFFF00",1.0: "#FF0000"}
                 };
-                var heatmapLayer = new HeatmapOverlay(cfg);
+
+                var cfg2 = {
+                    // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+                    "radius": 0.002,
+                    "maxOpacity": .8,
+                    // scales the radius based on map zoom
+                    "scaleRadius": true,
+                    // if set to false the heatmap uses the global maximum for colorization
+                    // if activated: uses the data maximum within the current map boundaries
+                    //   (there will always be a red spot with useLocalExtremas true)
+                    "useLocalExtrema": true,
+                    // which field name in your data represents the latitude - default "lat"
+                    latField: 'lat',
+                    // which field name in your data represents the longitude - default "lng"
+                    lngField: 'lng',
+                    // which field name in your data represents the data value - default "value"
+                    valueField: 'count',
+                    gradient: {0.0: "#00FF00", 0.2: "#00FF00", 0.7: "#FFFF00",1.0: "#FF0000"}
+                };
+
+                var cfg3 = {
+                    // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+                    "radius": 0.002,
+                    "maxOpacity": .8,
+                    // scales the radius based on map zoom
+                    "scaleRadius": true,
+                    // if set to false the heatmap uses the global maximum for colorization
+                    // if activated: uses the data maximum within the current map boundaries
+                    //   (there will always be a red spot with useLocalExtremas true)
+                    "useLocalExtrema": true,
+                    // which field name in your data represents the latitude - default "lat"
+                    latField: 'lat',
+                    // which field name in your data represents the longitude - default "lng"
+                    lngField: 'lng',
+                    // which field name in your data represents the data value - default "value"
+                    valueField: 'count',
+                    gradient: {0.0: "#00FF00", 0.2: "#00FF00", 0.7: "#FFFF00",1.0: "#FF0000"}
+                };
+
+                var heatmapLayerSO = new HeatmapOverlay(cfg2);
+                var heatmapLayerSO2 = new HeatmapOverlay(cfg);
+                var heatmapLayerSO1 = new HeatmapOverlay(cfg3);
+
                 var map = new L.Map('map', {
                     center: new L.LatLng(38.996810, -0.165582),
                     zoom: 13,
-                    layers: [baseLayer, heatmapLayer]
+                    layers: [baseLayer]
                 });
+
+                var heatMapLayers = {
+                    "Mapa de calor SO2": heatmapLayerSO,
+                    "Mapa de calor calidad del aire": heatmapLayerSO2,
+                    "Mapa de calor CO": heatmapLayerSO1
+                };
 
                 $(document).ready(function () {
 
@@ -1222,7 +1255,7 @@ f
                             array = JSON.parse(this.response);
                             //let array = JSON.parse(this.response);
                             array.forEach(item => testDataCO.data.push(item));
-                            heatmapLayer.setData(testDataCO);
+                            //heatmapLayer.setData(testDataCO);
 
 
                             /*for(var i=0; i<array.length; i++){
@@ -1258,9 +1291,7 @@ f
                             }
 
 
-
-
-                            L.control.layers(null, basemaps2).addTo(map);
+                            L.control.layers(heatMapLayers, basemaps2).addTo(map);
                         }
                     }
 
@@ -1299,7 +1330,7 @@ f
                         url: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png",
                         weight: 2,
                         layers: CO
-                
+
                     },{
                         label: "    Peligro",
                         type: "image",
@@ -1319,14 +1350,8 @@ f
                         weight: 2,
 
                     }
-
-
-
-
                         ,]
                 }).addTo(map);
-
-
 
                 @if(auth()->user() != null)
                 var sliderControl = L.control.sliderControl({position: "bottomright", layer: mix});
@@ -1341,9 +1366,13 @@ f
                     "CO": CO
                 };
 
-                // heatmapLayer.setData(testData);
+                heatmapLayerSO.setData(testDataSO2);
+                heatmapLayerSO2.setData(testDataSO);
+                heatmapLayerSO1.setData(testDataSO1);
                 // make accessible for debugging
-                layer = heatmapLayer;
+                layer = heatmapLayerSO;
+                layer2 = heatmapLayerSO2;
+                layer3 = heatmapLayerSO1;
 
             }
 
