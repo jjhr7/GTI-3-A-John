@@ -229,7 +229,7 @@
 
                     <input type="date" id="start" name="trip-start"
                            value="2022-01-23"
-                           min="2022-01-01" max="2022-01-23" style ="margin: .4rem 0;">
+                           min="2022-01-01" max="2022-01-23" onchange="Getdate()" style ="margin: .4rem 0;">
                     <div id="map"></div>
                     @if(auth()->user()!= null)
                         <div/>
@@ -874,6 +874,31 @@ f
              */
 
 
+            async function catchEm(promise) {
+                return promise.then(data => [null, data])
+                    .catch(err => [err]);
+            }
+
+
+            var strat = document.getElementById("start");
+            var dt=strat.value;
+
+            let prat = null;
+            let denia = null;
+            let aras = null;
+            let valencia = null;
+            let torrevieja =null;
+            var map;
+
+                function Getdate()
+            {
+
+                dt=document.getElementById('start').value;
+                console.log(dt)
+                inicializarMapa(prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current);
+            }
+
+
             /**
              * Descripción de obtenerMedicionDeLasEstaciones. Función que devuelve la medicion de las estaciones oficiales de medida
              * Haciendo una petición a la api oficial
@@ -881,6 +906,8 @@ f
              */
 
             async function obtenerMedicionDeLasEstaciones(lat, lon){
+                var dengue = document.getElementById("start");
+                console.log(dengue.value)
                 const Http = new XMLHttpRequest();
                 const url='http://api.airvisual.com/v2/nearest_city?lat='+lat+'&lon='+lon+'&key=e88b27dd-b65c-4eb6-a258-4b161fa20949';
                 Http.open("GET", url);
@@ -931,19 +958,50 @@ f
                     }
                 };
 
+                var [err,data] = await catchEm(obtenerMedicionDeLasEstaciones(40.136944, 0.165555));
+                if (err){
+                    console.log("fake");
 
-
-                try{
-                    const prat = await obtenerMedicionDeLasEstaciones(40.136944, 0.165555);
-                    const denia =  await obtenerMedicionDeLasEstaciones(38.67194, 0.0358333);
-                    const aras =  await obtenerMedicionDeLasEstaciones(39.950277, -1.108888);
-                    const valencia = await obtenerMedicionDeLasEstaciones(39.950277, -0.035833);
-                    const torrevieja = await obtenerMedicionDeLasEstaciones(38.00833, -0.658611);
-
-                    return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
-                }catch (e) {
-                    return [ fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current, fakeadito.data.current]
+                    prat=fakeadito;
+                }else{
+                    prat=data;
                 }
+                const [err1,data1] = await catchEm(obtenerMedicionDeLasEstaciones(38.67194, 0.0358333));
+                if (err1){
+                    console.log("fake");
+
+                    denia=fakeadito;
+                }else{
+                    denia=data1;
+                }
+                const [err2,data2] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -1.108888));
+                if (err2){
+                    console.log("fake");
+
+                    aras=fakeadito;
+                }else{
+                    aras=data2;
+                }
+
+                const [err3,data3] = await catchEm(obtenerMedicionDeLasEstaciones(39.950277, -0.035833));
+                if (err3){
+                    console.log("fake");
+
+                    valencia=fakeadito;
+                }else{
+                    valencia=data3;
+                }
+
+                const [err4,data4] = await catchEm(obtenerMedicionDeLasEstaciones(38.00833, -0.658611));
+                if (err4){
+                    console.log("fake");
+
+                    torrevieja=fakeadito;
+                }else{
+                    torrevieja=data4;
+                }
+
+                return [prat.data.current,denia.data.current,aras.data.current,valencia.data.current,torrevieja.data.current];
 
             }
 
@@ -1064,10 +1122,10 @@ f
                     medicionSO211 = L.marker([38.976118, -0.163342], {icon: SOIcon}, {time: "2022-01-14 21:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser alto'),
                     medicionSO12 = L.marker([38.989818, -0.166642], {icon: SOIcon}, {time: "2022-01-14 22:30:29"}).bindPopup('El valor de SO2 en esta zona parece ser bajo '),
 
-                    medicionco1 = L.marker([38.966838, -0.165510], {time: "2022-01-14 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco2 = L.marker([38.876833, -0.166514], {time: "2022-01-14 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
-                    medicionco3 = L.marker([38.966523, -0.161420],  {time: "2022-01-14 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
-                    medicionco4 = L.marker([38.979544, -0.165720], {time: "2022-01-14 14:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco1 = L.marker([38.966838, -0.165510], {time: "2022-01-23 11:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco2 = L.marker([38.876833, -0.166514], {time: "2022-01-23 12:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
+                    medicionco3 = L.marker([38.966523, -0.161420],  {time: "2022-01-24 13:30:29"}).bindPopup('El valor de CO en esta zona parece ser medio'),
+                    medicionco4 = L.marker([38.979544, -0.165720], {time: "2022-01-24 14:30:29"}).bindPopup('El valor de CO en esta zona parece ser alto'),
                     medicionco5 = L.marker([38.967619, -0.162827],  {time: "2022-01-14 15:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
                     medicionco6 = L.marker([38.972356, -0.175332],  {time: "2022-01-14 16:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
                     medicionco7 = L.marker([38.899833, -0.166682],  {time: "2022-01-14 17:30:29"}).bindPopup('El valor de CO en esta zona parece ser bajo'),
@@ -1105,13 +1163,51 @@ f
                 };
 
 
-                var CO = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26]);
-                var SO2 = L.layerGroup([medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
-                var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
-                var IAQ = L.layerGroup ([medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12]);
+                let arrayCO=[medicionco1, medicionco2, medicionco3,medicionco4,medicionco5,medicionco6, medicionco7, medicionco8, medicionco9, medicionco10,medicionco11,medicionco12];
+                let arraySO2=[medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12];
+                let arrayIAQ=[medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionIAQ11, medicionIAQ12, medicionIAQ13, medicionIAQ14, medicionIAQ15, medicionIAQ16, medicionIAQ17, medicionIAQ18, medicionIAQ19, medicionIAQ20, medicionIAQ21, medicionIAQ22, medicionIAQ23, medicionIAQ24, medicionIAQ25, medicionIAQ26];
 
+                var estacionesMedica = L.layerGroup([estacionDenia, estacionPrat, estacionValencia, estacionAras, estacionTorrevieja]);
+
+                let arrayBueno=[];
+                let arrayBueno2=[];
+                let arrayBueno3=[];
+                var deng;
+                var fecha;
+                for (var i=0;i<arrayCO.length;i++){
+                    deng = arrayCO[i];
+                    fecha = deng.options.time.substring(0,10);
+                    if(dt === fecha){
+                        console.log(fecha);
+                        arrayBueno.push(arrayCO[i])
+                    }
+                }
+                for (var i=0;i<arrayCO.length;i++){
+                    deng = arrayCO[i];
+                    console.log(deng);
+                    fecha = deng.options.time.substring(0,10);
+                    if(dt === fecha){
+                        console.log(fecha);
+                        arrayBueno2.push(arraySO2[i])
+                    }
+                }
+                for (var i=0;i<arrayCO.length;i++){
+                    deng = arrayCO[i];
+                    fecha = deng.options.time.substring(0,10);
+                    if(dt === fecha){
+                        console.log(fecha);
+                        arrayBueno3.push(arrayIAQ[i])
+                    }
+                }
+
+                var CO = L.layerGroup(arrayBueno3);
+                var SO2 = L.layerGroup(arrayBueno2);
+
+                var IAQ = L.layerGroup (arrayBueno);
 
                 var mix = L.layerGroup([medicionIAQ1, medicionIAQ2, medicionIAQ3, medicionIAQ4, medicionIAQ5, medicionIAQ6, medicionIAQ7, medicionIAQ8, medicionIAQ9, medicionIAQ10, medicionSO21, medicionSO22, medicionSO23, medicionSO24, medicionSO25, medicionSO26, medicionSO27, medicionSO28, medicionSO29, medicionSO210, medicionSO211, medicionSO12]);
+
+
 
 
                 var baseLayer = L.tileLayer(
@@ -1181,7 +1277,14 @@ f
                 var heatmapLayerSO2 = new HeatmapOverlay(cfg);
                 var heatmapLayerSO1 = new HeatmapOverlay(cfg3);
 
-                var map = new L.Map('map', {
+                try {
+                    map.remove();
+                }catch (e) {
+
+                }
+
+
+                map = new L.Map('map', {
                     center: new L.LatLng(38.996810, -0.165582),
                     zoom: 13,
                     layers: [baseLayer]
@@ -1338,6 +1441,9 @@ f
             getMediciones().then(value => {
                 inicializarMapa(value[0],value[1],value[2],value[3],value[4]);
             });
+
+            var dengue = document.getElementById("start");
+            dengue.onclick
 
 
         </script>
